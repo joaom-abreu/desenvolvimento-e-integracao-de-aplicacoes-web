@@ -16,6 +16,12 @@
  <img width="1280" alt="Login_PUC" src="https://github.com/user-attachments/assets/cc9603f7-b4fb-4439-9b83-6d2c29fd9b3d" />
 </div>
 
+## 🖼️ Exemplo de Tela de Registro:
+
+<div align="center">
+ <img width="1280" alt="Registro_PUC" src="https://github.com/user-attachments/assets/09b283c4-a5a8-4f59-9a3c-857cd5a95944" />
+</div>
+
 ---
 
 ## 🎯 Objetivo
