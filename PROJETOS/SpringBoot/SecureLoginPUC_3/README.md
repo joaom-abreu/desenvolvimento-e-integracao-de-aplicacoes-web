@@ -5,7 +5,7 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 
 ## Estrutura do Projeto
 
-```text
+text```
 📁 SecureLoginPUC
 │
 ├── 📁 src
@@ -16,14 +16,14 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 │       │       │
 │       │       ├── 🚀 application
 │       │       │   └── SecureLoginPUCApplication.java
-│       │       │      └── Classe principal da aplicação Spring Boot
+│       │       │       └── Classe principal da aplicação Spring Boot
 │       │       │
 │       │       ├── 🔐 config
 │       │       │   ├── SecurityConfig.java
 │       │       │   │   └── Configurações do Spring Security
 │       │       │   │
 │       │       │   └── UserConfig.java
-│       │       │       └── Configuração dos usuários e autenticação
+│       │       │       └── Configuração dos usuários da aplicação
 │       │       │
 │       │       ├── 🎮 controller
 │       │       │   └── SecureLoginController.java
@@ -40,8 +40,11 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 │       │           ├── SendEmailService.java
 │       │           │   └── Serviço responsável pelo envio de e-mails
 │       │           │
-│       │           └── UserService.java
-│       │               └── Serviço responsável pelo gerenciamento dos usuários
+│       │           ├── UserService.java
+│       │           │   └── Serviço responsável pelo gerenciamento dos usuários
+│       │           │
+│       │           └── PasswordRecoveryService.java
+│       │               └── Serviço responsável pela recuperação de senha
 │       │
 │       └── 📁 resources
 │           │
@@ -56,7 +59,8 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 │           │   │   ├── home.css
 │           │   │   ├── login.css
 │           │   │   ├── recoverpassword.css
-│           │   │   └── register.css
+│           │   │   ├── register.css
+│           │   │   └── resetpassword.css
 │           │   │       └── Arquivos de estilização das páginas
 │           │   │
 │           │   └── 🖼️ images
@@ -68,7 +72,7 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 │               │   └── Página da área administrativa
 │               │
 │               ├── error.html
-│               │   └── Página apresentada quando ocorre erro de login
+│               │   └── Página apresentada quando ocorre um erro
 │               │
 │               ├── home.html
 │               │   └── Página inicial após autenticação
@@ -78,6 +82,9 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 │               │
 │               ├── recoverpassword.html
 │               │   └── Página de recuperação de senha
+│               │
+│               ├── resetpassword.html
+│               │   └── Página para redefinição da senha
 │               │
 │               └── register.html
 │                   └── Página de cadastro de usuários
@@ -90,16 +97,18 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 
 ```properties
 spring.application.name=SecureLoginPUC
-app.user.username=joao
+app.user.username=joaopauloaramuni@gmail.com
 app.user.password=4321
+app.user.name=Joao
 app.admin.username=admin
 app.admin.password=1234
+app.admin.name=Administrador
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
 spring.mail.username=joaopauloaramuni@gmail.com
 # https://myaccount.google.com/apppasswords
 # sua senha de app aqui (É necessário ativar a autenticação de dois fatores antes no Gmail)
-spring.mail.password=senhadeapp
+spring.mail.password=hzpjaczvuyuwnjmt
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.properties.mail.smtp.starttls.required=true
