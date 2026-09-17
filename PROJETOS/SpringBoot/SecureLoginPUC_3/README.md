@@ -5,7 +5,7 @@ O SecureLoginPUC é um projeto de aplicação web que implementa um sistema de l
 
 ## Estrutura do Projeto
 
-text```
+```text
 📁 SecureLoginPUC
 │
 ├── 📁 src
