@@ -21,7 +21,7 @@ Telas:
 
 | Recuperar senha | E-mail enviado pelo EmailJS |
 | :---: | :---: |
-| ![Recuperar senha](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/RecoverPassword.png) | ![E-mail](imgs/Email.png) |
+| ![Recuperar senha](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/RecoverPassword.png) | ![E-mail](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/Email.png) |
 
 | Redefinir senha | Home |
 | :---: | :---: |
