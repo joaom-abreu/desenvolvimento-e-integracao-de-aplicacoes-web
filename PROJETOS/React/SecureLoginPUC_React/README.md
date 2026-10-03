@@ -17,15 +17,15 @@ Telas:
 
 | Login | Cadastro |
 | :---: | :---: |
-| ![Login](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/Login.png) | ![Cadastro](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/Register.png) |
+| ![Login](https://joaopauloaramuni.github.io/react-imgs/SecureLoginPUC_React/imgs/Login.png) | ![Cadastro](https://joaopauloaramuni.github.io/react-imgs/SecureLoginPUC_React/imgs/Register.png) |
 
 | Recuperar senha | E-mail enviado pelo EmailJS |
 | :---: | :---: |
-| ![Recuperar senha](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/RecoverPassword.png) | ![E-mail](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/Email.png) |
+| ![Recuperar senha](https://joaopauloaramuni.github.io/react-imgs/SecureLoginPUC_React/imgs/RecoverPassword.png) | ![E-mail](https://joaopauloaramuni.github.io/react-imgs/SecureLoginPUC_React/imgs/Email.png) |
 
 | Redefinir senha | Home |
 | :---: | :---: |
-| ![Redefinir senha](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/ResetPassword.png) | ![Home](https://joaopauloaramuni.github.io/java-imgs/SecureLoginPUC_React/imgs/Home.png) |
+| ![Redefinir senha](https://joaopauloaramuni.github.io/react-imgs/SecureLoginPUC_React/imgs/ResetPassword.png) | ![Home](https://joaopauloaramuni.github.io/react-imgs/SecureLoginPUC_React/imgs/Home.png) |
 
 ## 🚀 Como rodar
 
