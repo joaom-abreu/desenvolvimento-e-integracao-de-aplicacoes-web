@@ -1,0 +1,906 @@
+/* =========================================================
+   SPOTIFY
+   As cores vêm das variáveis do index.css; se você copiar o
+   componente para outro projeto, os valores depois da vírgula
+   (fallback) garantem o mesmo visual.
+   ========================================================= */
+
+.spt {
+  --spt-brand: var(--brand, #005380);
+  --spt-brand-deep: var(--brand-deep, #00334f);
+  --spt-text: var(--foreground, #171717);
+  --spt-muted: var(--muted, #64748b);
+  --spt-border: var(--border, #e2e8f0);
+  --spt-surface: var(--surface-muted, #f1f5f9);
+  --spt-green: #1db954; /* verde do Spotify: só no "tocando agora" */
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  color: var(--spt-text);
+}
+
+.spt-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  transition: opacity 0.2s ease;
+}
+
+.spt-body.updating {
+  opacity: 0.55;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   ABAS E PERÍODO (mesmo visual dos botões do WakaTimeAPI)
+   ========================================================= */
+
+.spt-tabs,
+.spt-ranges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  padding: 4px;
+
+  background: var(--spt-surface);
+
+  border-radius: 10px;
+}
+
+.spt-tabs {
+  align-self: center;
+}
+
+.spt-tabs button,
+.spt-ranges button {
+  height: 38px;
+
+  padding: 0 1.1rem;
+
+  color: var(--spt-muted);
+
+  background: transparent;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.spt-tabs button:hover,
+.spt-ranges button:hover {
+  color: var(--spt-brand);
+}
+
+.spt-tabs button.active,
+.spt-ranges button.active {
+  color: #ffffff;
+
+  background: var(--spt-brand);
+
+  box-shadow: 0 2px 4px rgba(0, 51, 79, 0.15);
+}
+
+.spt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.spt-section-title {
+  color: var(--spt-brand);
+
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   PERFIL
+   ========================================================= */
+
+.spt-profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spt-profile > div {
+  flex: 1 1 200px;
+}
+
+.spt-profile h2 {
+  color: var(--spt-brand);
+
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.spt-profile p {
+  color: var(--spt-muted);
+
+  font-size: 0.88rem;
+}
+
+.spt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: var(--spt-brand);
+
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  text-decoration: none;
+}
+
+.spt-link:hover {
+  text-decoration: underline;
+}
+
+/* Capas */
+.spt-cover {
+  flex-shrink: 0;
+
+  object-fit: cover;
+
+  border-radius: 6px;
+}
+
+.spt-cover.round {
+  border-radius: 50%;
+}
+
+.spt-cover-empty {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--spt-muted);
+
+  background: var(--spt-surface);
+}
+
+/* =========================================================
+   TOCANDO AGORA + PLAYER
+   ========================================================= */
+
+.spt-top-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 1.25rem;
+}
+
+/* Sem "tocando agora", o player ocupa a linha toda */
+.spt-top-grid > .spt-player:only-child {
+  grid-column: 1 / -1;
+}
+
+.spt-now {
+  position: relative;
+
+  display: flex;
+  gap: 1.25rem;
+
+  padding: 1.25rem;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background: linear-gradient(145deg, var(--spt-brand-deep), var(--spt-brand));
+
+  border-radius: 16px;
+}
+
+.spt-now::after {
+  content: "";
+
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  right: -80px;
+  bottom: -140px;
+
+  background: rgba(79, 168, 216, 0.15);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.spt-now-cover {
+  flex-shrink: 0;
+
+  width: 148px;
+  height: 148px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.spt-now-info {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  min-width: 0;
+  flex: 1;
+}
+
+.spt-now-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-bottom: 0.25rem;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  opacity: 0.9;
+}
+
+.spt-now.is-playing .spt-now-status {
+  color: #7ee2a0;
+
+  opacity: 1;
+}
+
+.spt-now-dot {
+  width: 8px;
+  height: 8px;
+
+  background: rgba(255, 255, 255, 0.6);
+
+  border-radius: 50%;
+}
+
+/* Equalizador animado */
+.spt-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+
+  height: 12px;
+}
+
+.spt-eq i {
+  width: 3px;
+  height: 100%;
+
+  background: var(--spt-green);
+
+  border-radius: 1px;
+
+  animation: spt-eq 0.9s ease-in-out infinite;
+}
+
+.spt-eq i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.spt-eq i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+@keyframes spt-eq {
+  0%,
+  100% {
+    height: 30%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+
+.spt-now-title {
+  overflow: hidden;
+
+  color: #ffffff;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  line-height: 1.25;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.spt-now-title:hover {
+  text-decoration: underline;
+}
+
+.spt-now-artist {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.spt-now-album {
+  font-size: 0.8rem;
+
+  opacity: 0.75;
+}
+
+.spt-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  margin-top: 0.6rem;
+
+  font-size: 0.72rem;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.spt-progress-bar {
+  flex: 1;
+
+  height: 4px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  border-radius: 999px;
+}
+
+.spt-progress-bar span {
+  display: block;
+
+  height: 100%;
+
+  background: #ffffff;
+
+  border-radius: inherit;
+
+  transition: width 1s linear;
+}
+
+.spt-now-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.spt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.45rem 0.9rem;
+
+  color: var(--spt-brand-deep);
+
+  background: #ffffff;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.spt-btn.ghost {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.spt-btn:hover {
+  filter: brightness(0.95);
+}
+
+.spt-embed {
+  display: block;
+
+  width: 100%;
+
+  border: none;
+  border-radius: 12px;
+}
+
+.spt-hint {
+  margin-top: 0.6rem;
+
+  color: var(--spt-muted);
+
+  font-size: 0.78rem;
+
+  text-align: center;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.spt-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.spt-card {
+  padding: 1.4rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--spt-border);
+  border-radius: 12px;
+}
+
+.spt-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-bottom: 1rem;
+
+  color: var(--spt-brand);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* Top músicas */
+.spt-tracks,
+.spt-recent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  list-style: none;
+}
+
+.spt-tracks li {
+  display: grid;
+  grid-template-columns: 22px auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.4rem 0.5rem;
+
+  border-radius: 8px;
+
+  transition: background-color 0.15s ease;
+}
+
+.spt-tracks li:hover,
+.spt-tracks li.is-selected {
+  background: var(--spt-surface);
+}
+
+.spt-rank {
+  color: var(--spt-muted);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  text-align: right;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.spt-play {
+  position: relative;
+
+  display: inline-flex;
+
+  padding: 0;
+
+  background: none;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.spt-play-icon {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+
+  color: #ffffff;
+
+  background: rgba(0, 51, 79, 0.55);
+
+  border-radius: 6px;
+
+  opacity: 0;
+
+  transition: opacity 0.15s ease;
+}
+
+.spt-play:hover .spt-play-icon,
+.spt-play:focus-visible .spt-play-icon,
+.is-selected .spt-play-icon {
+  opacity: 1;
+}
+
+.spt-track-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.spt-track-info a {
+  overflow: hidden;
+
+  color: var(--spt-text);
+
+  font-size: 0.92rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.spt-track-info a:hover {
+  color: var(--spt-brand);
+
+  text-decoration: underline;
+}
+
+.spt-track-info span {
+  overflow: hidden;
+
+  color: var(--spt-muted);
+
+  font-size: 0.8rem;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.spt-explicit {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 14px;
+  height: 14px;
+  margin-left: 0.35rem;
+
+  color: #ffffff !important;
+
+  background: var(--spt-muted);
+
+  border-radius: 2px;
+
+  font-size: 0.6rem !important;
+  font-weight: 700;
+
+  vertical-align: middle;
+}
+
+.spt-duration,
+.spt-ago {
+  color: var(--spt-muted);
+
+  font-size: 0.8rem;
+
+  white-space: nowrap;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tocadas recentemente */
+.spt-recent li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.4rem 0;
+
+  border-bottom: 1px solid var(--spt-border);
+}
+
+.spt-recent li:last-child {
+  border-bottom: none;
+}
+
+/* Top artistas */
+.spt-artists {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 1.25rem 1rem;
+
+  list-style: none;
+}
+
+.spt-artists a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--spt-text);
+
+  text-align: center;
+  text-decoration: none;
+}
+
+.spt-artists .spt-cover {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.spt-artists a:hover .spt-cover {
+  transform: scale(1.05);
+
+  box-shadow: 0 10px 20px -8px rgba(0, 51, 79, 0.45);
+}
+
+.spt-artists strong {
+  font-size: 0.86rem;
+  font-weight: 600;
+
+  line-height: 1.25;
+}
+
+.spt-rank-inline {
+  color: var(--spt-muted);
+}
+
+.spt-artists small {
+  color: var(--spt-muted);
+
+  font-size: 0.72rem;
+}
+
+/* =========================================================
+   CARDS PRONTOS (aba "Cards")
+   ========================================================= */
+
+.spt-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.spt-cards-intro {
+  color: var(--spt-muted);
+
+  font-size: 0.9rem;
+
+  text-align: center;
+}
+
+.spt-cards-intro code {
+  padding: 0.1rem 0.35rem;
+
+  background: var(--spt-surface);
+
+  border-radius: 4px;
+}
+
+.spt-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.spt-card-img {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  padding: 1rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--spt-border);
+  border-radius: 12px;
+}
+
+.spt-card-img.wide {
+  grid-column: 1 / -1;
+}
+
+.spt-card-img figcaption {
+  color: var(--spt-muted);
+
+  font-size: 0.8rem;
+}
+
+.spt-card-img figcaption strong {
+  color: var(--spt-brand);
+}
+
+.spt-card-img img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   MENSAGENS, VAZIO, CARREGANDO
+   ========================================================= */
+
+.spt-message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+.spt-message strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.spt-message.error {
+  color: var(--error-text, #b91c1c);
+
+  background: var(--error-background, #fef2f2);
+
+  border: 1px solid var(--error-border, #fecaca);
+}
+
+.spt-message.warning {
+  color: var(--warning-text, #92400e);
+
+  background: var(--warning-background, #fffbeb);
+
+  border: 1px solid var(--warning-border, #fde68a);
+}
+
+.spt-empty,
+.spt-source {
+  color: var(--spt-muted);
+
+  font-size: 0.85rem;
+
+  text-align: center;
+}
+
+.spt-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.spt-skeleton span {
+  display: block;
+
+  background: linear-gradient(90deg, #eef2f7 25%, #f8fafc 50%, #eef2f7 75%);
+  background-size: 200% 100%;
+
+  border-radius: 12px;
+
+  animation: spt-shimmer 1.2s linear infinite;
+}
+
+@keyframes spt-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .spt-top-grid,
+  .spt-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .spt-now {
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .spt-now-info {
+    align-items: center;
+
+    width: 100%;
+  }
+
+  .spt-now-title {
+    max-width: 100%;
+  }
+
+  .spt-progress {
+    width: 100%;
+  }
+
+  .spt-now-actions {
+    justify-content: center;
+  }
+
+  .spt-card {
+    padding: 1.1rem;
+  }
+
+  .spt-tabs,
+  .spt-ranges {
+    width: 100%;
+  }
+
+  .spt-tabs button,
+  .spt-ranges button {
+    flex: 1;
+
+    padding: 0 0.5rem;
+  }
+
+  .spt-artists {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .spt-artists .spt-cover {
+    width: 68px;
+    height: 68px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spt-eq i,
+  .spt-skeleton span {
+    animation: none;
+  }
+}
