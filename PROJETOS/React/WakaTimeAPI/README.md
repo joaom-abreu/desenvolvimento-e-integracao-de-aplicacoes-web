@@ -19,7 +19,7 @@ O que o projeto mostra:
 
 | Desktop | Celular |
 | :---: | :---: |
-| ![Home](https://joaopauloaramuni.github.io/react-imgs/WakaTimeAPI/imgs/Home.png) | ![Mobile](https://joaopauloaramuni.github.io/react-imgs/WakaTimeAPI/imgs/Mobile.png) |
+| ![Home](https://joaopauloaramuni.github.io/react-imgs/WakaTimeAPI/imgs/Home_v2.png) | ![Mobile](https://joaopauloaramuni.github.io/react-imgs/WakaTimeAPI/imgs/Mobile_v2.png) |
 
 ## 🚀 Como rodar
 
