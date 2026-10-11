@@ -1,0 +1,198 @@
+/* =========================================================
+   SEÇÃO DE HABILIDADES (filtro + globo/lista)
+   ========================================================= */
+
+.skills-section {
+  --sk-brand: var(--brand, #005380);
+  --sk-brand-deep: var(--brand-deep, #00334f);
+  --sk-muted: var(--muted, #64748b);
+  --sk-border: var(--border, #e2e8f0);
+  --sk-surface: var(--surface-muted, #f1f5f9);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skills-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Chips de categoria */
+
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills-chips button,
+.skills-view button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  height: 36px;
+
+  padding: 0 0.9rem;
+
+  color: var(--sk-muted);
+
+  background: #ffffff;
+
+  border: 1px solid var(--sk-border);
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.skills-chips button span {
+  padding: 0 0.4rem;
+
+  color: var(--sk-brand);
+
+  background: var(--sk-surface);
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.skills-chips button:hover,
+.skills-view button:hover {
+  color: var(--sk-brand);
+
+  border-color: var(--sk-brand);
+}
+
+.skills-chips button.active {
+  color: #ffffff;
+
+  background: var(--sk-brand);
+
+  border-color: var(--sk-brand);
+}
+
+.skills-chips button.active span {
+  color: var(--sk-brand);
+
+  background: #ffffff;
+}
+
+/* Globo / Lista */
+
+.skills-view {
+  display: inline-flex;
+  gap: 4px;
+
+  padding: 4px;
+
+  background: var(--sk-surface);
+
+  border-radius: 10px;
+}
+
+.skills-view button {
+  height: 32px;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 8px;
+}
+
+.skills-view button.active {
+  color: #ffffff;
+
+  background: var(--sk-brand);
+}
+
+.skills-hint {
+  margin-top: -0.5rem;
+
+  color: var(--sk-muted);
+
+  font-size: 0.8rem;
+
+  text-align: center;
+}
+
+/* Lista em grade */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.85rem;
+
+  list-style: none;
+}
+
+.skills-grid a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 1.1rem 0.75rem;
+
+  color: inherit;
+
+  background: #ffffff;
+
+  border: 1px solid var(--sk-border);
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.skills-grid a:hover {
+  border-color: var(--skill);
+
+  box-shadow: 0 10px 24px -12px rgba(0, 51, 79, 0.35);
+
+  transform: translateY(-2px);
+}
+
+.skills-grid svg {
+  width: 34px;
+  height: 34px;
+
+  color: var(--skill);
+}
+
+.skills-grid span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.skills-grid small {
+  color: var(--sk-muted);
+
+  font-size: 0.72rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-grid a,
+  .skills-chips button,
+  .skills-view button {
+    transition: none;
+  }
+}

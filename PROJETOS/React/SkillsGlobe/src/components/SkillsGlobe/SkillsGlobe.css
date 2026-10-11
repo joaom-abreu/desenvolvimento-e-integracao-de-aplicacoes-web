@@ -1,0 +1,154 @@
+/* =========================================================
+   SKILLS GLOBE
+   ========================================================= */
+
+.skills-globe {
+  position: relative;
+
+  width: 100%;
+  height: clamp(340px, 62vw, 560px);
+
+  overflow: hidden;
+
+  touch-action: none; /* o dedo gira o globo em vez de rolar a página */
+  cursor: grab;
+  user-select: none;
+}
+
+.skills-globe:active {
+  cursor: grabbing;
+}
+
+.skills-globe-canvas {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.skills-globe-layer {
+  position: absolute;
+  inset: 0;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+/* =========================================================
+   ÍCONE DE CADA SKILL
+   ========================================================= */
+
+.skills-globe-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 48px;
+  height: 48px;
+
+  color: var(--skill);
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 51, 79, 0.1);
+  border-radius: 50%;
+
+  box-shadow:
+    0 2px 4px rgba(0, 51, 79, 0.08),
+    0 8px 18px -6px rgba(0, 51, 79, 0.3);
+
+  text-decoration: none;
+
+  will-change: transform, opacity;
+
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.skills-globe-item svg {
+  width: 26px;
+  height: 26px;
+
+  transition: transform 0.2s ease;
+}
+
+.skills-globe-item:hover,
+.skills-globe-item:focus-visible {
+  border-color: var(--skill);
+
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--skill) 25%, transparent),
+    0 10px 24px -6px rgba(0, 51, 79, 0.35);
+
+  outline: none;
+}
+
+.skills-globe-item:hover svg,
+.skills-globe-item:focus-visible svg {
+  transform: scale(1.15);
+}
+
+/* Nome da skill (aparece ao passar o mouse ou com o Tab) */
+
+.skills-globe-label {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+
+  padding: 0.25rem 0.6rem;
+
+  color: #ffffff;
+
+  background: var(--globe-color, #005380);
+
+  border-radius: 6px;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translate(-50%, -4px);
+
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.skills-globe-item:hover .skills-globe-label,
+.skills-globe-item:focus-visible .skills-globe-label {
+  opacity: 1;
+
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 480px) {
+  .skills-globe-item {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skills-globe-item svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-globe-item,
+  .skills-globe-item svg,
+  .skills-globe-label {
+    transition: none;
+  }
+}
