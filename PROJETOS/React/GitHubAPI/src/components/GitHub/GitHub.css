@@ -1,0 +1,863 @@
+/* =========================================================
+   COMPONENTES DO GITHUB
+   As cores vêm das variáveis do index.css; se você copiar a
+   pasta para outro projeto, os valores depois da vírgula
+   (fallback) garantem o mesmo visual.
+   ========================================================= */
+
+.gh,
+.gh-card,
+.gh-kpis,
+.gh-repos,
+.gh-message {
+  --gh-brand: var(--brand, #005380);
+  --gh-brand-deep: var(--brand-deep, #00334f);
+  --gh-brand-soft: var(--brand-soft, #4fa8d8);
+  --gh-text: var(--foreground, #171717);
+  --gh-muted: var(--muted, #64748b);
+  --gh-border: var(--border, #e2e8f0);
+  --gh-surface: var(--surface-muted, #f1f5f9);
+
+  /* Escala do calendário de contribuições (azul PUC) */
+  --gh-l0: #e8eef4;
+  --gh-l1: #b9d7ec;
+  --gh-l2: #6fb0db;
+  --gh-l3: #1f7fbf;
+  --gh-l4: #00436a;
+}
+
+.gh,
+.gh-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  color: var(--gh-text);
+}
+
+/* =========================================================
+   BUSCA
+   ========================================================= */
+
+.gh-search {
+  position: relative;
+
+  display: flex;
+  gap: 0.5rem;
+
+  width: min(460px, 100%);
+  margin: 0 auto;
+}
+
+.gh-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+
+  color: var(--gh-muted);
+
+  transform: translateY(-50%);
+}
+
+.gh-search input {
+  flex: 1;
+
+  height: 46px;
+
+  padding: 0 1rem 0 2.6rem;
+
+  color: var(--gh-text);
+
+  background: #ffffff;
+
+  border: 1px solid var(--gh-border);
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 0.95rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gh-search input:focus {
+  border-color: var(--gh-brand);
+
+  box-shadow: 0 0 0 3px rgba(0, 83, 128, 0.12);
+}
+
+.gh-search button,
+.gh-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+
+  height: 46px;
+
+  padding: 0 1.25rem;
+
+  color: #ffffff;
+
+  background: var(--gh-brand);
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 4px rgba(0, 51, 79, 0.15);
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.gh-search button:hover,
+.gh-button:hover {
+  background: var(--gh-brand-deep);
+
+  box-shadow: 0 6px 16px rgba(0, 51, 79, 0.2);
+
+  transform: translateY(-1px);
+}
+
+.gh-button {
+  height: 40px;
+
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   CARD GENÉRICO
+   ========================================================= */
+
+.gh-card {
+  padding: 1.5rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--gh-border);
+  border-radius: 12px;
+}
+
+.gh-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+
+  margin-bottom: 1.1rem;
+}
+
+.gh-card h3,
+.gh-repos h3 {
+  color: var(--gh-brand);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.gh-light {
+  color: var(--gh-muted);
+
+  font-weight: 400;
+}
+
+.gh-card-note {
+  color: var(--gh-muted);
+
+  font-size: 0.8rem;
+}
+
+.gh-empty {
+  color: var(--gh-muted);
+
+  font-size: 0.9rem;
+
+  text-align: center;
+}
+
+.gh-dot {
+  display: inline-block;
+
+  width: 10px;
+  height: 10px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+/* =========================================================
+   PERFIL
+   ========================================================= */
+
+.gh-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+
+.gh-avatar {
+  width: 112px;
+  height: 112px;
+
+  flex-shrink: 0;
+
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 2px var(--gh-brand),
+    0 8px 20px rgba(0, 51, 79, 0.2);
+
+  object-fit: cover;
+}
+
+.gh-profile-body {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.gh-profile-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.gh-profile h2 {
+  color: var(--gh-brand);
+
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+.gh-login {
+  color: var(--gh-muted);
+
+  font-size: 0.95rem;
+}
+
+.gh-bio {
+  margin-top: 0.85rem;
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.gh-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+
+  margin-top: 1rem;
+
+  list-style: none;
+
+  color: var(--gh-muted);
+
+  font-size: 0.85rem;
+}
+
+.gh-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.gh-meta svg {
+  color: var(--gh-brand);
+}
+
+.gh-meta strong {
+  color: var(--gh-text);
+
+  font-weight: 600;
+}
+
+.gh-meta a {
+  color: var(--gh-brand);
+
+  text-decoration: none;
+}
+
+.gh-meta a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   INDICADORES
+   ========================================================= */
+
+.gh-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+
+  list-style: none;
+}
+
+.gh-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  min-height: 104px;
+
+  padding: 1.1rem 1.2rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--gh-border);
+  border-radius: 12px;
+}
+
+.gh-kpi-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  color: var(--gh-muted);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gh-kpi-label svg {
+  color: var(--gh-brand);
+
+  font-size: 1rem;
+}
+
+.gh-kpi-value {
+  color: var(--gh-brand);
+
+  font-size: 1.6rem;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+.gh-kpi-note {
+  overflow: hidden;
+
+  color: var(--gh-muted);
+
+  font-size: 0.8rem;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   CALENDÁRIO DE CONTRIBUIÇÕES
+   ========================================================= */
+
+.gh-heatmap-scroll {
+  overflow-x: auto;
+
+  padding-bottom: 0.25rem;
+}
+
+.gh-heatmap {
+  display: grid;
+  grid-template-columns: 28px repeat(var(--weeks), 13px);
+  grid-template-rows: auto auto;
+  column-gap: 3px;
+  row-gap: 4px;
+
+  width: max-content;
+  margin: 0 auto;
+}
+
+.gh-heatmap-month {
+  overflow: visible;
+
+  color: var(--gh-muted);
+
+  font-size: 0.7rem;
+
+  white-space: nowrap;
+}
+
+.gh-heatmap-weekdays,
+.gh-heatmap-week {
+  display: grid;
+  grid-template-rows: repeat(7, 13px);
+  row-gap: 3px;
+}
+
+.gh-heatmap-weekdays span {
+  color: var(--gh-muted);
+
+  font-size: 0.65rem;
+  line-height: 13px;
+}
+
+.gh-cell {
+  display: inline-block;
+
+  width: 13px;
+  height: 13px;
+
+  background: var(--gh-l0);
+
+  border-radius: 3px;
+}
+
+.gh-cell.empty {
+  background: transparent;
+}
+
+.gh-cell.l1 {
+  background: var(--gh-l1);
+}
+
+.gh-cell.l2 {
+  background: var(--gh-l2);
+}
+
+.gh-cell.l3 {
+  background: var(--gh-l3);
+}
+
+.gh-cell.l4 {
+  background: var(--gh-l4);
+}
+
+.gh-heatmap-week .gh-cell:not(.empty):hover {
+  outline: 2px solid var(--gh-brand-deep);
+  outline-offset: 1px;
+}
+
+.gh-heatmap-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1.1rem;
+}
+
+.gh-streaks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+
+  list-style: none;
+
+  color: var(--gh-muted);
+
+  font-size: 0.85rem;
+}
+
+.gh-streaks strong {
+  color: var(--gh-brand);
+
+  font-weight: 600;
+}
+
+.gh-scale {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  color: var(--gh-muted);
+
+  font-size: 0.75rem;
+}
+
+/* =========================================================
+   LINGUAGENS
+   ========================================================= */
+
+.gh-stack {
+  display: flex;
+  gap: 2px;
+
+  height: 12px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+}
+
+.gh-stack span {
+  min-width: 3px;
+}
+
+.gh-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0.6rem 1.5rem;
+
+  margin-top: 1.1rem;
+
+  list-style: none;
+}
+
+.gh-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-size: 0.875rem;
+}
+
+.gh-legend-name {
+  flex: 1;
+
+  overflow: hidden;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.gh-legend-value {
+  color: var(--gh-muted);
+
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   REPOSITÓRIOS
+   ========================================================= */
+
+.gh-repos-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  margin-bottom: 1rem;
+}
+
+.gh-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.gh-filters select {
+  height: 38px;
+
+  padding: 0 0.75rem;
+
+  color: var(--gh-text);
+
+  background: #ffffff;
+
+  border: 1px solid var(--gh-border);
+  border-radius: 8px;
+
+  font-size: 0.85rem;
+
+  cursor: pointer;
+}
+
+.gh-filters select:focus {
+  border-color: var(--gh-brand);
+  outline: none;
+
+  box-shadow: 0 0 0 3px rgba(0, 83, 128, 0.12);
+}
+
+.gh-repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+
+  list-style: none;
+}
+
+.gh-repo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+
+  padding: 1.25rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--gh-border);
+  border-radius: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.gh-repo:hover {
+  border-color: rgba(0, 83, 128, 0.35);
+
+  box-shadow: 0 10px 24px -12px rgba(0, 51, 79, 0.35);
+
+  transform: translateY(-2px);
+}
+
+.gh-repo-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gh-repo-title a:first-child {
+  overflow: hidden;
+
+  color: var(--gh-brand);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.gh-repo-title a:first-child:hover {
+  text-decoration: underline;
+}
+
+.gh-repo-home {
+  display: inline-flex;
+
+  color: var(--gh-muted);
+}
+
+.gh-repo-home:hover {
+  color: var(--gh-brand);
+}
+
+.gh-repo-desc {
+  flex: 1;
+
+  display: -webkit-box;
+
+  overflow: hidden;
+
+  color: var(--gh-muted);
+
+  font-size: 0.85rem;
+  line-height: 1.5;
+
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.gh-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+
+  list-style: none;
+}
+
+.gh-topics li {
+  padding: 0.2rem 0.6rem;
+
+  color: var(--gh-brand);
+
+  background: rgba(0, 83, 128, 0.08);
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.gh-repo-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1rem;
+
+  color: var(--gh-muted);
+
+  font-size: 0.78rem;
+}
+
+.gh-repo-footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gh-repo-date {
+  margin-left: auto;
+}
+
+.gh-repos-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  margin-top: 1.25rem;
+}
+
+.gh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: var(--gh-brand);
+
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  text-decoration: none;
+}
+
+.gh-link:hover {
+  color: var(--gh-brand-deep);
+
+  text-decoration: underline;
+}
+
+/* =========================================================
+   MENSAGEM DE ERRO E CARREGANDO
+   ========================================================= */
+
+.gh-message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 12px;
+
+  color: var(--error-text, #b91c1c);
+
+  background: var(--error-background, #fef2f2);
+
+  border: 1px solid var(--error-border, #fecaca);
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+.gh-message strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.gh-skeleton {
+  background: linear-gradient(90deg, #eef2f7 25%, #f8fafc 50%, #eef2f7 75%);
+  background-size: 200% 100%;
+
+  border-color: transparent;
+
+  animation: gh-shimmer 1.2s linear infinite;
+}
+
+.gh-skeleton-profile {
+  height: 164px;
+}
+
+.gh-skeleton-block {
+  height: 220px;
+}
+
+@keyframes gh-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .gh-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .gh-profile {
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .gh-profile-head {
+    justify-content: center;
+  }
+
+  .gh-meta {
+    justify-content: center;
+  }
+
+  .gh-card {
+    padding: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gh-kpis {
+    gap: 0.75rem;
+  }
+
+  .gh-kpi {
+    min-height: 0;
+
+    padding: 0.9rem;
+  }
+
+  .gh-kpi-value {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .gh-kpis {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .gh-search button {
+    padding: 0 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-skeleton {
+    animation: none;
+  }
+
+  .gh-repo,
+  .gh-search button,
+  .gh-button {
+    transition: none;
+  }
+}

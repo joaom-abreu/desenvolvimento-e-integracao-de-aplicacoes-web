@@ -1,0 +1,488 @@
+/* =========================================================
+   MAP EXPLORER (lateral + mapa)
+   ========================================================= */
+
+.map-explorer,
+.map-token-missing {
+  --mx-brand: var(--brand, #005380);
+  --mx-brand-deep: var(--brand-deep, #00334f);
+  --mx-text: var(--foreground, #171717);
+  --mx-muted: var(--muted, #64748b);
+  --mx-border: var(--border, #e2e8f0);
+  --mx-surface: var(--surface-muted, #f1f5f9);
+}
+
+.map-explorer {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+
+  height: 600px;
+
+  overflow: hidden;
+
+  color: var(--mx-text);
+
+  background: #ffffff;
+
+  border: 1px solid var(--mx-border);
+  border-radius: 16px;
+}
+
+/* =========================================================
+   LATERAL
+   ========================================================= */
+
+.map-sidebar {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+
+  border-right: 1px solid var(--mx-border);
+}
+
+/* Busca */
+
+.map-search {
+  position: relative;
+
+  padding: 1rem;
+
+  border-bottom: 1px solid var(--mx-border);
+}
+
+.map-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1.85rem;
+
+  color: var(--mx-muted);
+
+  transform: translateY(-50%);
+}
+
+.map-search input {
+  width: 100%;
+  height: 44px;
+
+  padding: 0 2.4rem 0 2.5rem;
+
+  color: var(--mx-text);
+
+  background: #ffffff;
+
+  border: 1px solid var(--mx-border);
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 0.9rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.map-search input:focus {
+  border-color: var(--mx-brand);
+
+  box-shadow: 0 0 0 3px rgba(0, 83, 128, 0.12);
+}
+
+.map-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 1.6rem;
+
+  display: flex;
+
+  color: var(--mx-muted);
+
+  background: none;
+
+  border: none;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+.map-results {
+  position: absolute;
+  top: calc(100% - 0.6rem);
+  right: 1rem;
+  left: 1rem;
+  z-index: 10;
+
+  max-height: 280px;
+
+  overflow-y: auto;
+
+  list-style: none;
+
+  background: #ffffff;
+
+  border: 1px solid var(--mx-border);
+  border-radius: 10px;
+
+  box-shadow: 0 16px 32px -12px rgba(0, 51, 79, 0.35);
+}
+
+.map-results button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  width: 100%;
+
+  padding: 0.65rem 0.85rem;
+
+  color: inherit;
+
+  background: none;
+
+  border: none;
+  border-bottom: 1px solid var(--mx-border);
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.map-results li:last-child button {
+  border-bottom: none;
+}
+
+.map-results button:hover {
+  background: var(--mx-surface);
+}
+
+.map-results strong {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.map-results span {
+  color: var(--mx-muted);
+
+  font-size: 0.75rem;
+}
+
+.map-results-info {
+  padding: 0.65rem 0.85rem;
+
+  color: var(--mx-muted);
+
+  font-size: 0.8rem;
+}
+
+.map-results-info.error {
+  color: var(--error-text, #b91c1c);
+}
+
+/* Lista de lugares */
+
+.map-places-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 1rem 0.5rem;
+}
+
+.map-places-head h3 {
+  color: var(--mx-brand);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.map-places-head button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  color: var(--mx-brand);
+
+  background: none;
+
+  border: none;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.map-places-head button:hover {
+  text-decoration: underline;
+}
+
+.map-places {
+  flex: 1;
+
+  padding: 0 0.6rem 0.75rem;
+
+  overflow-y: auto;
+
+  list-style: none;
+}
+
+.map-places button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  width: 100%;
+
+  padding: 0.7rem 0.5rem;
+
+  color: inherit;
+
+  background: none;
+
+  border: none;
+  border-radius: 10px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.map-places button:hover {
+  background: var(--mx-surface);
+}
+
+.map-places button.active {
+  background: rgba(0, 83, 128, 0.08);
+}
+
+.map-places-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  color: #ffffff;
+
+  background: var(--mx-brand);
+
+  border-radius: 50%;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.map-places button.active .map-places-number {
+  background: var(--mx-brand-deep);
+
+  box-shadow: 0 0 0 3px rgba(79, 168, 216, 0.45);
+}
+
+.map-places-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  min-width: 0;
+}
+
+.map-places-text strong {
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+
+.map-places-text span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  color: var(--mx-muted);
+
+  font-size: 0.78rem;
+}
+
+/* =========================================================
+   MAPA + BOTÕES DE ESTILO
+   ========================================================= */
+
+.map-stage {
+  position: relative;
+
+  min-height: 0;
+}
+
+.map-styles {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  padding: 4px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 14px rgba(0, 51, 79, 0.2);
+}
+
+.map-styles button {
+  height: 30px;
+
+  padding: 0 0.7rem;
+
+  color: var(--mx-muted);
+
+  background: transparent;
+
+  border: none;
+  border-radius: 7px;
+
+  font-size: 0.78rem;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.map-styles button:hover {
+  color: var(--mx-brand);
+}
+
+.map-styles button.active {
+  color: #ffffff;
+
+  background: var(--mx-brand);
+}
+
+/* =========================================================
+   SEM TOKEN
+   ========================================================= */
+
+.map-token-missing {
+  max-width: 620px;
+  margin: 0 auto;
+
+  padding: 2rem;
+
+  color: var(--mx-text);
+
+  background: var(--warning-background, #fffbeb);
+
+  border: 1px solid var(--warning-border, #fde68a);
+  border-radius: 16px;
+}
+
+.map-token-icon {
+  width: 36px;
+  height: 36px;
+
+  color: var(--warning-text, #92400e);
+}
+
+.map-token-missing h3 {
+  margin-top: 0.75rem;
+
+  color: var(--warning-text, #92400e);
+
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.map-token-missing p {
+  margin-top: 0.4rem;
+
+  color: var(--mx-muted);
+
+  font-size: 0.9rem;
+}
+
+.map-token-missing ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  margin-top: 1.25rem;
+  padding-left: 1.25rem;
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.map-token-missing a {
+  color: var(--mx-brand);
+
+  font-weight: 500;
+}
+
+.map-token-missing code,
+.map-token-missing pre {
+  padding: 0.1rem 0.35rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--warning-border, #fde68a);
+  border-radius: 4px;
+
+  font-size: 0.85em;
+}
+
+.map-token-missing pre {
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.8rem;
+
+  overflow-x: auto;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .map-explorer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 440px;
+
+    height: auto;
+  }
+
+  .map-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--mx-border);
+  }
+
+  .map-places {
+    display: flex;
+    gap: 0.4rem;
+
+    padding: 0 1rem 1rem;
+
+    overflow-x: auto;
+  }
+
+  .map-places button {
+    width: max-content;
+
+    border: 1px solid var(--mx-border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-places button,
+  .map-search input {
+    transition: none;
+  }
+}
