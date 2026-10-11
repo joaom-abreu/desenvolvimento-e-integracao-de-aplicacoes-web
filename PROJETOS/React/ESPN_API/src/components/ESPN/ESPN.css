@@ -1,0 +1,1432 @@
+/* =========================================================
+   ESPN (futebol e basquete)
+   As cores vêm das variáveis do index.css; se você copiar o
+   componente para outro projeto, os valores depois da vírgula
+   (fallback) garantem o mesmo visual.
+   ========================================================= */
+
+.espn {
+  --espn-brand: var(--brand, #005380);
+  --espn-brand-deep: var(--brand-deep, #00334f);
+  --espn-brand-soft: var(--brand-soft, #4fa8d8);
+  --espn-text: var(--foreground, #171717);
+  --espn-muted: var(--muted, #64748b);
+  --espn-border: var(--border, #e2e8f0);
+  --espn-surface: var(--surface-muted, #f1f5f9);
+  --espn-live: #dc2626;
+  --espn-win: var(--success-text, #2e7d32);
+  --espn-draw: #94a3b8;
+  --espn-loss: var(--error-text, #b91c1c);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  color: var(--espn-text);
+}
+
+.espn-sport,
+.espn-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.espn-body {
+  transition: opacity 0.2s ease;
+}
+
+.espn-body.updating {
+  opacity: 0.55;
+
+  pointer-events: none;
+}
+
+/* Ícone da faixa azul (bola de futebol + bola de basquete) */
+.espn-hero-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+
+  width: auto !important;
+}
+
+.espn-hero-icons svg {
+  width: 56px;
+  height: 56px;
+}
+
+.espn-hero-icons svg:last-child {
+  color: #f59e0b;
+}
+
+/* =========================================================
+   ABAS (futebol | basquete) e CONFERÊNCIAS
+   ========================================================= */
+
+.espn-tabs {
+  display: inline-flex;
+  align-self: center;
+  gap: 4px;
+
+  padding: 4px;
+
+  background: var(--espn-surface);
+
+  border-radius: 12px;
+}
+
+.espn-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  height: 42px;
+
+  padding: 0 1.4rem;
+
+  color: var(--espn-muted);
+
+  background: transparent;
+
+  border: none;
+  border-radius: 9px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.espn-tabs button svg {
+  font-size: 1.15rem;
+}
+
+.espn-tabs button:hover {
+  color: var(--espn-brand);
+}
+
+.espn-tabs button.active {
+  color: #ffffff;
+
+  background: var(--espn-brand);
+
+  box-shadow: 0 2px 4px rgba(0, 51, 79, 0.15);
+}
+
+.espn-tabs-small {
+  align-self: flex-start;
+
+  margin-bottom: 1rem;
+}
+
+.espn-tabs-small button {
+  height: 34px;
+
+  padding: 0 0.9rem;
+
+  font-size: 0.82rem;
+}
+
+/* =========================================================
+   BARRA (select do time + link)
+   ========================================================= */
+
+.espn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.espn-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  color: var(--espn-muted);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.espn-select select {
+  min-width: 240px;
+  height: 42px;
+
+  padding: 0 2.25rem 0 0.9rem;
+
+  color: var(--espn-text);
+
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath stroke='%23005380' stroke-width='2' d='m1 1 5 5 5-5'/%3E%3C/svg%3E")
+      no-repeat right 0.85rem center,
+    #ffffff;
+
+  border: 1px solid var(--espn-border);
+  border-radius: 10px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  letter-spacing: normal;
+  text-transform: none;
+
+  cursor: pointer;
+
+  appearance: none;
+}
+
+.espn-select select:focus {
+  outline: none;
+
+  border-color: var(--espn-brand);
+
+  box-shadow: 0 0 0 3px rgba(0, 83, 128, 0.12);
+}
+
+.espn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: var(--espn-brand);
+
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  text-decoration: none;
+}
+
+.espn-link:hover {
+  color: var(--espn-brand-deep);
+
+  text-decoration: underline;
+}
+
+/* =========================================================
+   CABEÇALHO DO TIME
+   ========================================================= */
+
+.espn-team {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+}
+
+.espn-team-info {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.espn-team-info h2 {
+  color: var(--espn-brand);
+
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+.espn-team-info p {
+  margin-top: 0.25rem;
+
+  color: var(--espn-muted);
+
+  font-size: 0.9rem;
+}
+
+.espn-form {
+  display: inline-flex;
+  gap: 4px;
+}
+
+/* Escudos */
+.espn-logo {
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+.espn-logo-fallback {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #ffffff;
+
+  background: var(--team);
+
+  border-radius: 50%;
+
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.espn-league-logo {
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+/* V / E / D */
+.espn-result {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: #ffffff;
+
+  background: var(--espn-draw);
+
+  border-radius: 6px;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.espn-result-W {
+  background: var(--espn-win);
+}
+
+.espn-result-L {
+  background: var(--espn-loss);
+}
+
+/* =========================================================
+   INDICADORES (mesmo visual do WakaTimeAPI)
+   ========================================================= */
+
+.espn-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+
+  list-style: none;
+}
+
+.espn-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  padding: 1.1rem 1.2rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--espn-border);
+  border-radius: 12px;
+}
+
+.espn-kpi-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  color: var(--espn-muted);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.espn-kpi-label svg {
+  color: var(--espn-brand);
+
+  font-size: 1rem;
+}
+
+.espn-kpi-value {
+  color: var(--espn-brand);
+
+  font-size: 1.35rem;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+.espn-kpi-note {
+  color: var(--espn-muted);
+
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   PRÓXIMO JOGO (destaque com contagem regressiva)
+   ========================================================= */
+
+.espn-next {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  padding: 1.5rem;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background: linear-gradient(145deg, var(--espn-brand-deep), var(--espn-brand));
+
+  border-radius: 16px;
+}
+
+.espn-next::after {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -90px;
+  top: -140px;
+
+  background: rgba(79, 168, 216, 0.15);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.espn-next-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.espn-next-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  opacity: 0.85;
+}
+
+.espn-next .espn-game-league {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.espn-next .espn-league-logo {
+  padding: 2px;
+
+  background: #ffffff;
+
+  border-radius: 4px;
+}
+
+.espn-next-match {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.espn-next-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-width: 0;
+
+  text-align: center;
+}
+
+.espn-next-team .espn-logo {
+  padding: 8px;
+
+  background: #ffffff;
+
+  border-radius: 50%;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+
+  box-sizing: content-box;
+}
+
+.espn-next-team strong {
+  max-width: 100%;
+
+  overflow: hidden;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.espn-next-team small {
+  font-size: 0.78rem;
+
+  opacity: 0.75;
+}
+
+.espn-next-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  text-align: center;
+}
+
+.espn-next-date {
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  opacity: 0.9;
+}
+
+.espn-next-date::first-letter {
+  text-transform: uppercase;
+}
+
+.espn-countdown {
+  display: flex;
+  gap: 0.5rem;
+
+  list-style: none;
+}
+
+.espn-countdown li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 58px;
+
+  padding: 0.55rem 0.4rem;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+}
+
+.espn-countdown b {
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  font-variant-numeric: tabular-nums;
+
+  line-height: 1.1;
+}
+
+.espn-countdown span {
+  font-size: 0.68rem;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  opacity: 0.75;
+}
+
+.espn-next .espn-score {
+  color: #ffffff;
+
+  font-size: 2.2rem;
+}
+
+.espn-next .espn-score b.won {
+  color: #ffffff;
+}
+
+.espn-next .espn-game-meta {
+  position: relative;
+  z-index: 1;
+
+  justify-content: center;
+
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.espn-next .espn-game-meta svg,
+.espn-next .espn-game-meta a {
+  color: #ffffff;
+}
+
+.espn-next .espn-until {
+  color: #ffffff;
+}
+
+/* =========================================================
+   CARDS E GRADE
+   ========================================================= */
+
+.espn-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.espn-card {
+  padding: 1.5rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--espn-border);
+  border-radius: 12px;
+}
+
+.espn-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-bottom: 1.1rem;
+}
+
+.espn-card-head h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--espn-brand);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.espn-more {
+  padding: 0.35rem 0.8rem;
+
+  color: var(--espn-brand);
+
+  background: var(--espn-surface);
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.espn-more:hover {
+  color: #ffffff;
+
+  background: var(--espn-brand);
+}
+
+/* =========================================================
+   LISTA DE JOGOS
+   ========================================================= */
+
+.espn-games {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  list-style: none;
+}
+
+.espn-game {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  padding: 1rem 1.1rem;
+
+  border: 1px solid var(--espn-border);
+  border-radius: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.espn-game:hover {
+  border-color: rgba(0, 83, 128, 0.3);
+
+  box-shadow: 0 6px 18px -10px rgba(0, 51, 79, 0.35);
+}
+
+.espn-game.is-live {
+  border-color: rgba(220, 38, 38, 0.35);
+  border-left: 4px solid var(--espn-live);
+}
+
+.espn-game-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem 1rem;
+
+  font-size: 0.78rem;
+}
+
+.espn-game-league {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  min-width: 0;
+
+  color: var(--espn-muted);
+
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.espn-game-when {
+  color: var(--espn-brand);
+
+  font-weight: 600;
+}
+
+.espn-match {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.espn-side {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  min-width: 0;
+}
+
+.espn-side-home {
+  flex-direction: row-reverse;
+
+  text-align: right;
+}
+
+.espn-side-name {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.espn-side-name strong {
+  overflow: hidden;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.espn-side-name small {
+  color: var(--espn-muted);
+
+  font-size: 0.75rem;
+}
+
+.espn-score {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.4rem;
+
+  min-width: 48px;
+
+  color: var(--espn-text);
+
+  font-size: 1.35rem;
+  font-weight: 600;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.espn-score i {
+  font-size: 0.8em;
+  font-style: normal;
+
+  opacity: 0.5;
+}
+
+.espn-score b.won {
+  color: var(--espn-brand);
+}
+
+.espn-score small {
+  flex-basis: 100%;
+
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  text-align: center;
+
+  opacity: 0.75;
+}
+
+.espn-score-vs {
+  color: var(--espn-muted);
+
+  font-size: 1rem;
+}
+
+.espn-score.live b {
+  color: var(--espn-live);
+}
+
+.espn-live {
+  display: inline-flex;
+  align-self: center;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0.2rem 0.7rem;
+
+  color: var(--espn-live);
+
+  background: #fef2f2;
+
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.espn-live.off {
+  color: var(--espn-muted);
+
+  background: var(--espn-surface);
+}
+
+.espn-live-dot {
+  position: relative;
+
+  width: 8px;
+  height: 8px;
+
+  background: currentColor;
+
+  border-radius: 50%;
+}
+
+.espn-live-dot::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: currentColor;
+
+  border-radius: 50%;
+
+  animation: espn-pulse 1.6s ease-out infinite;
+}
+
+@keyframes espn-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.espn-game-note {
+  color: var(--espn-muted);
+
+  font-size: 0.8rem;
+
+  text-align: center;
+}
+
+.espn-game-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+
+  color: var(--espn-muted);
+
+  font-size: 0.78rem;
+
+  list-style: none;
+}
+
+.espn-game-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.espn-game-meta svg {
+  flex-shrink: 0;
+
+  color: var(--espn-brand);
+}
+
+.espn-game-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  color: var(--espn-brand);
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.espn-game-meta a:hover {
+  text-decoration: underline;
+}
+
+.espn-until {
+  color: var(--espn-brand);
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   ÚLTIMOS RESULTADOS
+   ========================================================= */
+
+.espn-results {
+  display: flex;
+  flex-direction: column;
+
+  list-style: none;
+}
+
+.espn-results li {
+  display: grid;
+  grid-template-columns: auto auto auto auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.65rem 0;
+
+  font-size: 0.88rem;
+
+  border-bottom: 1px solid var(--espn-border);
+}
+
+.espn-results li:last-child {
+  border-bottom: none;
+}
+
+.espn-results-date {
+  color: var(--espn-muted);
+
+  font-size: 0.8rem;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.espn-results-where {
+  min-width: 34px;
+
+  color: var(--espn-muted);
+
+  font-size: 0.72rem;
+
+  text-transform: uppercase;
+}
+
+.espn-results-team {
+  overflow: hidden;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.espn-results-score {
+  color: var(--espn-brand);
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.espn-results-score small {
+  color: var(--espn-muted);
+
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.espn-results-league {
+  display: inline-flex;
+
+  width: 18px;
+}
+
+/* =========================================================
+   CLASSIFICAÇÃO
+   ========================================================= */
+
+.espn-table-wrap {
+  overflow-x: auto;
+}
+
+.espn-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 0.88rem;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.espn-table th {
+  padding: 0.55rem 0.5rem;
+
+  color: var(--espn-muted);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+
+  border-bottom: 1px solid var(--espn-border);
+}
+
+.espn-table td {
+  padding: 0.4rem 0.5rem;
+
+  text-align: center;
+
+  border-bottom: 1px solid var(--espn-border);
+}
+
+.espn-table th.team,
+.espn-table td.team {
+  width: 100%;
+
+  text-align: left;
+}
+
+.espn-table td strong {
+  color: var(--espn-brand);
+
+  font-weight: 600;
+}
+
+.espn-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.espn-table tbody tr:hover {
+  background: var(--espn-surface);
+}
+
+.espn-table tr.is-mine {
+  background: rgba(79, 168, 216, 0.14);
+}
+
+.espn-table tr.is-mine .espn-team-btn span {
+  color: var(--espn-brand);
+
+  font-weight: 700;
+}
+
+/* Faixa colorida na posição */
+.espn-rank {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 26px;
+  height: 26px;
+
+  color: var(--espn-muted);
+
+  border-radius: 7px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.zone-libertadores .espn-rank,
+.zone-playoffs .espn-rank {
+  color: #ffffff;
+
+  background: #1d4ed8;
+}
+
+.zone-pre-libertadores .espn-rank,
+.zone-playin .espn-rank {
+  color: #ffffff;
+
+  background: #0ea5e9;
+}
+
+.zone-sudamericana .espn-rank {
+  color: #ffffff;
+
+  background: #16a34a;
+}
+
+.zone-rebaixamento .espn-rank {
+  color: #ffffff;
+
+  background: #dc2626;
+}
+
+.espn-team-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  max-width: 100%;
+
+  padding: 0;
+
+  color: var(--espn-text);
+
+  background: none;
+
+  border: none;
+
+  font-size: inherit;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.espn-team-btn span {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.espn-team-btn:hover span {
+  color: var(--espn-brand);
+
+  text-decoration: underline;
+}
+
+.streak.up {
+  color: var(--espn-win);
+
+  font-weight: 600;
+}
+
+.streak.down {
+  color: var(--espn-loss);
+
+  font-weight: 600;
+}
+
+.espn-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+
+  margin-top: 1rem;
+
+  color: var(--espn-muted);
+
+  font-size: 0.78rem;
+
+  list-style: none;
+}
+
+.espn-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.espn-legend span {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 3px;
+}
+
+.espn-legend .zone-libertadores span,
+.espn-legend .zone-playoffs span {
+  background: #1d4ed8;
+}
+
+.espn-legend .zone-pre-libertadores span,
+.espn-legend .zone-playin span {
+  background: #0ea5e9;
+}
+
+.espn-legend .zone-sudamericana span {
+  background: #16a34a;
+}
+
+.espn-legend .zone-rebaixamento span {
+  background: #dc2626;
+}
+
+/* =========================================================
+   MENSAGENS, VAZIO, CARREGANDO
+   ========================================================= */
+
+.espn-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  padding: 14px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+.espn-message strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.espn-message.error {
+  color: var(--error-text, #b91c1c);
+
+  background: var(--error-background, #fef2f2);
+
+  border: 1px solid var(--error-border, #fecaca);
+}
+
+.espn-retry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  margin-top: 4px;
+  padding: 0.4rem 0.9rem;
+
+  color: #ffffff;
+
+  background: var(--espn-brand);
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.espn-empty {
+  padding: 0.5rem 0;
+
+  color: var(--espn-muted);
+
+  font-size: 0.88rem;
+
+  text-align: center;
+}
+
+.espn-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.espn-skeleton span {
+  display: block;
+
+  background: linear-gradient(90deg, #eef2f7 25%, #f8fafc 50%, #eef2f7 75%);
+  background-size: 200% 100%;
+
+  border-radius: 12px;
+
+  animation: espn-shimmer 1.2s linear infinite;
+}
+
+@keyframes espn-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .espn-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .espn-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .espn-tabs {
+    align-self: stretch;
+  }
+
+  .espn-tabs button {
+    flex: 1 1 0;
+    justify-content: center;
+
+    padding: 0 0.75rem;
+  }
+
+  .espn-tabs-small {
+    align-self: stretch;
+  }
+
+  .espn-select {
+    flex: 1 1 100%;
+  }
+
+  .espn-select select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .espn-next {
+    padding: 1.15rem;
+  }
+
+  /* Os dois times em cima; data e contagem regressiva embaixo */
+  .espn-next-match {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.1rem;
+  }
+
+  .espn-next-center {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .espn-next-team .espn-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .espn-next-team strong {
+    font-size: 0.9rem;
+  }
+
+  .espn-countdown {
+    gap: 0.3rem;
+  }
+
+  .espn-countdown li {
+    min-width: 44px;
+
+    padding: 0.4rem 0.25rem;
+  }
+
+  .espn-countdown b {
+    font-size: 1.1rem;
+  }
+
+  .espn-countdown span {
+    font-size: 0.6rem;
+  }
+
+  .espn-card {
+    padding: 1.1rem;
+  }
+
+  .espn-game {
+    padding: 0.85rem;
+  }
+
+  /* Escudo em cima do nome: sobra espaço para o nome inteiro */
+  .espn-side,
+  .espn-side-home {
+    flex-direction: column;
+    gap: 0.35rem;
+
+    text-align: center;
+  }
+
+  .espn-side .espn-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .espn-side-name strong {
+    font-size: 0.85rem;
+  }
+
+  .espn-results li {
+    grid-template-columns: auto auto auto minmax(0, 1fr) auto;
+  }
+
+  .espn-results-where,
+  .espn-results-league {
+    display: none;
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  .espn-kpi {
+    padding: 0.9rem;
+  }
+
+  .espn-kpi-value {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .espn-next-match {
+    gap: 0.5rem;
+  }
+
+  .espn-side-name small {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .espn-live-dot::after,
+  .espn-skeleton span {
+    animation: none;
+  }
+}
