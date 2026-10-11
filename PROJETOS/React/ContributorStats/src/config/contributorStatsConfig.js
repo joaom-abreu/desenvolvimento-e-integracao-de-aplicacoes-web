@@ -1,0 +1,30 @@
+// contributorStatsConfig.js
+// Configurações centrais do projeto (equivalente ao core/config.py do Python).
+//
+// O token do GitHub NÃO fica aqui: ele é lido só no servidor (GITHUB_TOKEN no
+// .env.local), pela Vercel Function api/github.js e pelo vite.config.js no npm run dev.
+const CONTRIBUTOR_STATS_CONFIG = {
+  // Rota do próprio site que fala com o GitHub (ver api/_github.js)
+  API_PATH: "/api/github",
+
+  // Repositório usado como exemplo quando a página abre
+  DEFAULT_REPO_URL:
+    "https://github.com/ICEI-PUC-Minas-CC-TI/plu-cc-2026-2-ti2-4354100-plu-cc-2026-2-ti2-4354100-group-8",
+
+  // Commits por página no GraphQL (máx. 100). Em caso de timeout, o valor é reduzido.
+  GRAPHQL_PAGE_SIZE: 100,
+
+  // Polling do endpoint /stats/contributors (a API responde 202 enquanto calcula)
+  MAX_TRIES: 6,
+  WAIT_TIME: 10, // segundos entre tentativas
+
+  // Nº de requisições simultâneas ao buscar a data do último commit de cada usuário
+  MAX_WORKERS: 8,
+
+  // Opções marcadas quando a página abre
+  DEFAULT_ALL_BRANCHES: true, // considerar todas as branches (não só a padrão)
+  DEFAULT_INCLUDE_MERGES: false, // contar também os commits de merge
+  DEFAULT_EXACT_DATES: true, // só no modo "branch padrão": data exata do último commit
+};
+
+export default CONTRIBUTOR_STATS_CONFIG;
