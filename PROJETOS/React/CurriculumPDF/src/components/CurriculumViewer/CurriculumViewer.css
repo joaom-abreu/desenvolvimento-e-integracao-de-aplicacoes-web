@@ -1,0 +1,319 @@
+/* =========================================================
+   VISUALIZADOR DE CURRÍCULO (PDF)
+   ========================================================= */
+
+.cv-viewer {
+  --cv-brand: var(--brand, #005380);
+  --cv-brand-deep: var(--brand-deep, #00334f);
+  --cv-text: var(--foreground, #171717);
+  --cv-muted: var(--muted, #64748b);
+  --cv-border: var(--border, #e2e8f0);
+  --cv-surface: var(--surface-muted, #f1f5f9);
+
+  overflow: hidden;
+
+  color: var(--cv-text);
+
+  background: #ffffff;
+
+  border: 1px solid var(--cv-border);
+  border-radius: 16px;
+}
+
+.cv-sr {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   BARRA DE FERRAMENTAS
+   ========================================================= */
+
+.cv-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 1rem;
+
+  padding: 0.85rem 1rem;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border-bottom: 1px solid var(--cv-border);
+
+  backdrop-filter: blur(6px);
+}
+
+.cv-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cv-langs,
+.cv-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px;
+
+  background: var(--cv-surface);
+
+  border-radius: 10px;
+}
+
+.cv-langs button,
+.cv-zoom button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 32px;
+  min-width: 32px;
+
+  padding: 0 0.75rem;
+
+  color: var(--cv-muted);
+
+  background: transparent;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cv-zoom button {
+  padding: 0;
+
+  font-size: 1rem;
+}
+
+.cv-langs button:hover,
+.cv-zoom button:hover:not(:disabled) {
+  color: var(--cv-brand);
+
+  background: #ffffff;
+}
+
+.cv-langs button.active {
+  color: #ffffff;
+
+  background: var(--cv-brand);
+}
+
+.cv-zoom button:disabled {
+  opacity: 0.35;
+
+  cursor: default;
+}
+
+.cv-zoom-value {
+  min-width: 48px;
+
+  color: var(--cv-brand);
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.cv-pages {
+  color: var(--cv-muted);
+
+  font-size: 0.82rem;
+}
+
+.cv-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  height: 40px;
+
+  padding: 0 1rem;
+
+  color: var(--cv-brand);
+
+  background: #ffffff;
+
+  border: 1px solid var(--cv-border);
+  border-radius: 8px;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.cv-button:hover {
+  border-color: var(--cv-brand);
+
+  transform: translateY(-1px);
+}
+
+.cv-button.primary {
+  color: #ffffff;
+
+  background: var(--cv-brand);
+
+  border-color: var(--cv-brand);
+
+  box-shadow: 0 2px 4px rgba(0, 51, 79, 0.15);
+}
+
+.cv-button.primary:hover {
+  background: var(--cv-brand-deep);
+
+  box-shadow: 0 6px 16px rgba(0, 51, 79, 0.2);
+}
+
+/* =========================================================
+   ÁREA DAS PÁGINAS
+   ========================================================= */
+
+.cv-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 360px;
+  max-height: 900px;
+
+  padding: 1.5rem;
+
+  overflow: auto;
+
+  background:
+    radial-gradient(circle at 10% 0%, rgba(0, 83, 128, 0.06), transparent 40%),
+    #e9eef3;
+}
+
+/* Com zoom maior que 100%, a página fica mais larga que a área: rolagem horizontal */
+.cv-area .react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+
+  min-width: min-content;
+}
+
+.cv-page {
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border-radius: 4px;
+
+  box-shadow:
+    0 2px 4px rgba(0, 51, 79, 0.08),
+    0 16px 40px -16px rgba(0, 51, 79, 0.35);
+}
+
+.cv-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  margin: auto;
+
+  color: var(--cv-muted);
+
+  font-size: 0.9rem;
+
+  text-align: center;
+}
+
+.cv-error {
+  max-width: 420px;
+
+  color: var(--error-text, #b91c1c);
+}
+
+.cv-spinner {
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid var(--cv-border);
+  border-top-color: var(--cv-brand);
+  border-radius: 50%;
+
+  animation: cv-spin 0.8s linear infinite;
+}
+
+@keyframes cv-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .cv-toolbar {
+    justify-content: center;
+  }
+
+  .cv-actions {
+    width: 100%;
+  }
+
+  .cv-button {
+    flex: 1;
+
+    justify-content: center;
+  }
+
+  .cv-area {
+    max-height: 640px;
+
+    padding: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-spinner {
+    animation-duration: 2s;
+  }
+
+  .cv-button,
+  .cv-langs button,
+  .cv-zoom button {
+    transition: none;
+  }
+}
