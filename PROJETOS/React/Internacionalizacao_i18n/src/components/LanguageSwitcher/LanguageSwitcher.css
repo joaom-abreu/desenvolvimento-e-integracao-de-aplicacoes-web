@@ -1,0 +1,110 @@
+/* =========================================================
+   TROCA DE IDIOMA (bandeiras)
+   Feito para ficar sobre a faixa azul do PageLayout
+   ========================================================= */
+
+.lang-switcher {
+  display: inline-flex;
+  gap: 4px;
+
+  padding: 4px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+
+  backdrop-filter: blur(6px);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  height: 34px;
+
+  padding: 0 0.75rem 0 0.55rem;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  background: transparent;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.lang-btn:hover {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.lang-btn.active {
+  color: var(--brand-deep, #00334f);
+
+  background: #ffffff;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lang-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.lang-flag {
+  width: 22px;
+  height: auto;
+
+  border-radius: 3px;
+
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+
+  /* Bandeira apagada até ser escolhida */
+  filter: saturate(0.6);
+  opacity: 0.85;
+
+  transition:
+    filter 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.lang-btn:hover .lang-flag,
+.lang-btn.active .lang-flag {
+  filter: none;
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .lang-btn {
+    height: 30px;
+
+    padding: 0 0.5rem 0 0.4rem;
+
+    font-size: 0.72rem;
+  }
+
+  .lang-flag {
+    width: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-btn,
+  .lang-flag {
+    transition: none;
+  }
+}

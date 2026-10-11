@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Internacionalización (i18n) - React"
+  },
+  "layout": {
+    "label": "PUC MINAS",
+    "brand": "React i18next",
+    "title": "Un sitio, tres idiomas",
+    "description": "Ejemplo de internacionalización con i18next y react-i18next: haz clic en las banderas y mira cómo cambian al instante los textos, plurales, fechas, números y monedas, sin recargar la página.",
+    "footer": "Proyecto didáctico · PUC Minas · React + Vite",
+    "pucLogo": "Logo de la PUC Minas"
+  },
+  "switcher": {
+    "label": "Idioma",
+    "changeTo": "Cambiar a {{language}}"
+  },
+  "current": {
+    "title": "Idioma actual",
+    "language": "Idioma",
+    "code": "Código",
+    "htmlLang": "<html lang>",
+    "saved": "Guardado en el navegador",
+    "savedValue": "localStorage · clave {{key}}",
+    "notSaved": "todavía no (idioma detectado)",
+    "fallback": "Idioma por defecto"
+  },
+  "code": {
+    "show": "Ver código",
+    "json": "translation.json ({{lng}})"
+  },
+  "cards": {
+    "simple": {
+      "title": "Texto simple",
+      "desc": "Cada texto de la pantalla se convierte en una clave. El componente llama a t(\"clave\") y recibe el texto en el idioma actual.",
+      "welcome": "¡Bienvenido a la PUC Minas!",
+      "subtitle": "Este texto está en español."
+    },
+    "interpolation": {
+      "title": "Interpolación",
+      "desc": "Los valores que cambian (como un nombre) entran en el texto con {{variable}}. El orden de las palabras puede cambiar en cada idioma.",
+      "label": "Tu nombre",
+      "placeholder": "Escribe tu nombre",
+      "greeting": "¡Hola, {{name}}! Qué bueno tenerte por aquí.",
+      "anonymous": "visitante"
+    },
+    "plural": {
+      "title": "Plural",
+      "desc": "Pasa el count e i18next elige la forma correcta: _zero, _one u _other (cada idioma tiene sus propias reglas).",
+      "items_zero": "Ninguna asignatura en el horario",
+      "items_one": "{{count}} asignatura en el horario",
+      "items_other": "{{count}} asignaturas en el horario",
+      "add": "Agregar",
+      "remove": "Quitar"
+    },
+    "format": {
+      "title": "Fechas, números y monedas",
+      "desc": "El formato usa la API Intl del navegador, con el estándar de cada idioma. La moneda se elige en el JSON de cada idioma (el valor no se convierte).",
+      "date": "{{date, datetime(dateStyle: full)}}",
+      "time": "{{date, datetime(timeStyle: short)}}",
+      "number": "{{value, number}}",
+      "currency": "{{price, currency(EUR)}}",
+      "percent": "{{rate, number(style: percent)}}",
+      "relative": "{{days, relativetime(day)}}",
+      "list": "{{items, list}}",
+      "labels": {
+        "date": "Fecha",
+        "time": "Hora",
+        "number": "Número",
+        "currency": "Mensualidad",
+        "percent": "Aprobación",
+        "relative": "Próximo examen",
+        "list": "Lenguajes"
+      }
+    },
+    "trans": {
+      "title": "Componente <Trans>",
+      "desc": "Para traducir una frase que tiene negrita, un enlace u otro componente en el medio, sin dividir la frase en pedazos.",
+      "text": "Lee el <b>plan de estudios</b> y entrega el trabajo en <url>Canvas</url> antes del <i>viernes</i>."
+    },
+    "list": {
+      "title": "Listas y objetos",
+      "desc": "Con returnObjects: true, la clave devuelve un array (u objeto) del JSON, listo para un .map().",
+      "steps": [
+        "Haz clic en una bandera para cambiar el idioma",
+        "i18next guarda tu elección en el localStorage",
+        "En la próxima visita, el sitio ya abre en el idioma elegido",
+        "Sin una elección guardada, usa el idioma del navegador"
+      ]
+    }
+  }
+}
