@@ -12,15 +12,15 @@ Cada página também exibe um painel **"Para usar no seu projeto"**, com a lista
 
 | Início |
 | :---: |
-| ![Home](imgs/Home.png) |
+| ![Home](https://joaopauloaramuni.github.io/react-imgs/Captcha_React/imgs/Home.png) |
 
 | ALTCHA | Captcha de imagem |
 | :---: | :---: |
-| ![ALTCHA](imgs/Altcha.png) | ![Captcha de imagem](imgs/CaptchaImagem.png) |
+| ![ALTCHA](imgs/Altcha.png) | ![Captcha de imagem](https://joaopauloaramuni.github.io/react-imgs/Captcha_React/imgs/CaptchaImagem.png) |
 
 | Captcha matemático | Celular |
 | :---: | :---: |
-| ![Captcha matemático](imgs/CaptchaMatematico.png) | ![Mobile](imgs/Mobile.png) |
+| ![Captcha matemático](https://joaopauloaramuni.github.io/react-imgs/Captcha_React/imgs/CaptchaMatematico.png) | ![Mobile](https://joaopauloaramuni.github.io/react-imgs/Captcha_React/imgs/Mobile.png) |
 
 ## 🧩 Captchas disponíveis
 
