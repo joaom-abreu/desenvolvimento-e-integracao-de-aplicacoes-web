@@ -16,7 +16,7 @@ Cada página também exibe um painel **"Para usar no seu projeto"**, com a lista
 
 | ALTCHA | Captcha de imagem |
 | :---: | :---: |
-| ![ALTCHA](imgs/Altcha.png) | ![Captcha de imagem](https://joaopauloaramuni.github.io/react-imgs/Captcha_React/imgs/CaptchaImagem.png) |
+| ![ALTCHA](https://joaopauloaramuni.github.io/react-imgs/Captcha_React/imgs/Altcha.png) | ![Captcha de imagem](https://joaopauloaramuni.github.io/react-imgs/Captcha_React/imgs/CaptchaImagem.png) |
 
 | Captcha matemático | Celular |
 | :---: | :---: |
