@@ -1,0 +1,343 @@
+/* =========================================================
+   PÁGINA INICIAL (estilo da vitrine, não precisa copiar)
+   ========================================================= */
+
+.home h2 {
+  margin: 3rem 0 1rem;
+
+  color: var(--brand);
+
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.home section:first-child h2 {
+  margin-top: 0;
+}
+
+/* =========================================================
+   COMO FUNCIONA + ROBÔ
+   ========================================================= */
+
+.abertura {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.abertura-robo {
+  width: 100%;
+  height: auto;
+}
+
+.fluxo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  padding: 0;
+
+  list-style: none;
+  counter-reset: fluxo;
+}
+
+.fluxo li {
+  position: relative;
+
+  padding-left: 2.75rem;
+
+  color: var(--muted);
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  counter-increment: fluxo;
+}
+
+.fluxo li::before {
+  content: counter(fluxo);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 1.9rem;
+  height: 1.9rem;
+
+  color: #ffffff;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  background: var(--brand);
+
+  border-radius: 50%;
+}
+
+.fluxo strong {
+  color: var(--foreground);
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   TABELA COMPARATIVA
+   ========================================================= */
+
+.tabela-rolagem {
+  overflow-x: auto;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.comparativo {
+  width: 100%;
+  min-width: 46rem;
+
+  border-collapse: collapse;
+
+  font-size: 0.9rem;
+}
+
+.comparativo th,
+.comparativo td {
+  padding: 0.9rem 1.25rem;
+
+  text-align: left;
+  vertical-align: middle;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.comparativo thead th {
+  color: var(--muted);
+
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  background: var(--surface-muted);
+}
+
+.comparativo tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+/* A linha inteira é clicável: o link do nome cobre a linha */
+.comparativo tbody tr {
+  position: relative;
+
+  transition: background-color 0.15s ease;
+}
+
+.comparativo tbody tr:hover {
+  background: rgba(0, 83, 128, 0.05);
+}
+
+.comparativo tbody th {
+  white-space: nowrap;
+}
+
+.comparativo tbody th a {
+  color: var(--brand-deep);
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.comparativo tbody th a::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+}
+
+.comparativo tbody tr:hover th a {
+  color: var(--brand);
+
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.comparativo tbody th a:focus-visible {
+  outline: none;
+}
+
+.comparativo tbody th a:focus-visible::after {
+  outline: 3px solid var(--brand-soft);
+  outline-offset: -3px;
+
+  border-radius: 4px;
+}
+
+.comparativo td {
+  color: var(--muted);
+}
+
+.comparativo td:nth-child(4) {
+  max-width: 13rem;
+}
+
+.comparativo td:last-child {
+  white-space: nowrap;
+}
+
+.nivel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.2rem 0.7rem;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  border: 1px solid;
+  border-radius: 999px;
+}
+
+.nivel::before {
+  content: "";
+
+  width: 0.45rem;
+  height: 0.45rem;
+
+  background: currentColor;
+
+  border-radius: 50%;
+}
+
+.nivel-alto {
+  color: var(--success-text);
+  background: var(--success-background);
+  border-color: var(--success-border);
+}
+
+.nivel-medio {
+  color: var(--warning-text);
+  background: var(--warning-background);
+  border-color: var(--warning-border);
+}
+
+.nivel-baixo {
+  color: var(--error-text);
+  background: var(--error-background);
+  border-color: var(--error-border);
+}
+
+.home .nota {
+  max-width: 70ch;
+
+  margin-top: 0.9rem;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   PASSOS
+   ========================================================= */
+
+.passos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+
+  padding: 0;
+
+  list-style: none;
+  counter-reset: passo;
+}
+
+.passos li {
+  padding: 1.25rem;
+
+  color: var(--muted);
+
+  font-size: 0.88rem;
+  line-height: 1.6;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  counter-increment: passo;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.passos li:hover {
+  border-color: var(--brand-soft);
+
+  box-shadow: 0 8px 20px -12px rgba(0, 51, 79, 0.35);
+}
+
+.passos li::before {
+  content: counter(passo);
+
+  display: grid;
+  place-items: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  margin-bottom: 0.85rem;
+
+  color: #ffffff;
+
+  font-weight: 600;
+
+  background: linear-gradient(145deg, var(--brand-deep), var(--brand));
+
+  border-radius: 50%;
+}
+
+.passos strong {
+  display: block;
+
+  margin-bottom: 0.3rem;
+
+  color: var(--foreground);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .abertura {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .abertura-robo {
+    max-width: 18rem;
+    margin: 0 auto;
+
+    grid-row: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comparativo tbody tr,
+  .passos li {
+    transition: none;
+  }
+}

@@ -1,0 +1,147 @@
+/* =========================================================
+   PÁGINA DE CADA CAPTCHA
+   (estilo da vitrine, não precisa copiar)
+   ========================================================= */
+
+.pagina-captcha {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 2rem;
+}
+
+.voltar {
+  display: inline-block;
+
+  margin-bottom: 1rem;
+
+  color: var(--brand);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.demo .captcha-aviso {
+  margin-bottom: 1rem;
+}
+
+/* =========================================================
+   PAINEL "PARA USAR NO SEU PROJETO"
+   ========================================================= */
+
+.copiar {
+  padding: 1.75rem;
+
+  color: var(--foreground);
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--brand);
+  border-radius: var(--radius);
+}
+
+.copiar h2 {
+  color: var(--brand);
+
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.copiar h3 {
+  margin: 1.5rem 0 0.5rem;
+
+  color: var(--brand-deep);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.copiar p {
+  color: var(--muted);
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.arquivos {
+  padding-left: 1.2rem;
+
+  font-size: 0.9rem;
+}
+
+.arquivos li {
+  margin-bottom: 0.3rem;
+}
+
+.arquivos span {
+  color: var(--muted);
+
+  font-size: 0.85rem;
+}
+
+code {
+  padding: 0.1em 0.35em;
+
+  color: var(--brand-deep);
+
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  font-size: 0.85em;
+
+  background: var(--surface-muted);
+
+  border-radius: 4px;
+}
+
+.copiar pre {
+  overflow-x: auto;
+
+  padding: 1rem;
+
+  line-height: 1.5;
+
+  background: var(--surface-muted);
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.copiar pre code {
+  padding: 0;
+
+  font-size: 0.78rem;
+
+  white-space: pre;
+
+  background: none;
+}
+
+.copiar .nota {
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  border-top: 1px dashed var(--border);
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .pagina-captcha {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .copiar {
+    padding: 1.25rem;
+  }
+}
