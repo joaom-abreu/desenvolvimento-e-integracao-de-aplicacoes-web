@@ -21,11 +21,11 @@ A tela e o CSS são os mesmos do projeto Spring (o painel de sintonizador do **A
 
 | Home |
 | :---: |
-| ![Home](https://joaopauloaramuni.github.io/react-imgs/RadioBrowserAPI_2_React/imgs/Home.png) |
+| ![Home](https://joaopauloaramuni.github.io/react-imgs/RadioBrowserAPI_2_React/imgs/Home1.png) |
 
-| Celular |
-| :---: |
-| ![Mobile](https://joaopauloaramuni.github.io/react-imgs/RadioBrowserAPI_2_React/imgs/Mobile.png) |
+| Celular - Busca | Celular - Lista de rádios |
+| :---: | :---: |
+| ![Mobile](https://joaopauloaramuni.github.io/react-imgs/RadioBrowserAPI_2_React/imgs/Mobile1.png) | ![Mobile2](https://joaopauloaramuni.github.io/react-imgs/RadioBrowserAPI_2_React/imgs/Mobile2.png) |
 
 ## 🚀 Como rodar
 
