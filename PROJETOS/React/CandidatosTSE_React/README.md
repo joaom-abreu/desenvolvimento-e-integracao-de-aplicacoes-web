@@ -18,9 +18,9 @@ A tela, o CSS e as regras são os mesmos do projeto Spring. A diferença é **qu
 | :---: | :---: |
 | ![Governador](https://joaopauloaramuni.github.io/react-imgs/CandidatosTSE_React/imgs/Governador.png) | ![Senador](https://joaopauloaramuni.github.io/react-imgs/CandidatosTSE_React/imgs/Senador.png) |
 
-| Celular |
-| :---: |
-| ![Mobile](https://joaopauloaramuni.github.io/react-imgs/CandidatosTSE_React/imgs/Mobile.png) |
+| Celular - Busca | Celular - Governador |
+| :---: | :---: |
+| ![Mobile](https://joaopauloaramuni.github.io/react-imgs/CandidatosTSE_React/imgs/Mobile.png) | ![Mobile2](https://joaopauloaramuni.github.io/react-imgs/CandidatosTSE_React/imgs/Mobile2.png) |
 
 ## 🚀 Como rodar
 
