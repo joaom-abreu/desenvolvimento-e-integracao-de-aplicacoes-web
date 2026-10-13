@@ -31,9 +31,9 @@ Se o vídeo estiver em outro idioma (inglês, espanhol, francês...), o Gemini *
 | :---: | :---: |
 | ![SRT](https://joaopauloaramuni.github.io/react-imgs/SubtitlesGenerator/imgs/SRT.png) | ![Log](https://joaopauloaramuni.github.io/react-imgs/SubtitlesGenerator/imgs/Log.png) |
 
-| Celular |
-| :---: |
-| ![Mobile](https://joaopauloaramuni.github.io/react-imgs/SubtitlesGenerator/imgs/Mobile.png) |
+| Celular | Celular (resultado) |
+| :---: | :---: |
+| ![Mobile](https://joaopauloaramuni.github.io/react-imgs/SubtitlesGenerator/imgs/Mobile.png) | ![Mobile2](https://joaopauloaramuni.github.io/react-imgs/SubtitlesGenerator/imgs/Mobile2.png) |
 
 > As capturas usam um vídeo de exemplo (`aula-01-introducao-ao-react.mp4`, 6 min 40 s) e respostas de exemplo do Gemini.
 
