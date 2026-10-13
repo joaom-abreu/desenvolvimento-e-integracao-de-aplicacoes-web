@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Cabeçalho: painel do sintonizador
+   ========================================================================== */
+.tuner-header {
+    background: var(--ink);
+    padding: 28px 32px 0;
+}
+
+.tuner-brand {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.tuner-brand h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: var(--amber);
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    margin: 0;
+    letter-spacing: -0.01em;
+    text-shadow: 0 0 24px var(--amber-glow);
+}
+
+.tuner-brand .tagline {
+    font-family: 'Inter', sans-serif;
+    color: #b7b0a2;
+    font-size: 0.88rem;
+    margin: 4px 0 0;
+}
+
+/* Indicador "Ao vivo" com ponto pulsante */
+.on-air {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.on-air .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 10px 2px var(--amber-glow);
+    animation: pulse 1.8s ease-in-out infinite;
+}
+
+/* Respeita preferência do usuário por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .on-air .dot {
+        animation: none;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+/* Trilho de sintonia: linhas de dial decorativas, um único gesto de identidade */
+.dial-ticks {
+    height: 14px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--panel-line) 0,
+        var(--panel-line) 1px,
+        transparent 1px,
+        transparent 10px
+    );
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    border-bottom: 2px solid var(--amber-deep);
+}
+
+@media (max-width: 768px) {
+    .tuner-header {
+        padding: 20px 20px 0;
+    }
+}

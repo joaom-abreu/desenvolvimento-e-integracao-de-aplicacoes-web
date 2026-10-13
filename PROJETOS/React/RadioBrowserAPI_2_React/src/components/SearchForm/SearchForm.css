@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Painel de controles / formulário de busca
+   ========================================================================== */
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 32px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--panel-line);
+}
+
+/* Wrapper do <select>: necessário porque pseudo-elementos (::after) não
+   renderizam de forma confiável dentro do próprio <select>, então a seta
+   customizada é desenhada aqui por fora, sobreposta. */
+.select-wrap {
+    position: relative;
+    flex: 1 1 240px;
+    min-width: 200px;
+}
+
+/* Seta do combobox em CSS puro (triângulo via bordas), sem imagem nem data URI */
+.select-wrap::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--amber);
+    transform: translateY(-40%);
+    pointer-events: none;
+}
+
+.search-form select {
+    width: 100%;
+    padding: 11px 40px 11px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    color: #f1ede4;
+    background-color: #302b24;
+    border: 1px solid var(--panel-line);
+    border-radius: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-form select:hover {
+    border-color: var(--amber);
+}
+
+.search-form select:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+}
+
+.search-form button {
+    flex: 0 0 auto;
+    padding: 12px 28px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--amber);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.search-form button:hover {
+    background: #f5b45e;
+}
+
+.search-form button:active {
+    transform: scale(0.97);
+}
+
+.search-form button:focus-visible {
+    outline: 2px solid var(--paper);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 20px;
+    }
+
+    .select-wrap {
+        flex: 0 0 auto; /* em coluna, o flex-basis de 240px viraria altura */
+    }
+
+    .search-form select,
+    .search-form button {
+        width: 100%;
+    }
+}

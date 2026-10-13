@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Tabela / listagem de estações
+   ========================================================================== */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    /* table-layout: fixed + <colgroup> em %: a tabela ocupa 100% do
+       container disponível, sem precisar de scroll horizontal em telas
+       largas; o texto quebra dentro de cada coluna quando necessário.
+       min-width baixo é só uma rede de segurança para telas muito estreitas. */
+    table-layout: fixed;
+    width: 100%;
+    min-width: 860px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 8px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--paper-line);
+    font-size: 0.78rem;
+    vertical-align: middle;
+}
+
+/* Colunas com texto longo (nome, url, tags, idioma) que devem quebrar linha
+   dentro da largura da coluna, em vez de estourar ou espremer demais */
+td.break-word {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+th {
+    background: var(--ink);
+    color: var(--amber);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    /* Quebra em duas linhas se necessário, em vez de truncar com "..." */
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Numeração da linha (coluna #) lida como canal/frequência de rádio */
+td:nth-child(2) {
+    font-family: 'Space Grotesk', sans-serif;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Colunas numéricas (votos, cliques) alinhadas com algarismos tabulares */
+td:nth-child(9),
+td:nth-child(10) {
+    font-variant-numeric: tabular-nums;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f4f0e7;
+}
+
+tbody tr:hover {
+    background-color: #fdf0dc;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Linha única de "Sintonizando...", erro ou lista vazia
+   (no Spring era um style="text-align:center;" no próprio <td>) */
+td.table-message {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    font-weight: 400;
+    padding: 24px 8px;
+}
+
+/* Favicon das estações, com fallback tratado no onError do <img> */
+.favicon {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: var(--paper);
+    border: 1px solid var(--paper-line);
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Indicador de status online/offline: bolinha colorida com tooltip nativo
+   (title) e texto acessível para leitores de tela (baseado em lastcheckok)
+   -------------------------------------------------------------------------- */
+.status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: default;
+}
+
+.status-dot.online {
+    background-color: var(--green);
+    box-shadow: 0 0 0 2px rgba(26, 122, 52, 0.18);
+}
+
+.status-dot.offline {
+    background-color: var(--red);
+    box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.18);
+}
+
+/* --------------------------------------------------------------------------
+   Tendência de cliques (clicktrend: positivo sobe, negativo cai, 0 estável)
+   -------------------------------------------------------------------------- */
+.trend {
+    font-weight: 600;
+    font-size: 0.76rem;
+    white-space: nowrap;
+}
+
+.trend.up {
+    color: var(--green);
+}
+
+.trend.down {
+    color: var(--red);
+}
+
+.trend.flat {
+    color: var(--text-muted);
+}
+
+/* Texto neutro para campos sem dado disponível (ex: sem coordenadas geográficas) */
+.no-data {
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Botão de favorito (estrela): alterna no Supabase via favoriteService.toggle
+   -------------------------------------------------------------------------- */
+.fav-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 2px;
+    transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.fav-btn:hover:not(:disabled) {
+    color: var(--amber);
+    transform: scale(1.15);
+}
+
+.fav-btn.active {
+    color: var(--amber);
+}
+
+/* Aguardando o Supabase, ou Supabase não configurado */
+.fav-btn:disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+.fav-btn:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Player de áudio nativo
+   -------------------------------------------------------------------------- */
+.audio-container {
+    width: 100%;
+    padding: 3px;
+    background-color: #f4f0e7;
+    border: 1px solid var(--amber);
+    border-radius: 6px;
+}
+
+.audio-container audio {
+    width: 100%;
+    height: 26px;
+    display: block;
+    color-scheme: light;
+}

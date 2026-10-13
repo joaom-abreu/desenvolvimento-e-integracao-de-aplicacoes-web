@@ -1,0 +1,59 @@
+/* ---------- Cabeçalho ---------- */
+
+.topo {
+    background-color: #5b2a86;
+    color: #fff;
+    padding: 16px 24px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.subtitulo {
+    margin: 4px 0 0;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+/* ---------- Layout: painel lateral + conteúdo ---------- */
+
+.layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: start;
+}
+
+/* ---------- Lista de candidatos ---------- */
+
+.resultado-info {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: #444;
+}
+
+.lista-candidatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+}
+
+.sem-resultado {
+    margin-top: 24px;
+    text-align: center;
+    color: #777;
+    font-size: 15px;
+}
+
+/* ---------- Telas estreitas: filtros acima da lista ---------- */
+
+@media (max-width: 800px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}

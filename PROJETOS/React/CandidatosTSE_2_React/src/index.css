@@ -1,0 +1,12 @@
+/* Mesmo estilo do style.css do projeto CandidatosTSE_2 (Spring Boot) */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f1ec;
+    color: #222;
+}

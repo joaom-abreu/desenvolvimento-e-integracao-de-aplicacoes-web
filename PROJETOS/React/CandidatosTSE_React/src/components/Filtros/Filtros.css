@@ -1,0 +1,72 @@
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    margin-bottom: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.campo label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+.campo input,
+.campo select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.botoes {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.botoes button,
+.limpar {
+    box-sizing: border-box;
+    height: 38px;
+    padding: 0 18px;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 36px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    vertical-align: middle;
+}
+
+.botoes button {
+    background-color: #1a3c6e;
+    color: #fff;
+    border-color: #1a3c6e;
+}
+
+.botoes button:hover {
+    background-color: #12294d;
+    border-color: #12294d;
+}
+
+.limpar {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}

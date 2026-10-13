@@ -1,0 +1,35 @@
+.topo {
+    background-color: #1a3c6e;
+    color: #fff;
+    padding: 16px 24px;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.resultado-info {
+    margin: 8px 0 16px;
+    color: #444;
+    font-size: 14px;
+}
+
+.grade-candidatos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.sem-resultado {
+    margin-top: 24px;
+    text-align: center;
+    color: #777;
+    font-size: 15px;
+}
