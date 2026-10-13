@@ -1,0 +1,51 @@
+/* =========================================================
+   ERRO DO REDIRECIONAMENTO (404 / 410)
+   ========================================================= */
+
+.link-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+
+  padding: 0.5rem 0 1rem;
+
+  text-align: center;
+}
+
+.link-error-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 72px;
+  height: 72px;
+
+  color: var(--brand);
+
+  background: var(--surface-muted);
+
+  border-radius: 20px;
+
+  font-size: 2rem;
+}
+
+.link-error-code {
+  padding: 0.35rem 0.75rem;
+
+  color: var(--muted);
+
+  background: var(--surface-muted);
+
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+}
+
+.link-error-detail {
+  max-width: 520px;
+
+  color: var(--muted);
+
+  font-size: 0.8rem;
+}

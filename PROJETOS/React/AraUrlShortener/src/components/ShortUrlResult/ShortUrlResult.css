@@ -1,0 +1,114 @@
+/* =========================================================
+   LINK CRIADO
+   ========================================================= */
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  padding: 1.25rem 1.5rem 1.4rem;
+
+  background:
+    radial-gradient(circle at 0% 0%, var(--glow-1), transparent 55%),
+    var(--surface);
+
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand);
+  border-radius: 16px;
+
+  animation: fade-up 0.35s ease;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  color: var(--success-text);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.result-link {
+  min-width: 0;
+
+  color: var(--brand);
+
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+
+  overflow-wrap: anywhere;
+}
+
+.result-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.result-original,
+.result-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-width: 0;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+}
+
+.result-original svg,
+.result-meta svg {
+  flex-shrink: 0;
+}
+
+.result-original span {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .result {
+    padding: 1.1rem 1.1rem 1.25rem;
+  }
+
+  .result-link {
+    font-size: 1.25rem;
+  }
+
+  .result-actions {
+    width: 100%;
+  }
+
+  .result-actions .btn {
+    flex: 1;
+  }
+}

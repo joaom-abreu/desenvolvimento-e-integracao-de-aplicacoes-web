@@ -1,0 +1,66 @@
+/* =========================================================
+   TELA "REDIRECIONANDO..."
+   Fica na tela só pelo tempo da consulta ao Supabase.
+   ========================================================= */
+
+.redirect-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  min-height: calc(100vh - 4rem);
+
+  color: var(--muted);
+
+  font-size: 0.95rem;
+
+  /* Só aparece se demorar: em conexões rápidas a página troca antes */
+  animation: fade-in 0.3s ease 0.15s both;
+}
+
+.redirect-logo {
+  width: 56px;
+  height: 62px;
+
+  background-color: var(--brand);
+
+  -webkit-mask: url("../assets/images/aramuni-logo.svg") center / contain no-repeat;
+  mask: url("../assets/images/aramuni-logo.svg") center / contain no-repeat;
+
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.redirect-screen code {
+  padding: 0.25rem 0.6rem;
+
+  background: var(--surface-muted);
+
+  border-radius: 6px;
+
+  font-size: 0.8rem;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
