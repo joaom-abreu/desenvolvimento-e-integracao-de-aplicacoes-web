@@ -16,7 +16,7 @@ O que a página mostra:
 
 | Desktop | Celular |
 | :---: | :---: |
-| ![Home](imgs/Home.png) | ![Mobile](imgs/Mobile.png) |
+| ![Home](https://joaopauloaramuni.github.io/java-imgs/WakaTimeAPI/imgs/Home.png) | ![Mobile](https://joaopauloaramuni.github.io/java-imgs/WakaTimeAPI/imgs/Mobile.png) |
 
 > ⚠️ **Mudança no WakaTime (1º de novembro de 2026):** a API key do WakaTime não serve mais para **ler** dados. Este projeto usa um **token OAuth**, enviado no cabeçalho `Authorization: Bearer`. Veja [🔐 Token OAuth do WakaTime](#-token-oauth-do-wakatime).
 
