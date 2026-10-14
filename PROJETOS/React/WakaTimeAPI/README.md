@@ -36,6 +36,8 @@ Acesse `http://localhost:5173`.
 
 > ⚠️ **Mudança no WakaTime (1º de novembro de 2026):** a API key do WakaTime não serve mais para **ler** dados. Este projeto usa um **token OAuth** (`WAKATIME_ACCESS_TOKEN`): veja [🔐 Token OAuth do WakaTime](#-token-oauth-do-wakatime).
 
+> 🏫 **No laboratório da PUC Minas:** se o `npm run wakatime:oauth` mostrar `Erro ao trocar o code pelo token`, veja [🏫 Rodando no laboratório da PUC Minas](#-rodando-no-laboratório-da-puc-minas-proxy--certificado-tls).
+
 ## 🔑 Conta e plugin do WakaTime
 
 1. Crie uma conta gratuita em [wakatime.com/signup](https://wakatime.com/signup) (dá para entrar com o GitHub).
@@ -124,6 +126,61 @@ O projeto usa o fluxo *authorization code*, e o `scripts/wakatime-oauth.mjs` faz
 > 💡 Se o navegador não abrir sozinho, o terminal imprime o link da autorização para você abrir na mão. Se aparecer erro de `redirect_uri`, confira se a URI do app é **exatamente** `http://localhost:8787/callback` (sem barra no final, `http` e não `https`).
 
 > 💡 Se alguma rota responder **403**, o token não tem o escopo daquele endpoint (veja a tabela de escopos acima). Rode `npm run wakatime:oauth` de novo e autorize todos os escopos.
+
+### 🏫 Rodando no laboratório da PUC Minas (proxy / certificado TLS)
+
+Na rede do laboratório existe um **proxy que intercepta as conexões HTTPS** usando um certificado próprio. O Node.js não reconhece esse certificado e bloqueia a requisição, então a troca do `code` pelo `access_token` falha e aparece no terminal:
+
+```text
+Erro ao trocar o code pelo token: fetch failed
+```
+
+Às vezes também aparecem mensagens como `self-signed certificate in certificate chain` ou `unable to get local issuer certificate`.
+
+#### Opção 1 (recomendada): usar os certificados do sistema
+
+Faz o Node.js confiar nos certificados instalados no sistema operacional, onde o certificado do proxy da PUC já está cadastrado. **Não desativa nenhuma verificação de segurança.**
+
+Requer **Node.js 22.15+ ou 23.8+**. Para conferir sua versão, rode `node -v`.
+
+**PowerShell (Windows):**
+```powershell
+$env:NODE_OPTIONS="--use-system-ca"; npm run wakatime:oauth
+```
+
+**Bash (Git Bash, Linux ou macOS):**
+```bash
+NODE_OPTIONS=--use-system-ca npm run wakatime:oauth
+```
+
+#### Opção 2: ignorar a verificação do certificado
+
+Use esta opção se a versão do seu Node.js for mais antiga ou se a Opção 1 não funcionar.
+
+**PowerShell (Windows):**
+```powershell
+$env:NODE_TLS_REJECT_UNAUTHORIZED="0"; npm run wakatime:oauth
+```
+
+**Bash (Git Bash, Linux ou macOS):**
+```bash
+NODE_TLS_REJECT_UNAUTHORIZED=0 npm run wakatime:oauth
+```
+
+#### Sobre os comandos
+
+Os comandos das duas opções **não precisam de permissão de administrador** e não alteram nada no sistema:
+
+- No **PowerShell**, a configuração vale apenas para a janela atual do terminal e é descartada ao fechá-la.
+- No **Bash**, a configuração vale apenas para aquela execução do comando.
+
+> 💡 Se depois o painel também der erro ao buscar os dados no `npm run dev`, use o mesmo prefixo na frente do `npm run dev`.
+
+#### ⚠️ Atenção
+
+- A Opção 2 faz o Node.js **ignorar a verificação do certificado TLS**. Use **apenas no laboratório** ou em redes com proxy institucional.
+- **Não use em produção** e não deixe essas configurações fixas no `package.json` ou no `.env.local`.
+- Em casa ou em uma rede comum, rode normalmente com `npm run wakatime:oauth`.
 
 ### ⏳ Validade
 
