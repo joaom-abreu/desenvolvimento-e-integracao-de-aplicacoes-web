@@ -1,0 +1,28 @@
+{
+  "name": "front",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "back": "cd ../Back && ./mvnw spring-boot:run",
+    "back:windows": "cd ..\\Back && mvnw.cmd spring-boot:run",
+    "dev:all": "concurrently --names \"BACK,FRONT\" --prefix-colors \"blue,magenta\" \"npm run back\" \"npm run dev\"",
+    "dev:all:windows": "concurrently --names \"BACK,FRONT\" --prefix-colors \"blue,magenta\" \"npm run back:windows\" \"npm run dev\""
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^9.2.4",
+    "oxlint": "^1.81.0",
+    "vite": "^8.3.0"
+  }
+}

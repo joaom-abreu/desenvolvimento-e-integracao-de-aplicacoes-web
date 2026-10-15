@@ -1,0 +1,556 @@
+/* ==========================================================================
+   CONTAINER PRINCIPAL (card em duas colunas)
+   ========================================================================== */
+
+.app-container {
+  position: relative;
+
+  display: flex;
+
+  width: min(1100px, 94vw);
+  min-height: 620px;
+
+  overflow: hidden;
+
+  background-color: #ffffff;
+
+  border: 1px solid rgba(0, 51, 79, 0.09);
+  border-radius: 20px;
+
+  box-shadow:
+    0 2px 4px rgba(0, 51, 79, 0.08),
+    0 24px 56px -12px rgba(0, 51, 79, 0.25);
+}
+
+/* ==========================================================================
+   CONTEÚDO (formulário + lista)
+   ========================================================================== */
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+
+  width: 64%;
+
+  padding: 3.5rem;
+
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   TÍTULO
+   ========================================================================== */
+
+.app-title {
+  margin-bottom: 0.75rem;
+
+  color: var(--brand);
+
+  font-size: 2rem;
+  font-weight: 500;
+
+  line-height: 1.2;
+}
+
+/* Texto PUC Minas acima do título (mesmo padrão das telas de login) */
+
+.app-title::before {
+  content: "PUC MINAS";
+
+  display: block;
+
+  margin-bottom: 0.75rem;
+
+  color: var(--brand);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  letter-spacing: 0.12em;
+}
+
+/* ==========================================================================
+   DESCRIÇÃO
+   ========================================================================== */
+
+.app-description {
+  max-width: 60ch;
+
+  margin-bottom: 1.75rem;
+
+  color: var(--muted);
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   FORMULÁRIO
+   ========================================================================== */
+
+.aluno-form fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  min-width: 0;
+
+  border: none;
+}
+
+.aluno-form fieldset:disabled {
+  opacity: 0.6;
+}
+
+.aluno-form-legend {
+  grid-column: 1 / -1;
+
+  margin-bottom: 0.75rem;
+
+  color: var(--foreground);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  min-width: 0;
+}
+
+.campo-largo {
+  grid-column: 1 / -1;
+}
+
+.campo span {
+  color: var(--foreground);
+
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.campo input,
+.aluno-busca {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 1rem;
+
+  color: var(--foreground);
+
+  background-color: var(--input-background);
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 0.95rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.campo input::placeholder,
+.aluno-busca::placeholder {
+  color: var(--placeholder);
+}
+
+.campo input:focus,
+.aluno-busca:focus {
+  border-color: var(--brand);
+
+  box-shadow: 0 0 0 3px rgba(0, 83, 128, 0.12);
+}
+
+.aluno-form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+
+.btn {
+  height: 48px;
+
+  padding: 0 1.5rem;
+
+  border-radius: 8px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  min-width: 190px;
+
+  color: #ffffff;
+
+  background-color: var(--brand);
+
+  border: none;
+
+  box-shadow: 0 2px 4px rgba(0, 51, 79, 0.15);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--brand-deep);
+
+  box-shadow: 0 6px 16px rgba(0, 51, 79, 0.2);
+
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  color: var(--brand);
+
+  background-color: #ffffff;
+
+  border: 1px solid rgba(0, 83, 128, 0.35);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: rgba(0, 83, 128, 0.06);
+
+  border-color: var(--brand);
+}
+
+.btn-danger {
+  color: var(--error-text);
+
+  background-color: #ffffff;
+
+  border: 1px solid var(--error-border);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--error-background);
+
+  border-color: var(--error-text);
+}
+
+.btn-small {
+  height: 36px;
+
+  padding: 0 0.9rem;
+
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   DIVISOR
+   ========================================================================== */
+
+.app-divider {
+  width: 60px;
+  height: 3px;
+
+  margin: 2.25rem 0 2rem;
+
+  background-color: var(--brand);
+
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   LISTA DE ALUNOS
+   ========================================================================== */
+
+.aluno-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.aluno-section-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  color: var(--foreground);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.aluno-count {
+  min-width: 28px;
+
+  padding: 0.1rem 0.55rem;
+
+  color: var(--brand);
+
+  background-color: rgba(0, 83, 128, 0.1);
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.aluno-busca {
+  width: 240px;
+  height: 40px;
+
+  font-size: 0.9rem;
+}
+
+.aluno-busca:disabled {
+  opacity: 0.6;
+}
+
+.aluno-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  list-style: none;
+}
+
+.aluno-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 0.85rem 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.aluno-item-ativo {
+  background-color: rgba(0, 83, 128, 0.04);
+
+  border-color: var(--brand);
+}
+
+.aluno-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  color: var(--brand);
+
+  background-color: rgba(0, 83, 128, 0.1);
+
+  border-radius: 50%;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.aluno-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+
+  min-width: 0;
+}
+
+.aluno-info strong {
+  color: var(--foreground);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.aluno-info span {
+  overflow: hidden;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aluno-info .aluno-curso {
+  color: var(--brand);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.aluno-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.aluno-list-empty {
+  padding: 1.5rem;
+
+  color: var(--muted);
+
+  background-color: var(--background);
+
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+/* ==========================================================================
+   MENSAGENS (sucesso / erro)
+   ========================================================================== */
+
+.app-message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 12px;
+
+  margin-bottom: 1.25rem;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+.app-message strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.app-message-success {
+  color: var(--success-text);
+
+  background-color: var(--success-background);
+
+  border: 1px solid var(--success-border);
+}
+
+.app-message-error {
+  color: var(--error-text);
+
+  background-color: var(--error-background);
+
+  border: 1px solid var(--error-border);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .app-container {
+    flex-direction: column;
+
+    width: 100%;
+    min-height: auto;
+
+    border-radius: 16px;
+  }
+
+  .app-content {
+    width: 100%;
+
+    padding: 2.5rem 2rem;
+  }
+
+  .app-title {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .aluno-form fieldset {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .aluno-form-actions .btn-secondary {
+    width: 100%;
+  }
+
+  .aluno-busca {
+    width: 100%;
+  }
+
+  .aluno-item {
+    flex-wrap: wrap;
+  }
+
+  .aluno-actions {
+    width: 100%;
+  }
+
+  .aluno-actions .btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 400px) {
+  .app-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   ACESSIBILIDADE
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .aluno-item,
+  .campo input {
+    transition: none;
+  }
+}

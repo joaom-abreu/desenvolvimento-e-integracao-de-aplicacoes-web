@@ -1,0 +1,295 @@
+/* ==========================================================================
+   PAINEL AZUL (logo + status da integração)
+   ========================================================================== */
+
+.integration-panel {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+
+  width: 36%;
+
+  padding: 3rem 2.5rem;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  background: linear-gradient(145deg, var(--brand-deep), var(--brand));
+}
+
+/* Círculo decorativo superior esquerdo */
+
+.integration-panel::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  top: -150px;
+  left: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(79, 168, 216, 0.12);
+}
+
+/* Círculo decorativo inferior direito */
+
+.integration-panel::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  right: -100px;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+
+.integration-logo {
+  position: relative;
+  z-index: 1;
+
+  width: 70%;
+  max-width: 220px;
+  height: auto;
+
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.integration-logo:hover {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   CORRENTE DA INTEGRAÇÃO: React → Spring Boot → MongoDB
+   ========================================================================== */
+
+.integration-chain {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+}
+
+.integration-heading {
+  margin-bottom: 1.25rem;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+}
+
+.integration-steps {
+  list-style: none;
+}
+
+.integration-step {
+  position: relative;
+
+  display: flex;
+  gap: 0.9rem;
+
+  padding-bottom: 1.4rem;
+}
+
+.integration-step:last-child {
+  padding-bottom: 0;
+}
+
+/* Linha que liga uma etapa à próxima */
+
+.integration-step:not(:last-child)::before {
+  content: "";
+
+  position: absolute;
+
+  top: 18px;
+  bottom: 2px;
+  left: 6px;
+
+  width: 2px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Bolinha de status */
+
+.integration-dot {
+  flex-shrink: 0;
+
+  width: 14px;
+  height: 14px;
+
+  margin-top: 3px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+}
+
+.integration-step-online .integration-dot {
+  background: var(--status-online);
+
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.2);
+}
+
+.integration-step-offline .integration-dot {
+  background: var(--status-offline);
+
+  box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.2);
+}
+
+.integration-step-verificando .integration-dot {
+  background: var(--status-checking);
+
+  animation: integration-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes integration-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(251, 191, 36, 0.05);
+  }
+}
+
+/* Linha "acesa" quando as duas pontas estão conectadas */
+
+.integration-step-linked:not(:last-child)::before {
+  background: rgba(74, 222, 128, 0.55);
+}
+
+/* Textos da etapa */
+
+.integration-step-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  min-width: 0;
+}
+
+.integration-step-text strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.integration-address {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.82rem;
+
+  overflow-wrap: anywhere;
+}
+
+.integration-state {
+  margin-top: 0.15rem;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.integration-step-online .integration-state {
+  color: var(--status-online);
+}
+
+.integration-step-offline .integration-state {
+  color: #fecaca;
+}
+
+.integration-step-verificando .integration-state {
+  color: var(--status-checking);
+}
+
+/* Dica do que fazer em cada situação */
+
+.integration-hint {
+  margin-top: 1.75rem;
+
+  padding-top: 1.25rem;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .integration-panel {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+
+    width: 100%;
+
+    padding: 2rem;
+  }
+
+  .integration-logo {
+    width: 140px;
+  }
+}
+
+@media (max-width: 560px) {
+  .integration-panel {
+    flex-direction: column;
+    gap: 1.75rem;
+
+    padding: 2rem 1.5rem;
+  }
+
+  .integration-logo {
+    width: 130px;
+  }
+}
+
+/* ==========================================================================
+   ACESSIBILIDADE
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .integration-logo {
+    transition: none;
+  }
+
+  .integration-step-verificando .integration-dot {
+    animation: none;
+  }
+}
