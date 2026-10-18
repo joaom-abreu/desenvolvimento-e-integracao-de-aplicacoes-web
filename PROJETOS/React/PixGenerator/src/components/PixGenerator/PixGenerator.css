@@ -1,0 +1,971 @@
+/* =========================================================
+   COMPONENTES DO PIX GENERATOR
+   As cores vêm das variáveis do index.css; se você copiar a
+   pasta para outro projeto, os valores depois da vírgula
+   (fallback) garantem o mesmo visual.
+   ========================================================= */
+
+.pix {
+  --pix-brand: var(--brand, #005380);
+  --pix-brand-deep: var(--brand-deep, #00334f);
+  --pix-brand-mid: var(--brand-mid, #0a6ea6);
+  --pix-brand-soft: var(--brand-soft, #4fa8d8);
+  --pix-text: var(--foreground, #171717);
+  --pix-muted: var(--muted, #64748b);
+  --pix-border: var(--border, #e2e8f0);
+  --pix-surface: var(--surface-muted, #f1f5f9);
+  --pix-placeholder: var(--placeholder, #94a3b8);
+  --pix-success: var(--success-text, #2e7d32);
+  --pix-success-bg: var(--success-background, #e8f5e9);
+  --pix-success-border: var(--success-border, #a5d6a7);
+  --pix-danger: var(--error-text, #b91c1c);
+  --pix-danger-bg: var(--error-background, #fef2f2);
+  --pix-danger-border: var(--error-border, #fecaca);
+  --pix-focus: 0 0 0 3px rgba(0, 83, 128, 0.14);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  color: var(--pix-text);
+}
+
+.pix-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pix-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.pix code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.85em;
+}
+
+.pix-sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pix-break {
+  overflow-wrap: anywhere;
+}
+
+.pix-muted {
+  color: var(--pix-muted);
+  font-style: italic;
+}
+
+/* =========================================================
+   ABAS
+   ========================================================= */
+
+.pix-tabs {
+  display: inline-flex;
+  align-self: center;
+  gap: 0.25rem;
+
+  padding: 0.3rem;
+
+  background: var(--pix-surface);
+
+  border-radius: 10px;
+}
+
+.pix-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  height: 40px;
+
+  padding: 0 1.25rem;
+
+  color: var(--pix-muted);
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.pix-tabs button:hover {
+  color: var(--pix-brand);
+}
+
+.pix-tabs button.is-active {
+  color: var(--pix-brand);
+
+  background: #ffffff;
+
+  box-shadow: 0 1px 3px rgba(0, 51, 79, 0.12);
+}
+
+/* =========================================================
+   CARD GENÉRICO
+   ========================================================= */
+
+.pix-card {
+  min-width: 0;
+
+  padding: 1.5rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--pix-border);
+  border-radius: 12px;
+}
+
+.pix-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 1rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.pix-card h3 {
+  color: var(--pix-brand);
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.pix-card-note {
+  margin-top: 0.25rem;
+
+  color: var(--pix-muted);
+
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.pix-head-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.pix-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.35rem 0.6rem;
+
+  color: var(--pix-brand);
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 6px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.pix-link-button:hover {
+  background: var(--pix-surface);
+}
+
+/* =========================================================
+   CAMPOS
+   ========================================================= */
+
+.pix-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.pix-form .pix-card-head {
+  margin-bottom: 0.15rem;
+}
+
+.pix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.pix-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  min-width: 0;
+}
+
+.pix-field > label,
+.pix-copy > label,
+.pix-key-types legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  color: var(--pix-brand);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+}
+
+.pix-count {
+  color: var(--pix-placeholder);
+
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.pix-field input,
+.pix-field textarea,
+.pix-copy textarea,
+.pix-select {
+  width: 100%;
+  height: 46px;
+
+  padding: 0 0.9rem;
+
+  color: var(--pix-text);
+
+  background: #ffffff;
+
+  border: 1px solid var(--pix-border);
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 0.9rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pix-field textarea,
+.pix-copy textarea {
+  height: auto;
+
+  padding: 0.75rem 0.9rem;
+
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+
+  resize: vertical;
+
+  word-break: break-all;
+}
+
+.pix-field input::placeholder,
+.pix-field textarea::placeholder {
+  color: var(--pix-placeholder);
+}
+
+.pix-field input:focus,
+.pix-field textarea:focus,
+.pix-copy textarea:focus,
+.pix-select:focus {
+  border-color: var(--pix-brand);
+
+  box-shadow: var(--pix-focus);
+}
+
+.pix-field.has-error input,
+.pix-field.has-error textarea {
+  border-color: var(--pix-danger);
+}
+
+.pix-field-msg {
+  color: var(--pix-muted);
+
+  font-size: 0.75rem;
+  line-height: 1.45;
+
+  overflow-wrap: anywhere;
+}
+
+.pix-field-msg code {
+  color: var(--pix-brand);
+}
+
+.pix-field-msg.is-error {
+  color: var(--pix-danger);
+}
+
+/* Valor com "R$" dentro do campo */
+
+.pix-money {
+  position: relative;
+
+  display: flex;
+}
+
+.pix-money span {
+  position: absolute;
+  top: 50%;
+  left: 0.9rem;
+
+  color: var(--pix-muted);
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+.pix-field .pix-money input {
+  padding-left: 2.5rem;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   TIPO DE CHAVE (CONTROLE SEGMENTADO)
+   ========================================================= */
+
+.pix-key-types {
+  min-width: 0;
+
+  border: 0;
+}
+
+.pix-key-types legend {
+  margin-bottom: 0.4rem;
+}
+
+.pix-segmented {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.25rem;
+
+  padding: 0.25rem;
+
+  background: var(--pix-surface);
+
+  border-radius: 10px;
+}
+
+.pix-segmented label {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 38px;
+
+  padding: 0 0.4rem;
+
+  color: var(--pix-muted);
+
+  border-radius: 7px;
+
+  font-size: 0.82rem;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.pix-segmented label:hover {
+  color: var(--pix-brand);
+}
+
+.pix-segmented label.is-active {
+  color: #ffffff;
+
+  background: var(--pix-brand);
+
+  box-shadow: 0 2px 4px rgba(0, 51, 79, 0.18);
+}
+
+.pix-segmented input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.pix-segmented label:has(input:focus-visible) {
+  outline: 2px solid var(--pix-brand-soft);
+  outline-offset: 2px;
+}
+
+/* Checkbox "uso único" */
+
+.pix-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+
+  padding-top: 0.9rem;
+
+  font-size: 0.85rem;
+
+  border-top: 1px dashed var(--pix-border);
+
+  cursor: pointer;
+}
+
+.pix-check input {
+  flex-shrink: 0;
+
+  width: 16px;
+  height: 16px;
+
+  margin-top: 0.1rem;
+
+  accent-color: var(--pix-brand);
+
+  cursor: pointer;
+}
+
+.pix-check small {
+  display: block;
+
+  margin-top: 0.2rem;
+
+  color: var(--pix-muted);
+
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.pix-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pix-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+
+  height: 46px;
+
+  padding: 0 1.25rem;
+
+  color: #ffffff;
+
+  background: var(--pix-brand);
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 4px rgba(0, 51, 79, 0.15);
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.pix-button:hover:not(:disabled) {
+  background: var(--pix-brand-deep);
+
+  box-shadow: 0 6px 16px rgba(0, 51, 79, 0.2);
+
+  transform: translateY(-1px);
+}
+
+.pix-button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+.pix-button-ghost {
+  color: var(--pix-brand);
+
+  background: #ffffff;
+
+  border-color: var(--pix-border);
+
+  box-shadow: none;
+}
+
+.pix-button-ghost:hover:not(:disabled) {
+  color: #ffffff;
+}
+
+.pix-button-small {
+  height: 36px;
+
+  padding: 0 0.9rem;
+
+  font-size: 0.82rem;
+}
+
+.pix button:focus-visible,
+.pix [tabindex]:focus-visible {
+  outline: 2px solid var(--pix-brand-soft);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   RESULTADO (QR CODE + COPIA E COLA)
+   ========================================================= */
+
+.pix-result {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pix-result .pix-card-head {
+  margin-bottom: 0;
+}
+
+.pix-select {
+  width: auto;
+  height: 36px;
+
+  font-size: 0.82rem;
+
+  cursor: pointer;
+}
+
+.pix-qr {
+  display: flex;
+  justify-content: center;
+
+  padding: 1rem;
+
+  background: var(--pix-surface);
+
+  border-radius: 10px;
+}
+
+.pix-qr svg {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+
+  border-radius: 6px;
+
+  box-shadow: 0 1px 3px rgba(0, 51, 79, 0.1);
+}
+
+/* Estado vazio */
+
+.pix-result.is-empty {
+  justify-content: center;
+  align-items: center;
+
+  min-height: 420px;
+
+  text-align: center;
+
+  background:
+    repeating-linear-gradient(45deg, transparent 0 10px, rgba(0, 83, 128, 0.025) 10px 20px),
+    #ffffff;
+
+  border-style: dashed;
+}
+
+.pix-qr-placeholder {
+  display: grid;
+  place-items: center;
+
+  width: 120px;
+  height: 120px;
+
+  color: var(--pix-brand-soft);
+
+  background: rgba(79, 168, 216, 0.1);
+
+  border-radius: 24px;
+
+  font-size: 3.5rem;
+}
+
+.pix-empty {
+  max-width: 280px;
+
+  color: var(--pix-muted);
+
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Resumo */
+
+.pix-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pix-summary > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+
+  padding-bottom: 0.6rem;
+
+  font-size: 0.85rem;
+
+  border-bottom: 1px solid var(--pix-border);
+}
+
+.pix-summary dt {
+  flex-shrink: 0;
+
+  color: var(--pix-muted);
+}
+
+.pix-summary dd {
+  font-weight: 500;
+
+  text-align: right;
+}
+
+.pix-summary-amount dd {
+  color: var(--pix-brand);
+
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.pix-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pix-copy textarea {
+  color: var(--pix-brand-deep);
+
+  background: var(--pix-surface);
+}
+
+.pix-result .pix-actions .pix-button:first-child {
+  flex: 1 1 100%;
+}
+
+.pix-result .pix-actions .pix-button-ghost {
+  flex: 1 1 0;
+}
+
+/* =========================================================
+   CAMPOS DO CÓDIGO (FAIXA COLORIDA + TABELA)
+   ========================================================= */
+
+.pix-ribbon {
+  padding: 1rem;
+
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 2;
+
+  word-break: break-all;
+
+  background: var(--pix-surface);
+
+  border-radius: 10px;
+}
+
+.pix-seg {
+  padding: 0.15rem 0.1rem;
+
+  border-radius: 4px;
+
+  cursor: default;
+
+  transition:
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.pix-seg b,
+.pix-seg i {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.pix-seg i {
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.pix-seg.is-active {
+  box-shadow: 0 0 0 2px currentColor;
+}
+
+/* 6 cores que se repetem: azuis da PUC + tons de apoio */
+
+.c0 { color: #00436a; background: #d6e9f5; }
+.c1 { color: #7a4a00; background: #fbe8c4; }
+.c2 { color: #0f5e4c; background: #d2eee4; }
+.c3 { color: #6b2a63; background: #f1dcee; }
+.c4 { color: #213a8f; background: #dfe4fa; }
+.c5 { color: #7c2d24; background: #f8dcd6; }
+
+.pix-table-wrap {
+  margin-top: 1.25rem;
+
+  overflow-x: auto;
+
+  border: 1px solid var(--pix-border);
+  border-radius: 10px;
+}
+
+.pix-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 0.83rem;
+}
+
+.pix-table th {
+  padding: 0.7rem 0.9rem;
+
+  color: var(--pix-brand);
+
+  background: var(--pix-surface);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.pix-table td {
+  padding: 0.6rem 0.9rem;
+
+  vertical-align: top;
+
+  border-top: 1px solid var(--pix-border);
+}
+
+.pix-table td:first-child {
+  white-space: nowrap;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.pix-table td:nth-child(2) {
+  color: var(--pix-muted);
+
+  font-variant-numeric: tabular-nums;
+}
+
+.pix-table tr.is-child td {
+  color: var(--pix-muted);
+
+  background: #fbfcfe;
+}
+
+.pix-table tr.is-child td:first-child {
+  padding-left: 2.1rem;
+}
+
+.pix-table tr.is-child td:nth-child(3) {
+  color: var(--pix-text);
+}
+
+.pix-table tr.is-active td {
+  background: rgba(79, 168, 216, 0.1);
+}
+
+.pix-table tr:focus-visible {
+  outline: 2px solid var(--pix-brand-soft);
+  outline-offset: -2px;
+}
+
+.pix-dot {
+  display: inline-block;
+
+  width: 0.6rem;
+  height: 0.6rem;
+
+  margin-right: 0.5rem;
+
+  border-radius: 3px;
+}
+
+/* =========================================================
+   LEITOR: STATUS DO CRC
+   ========================================================= */
+
+.pix-card > .pix-field + .pix-actions {
+  margin-top: 1rem;
+}
+
+.pix-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+
+  font-size: 0.85rem;
+  line-height: 1.5;
+
+  border: 1px solid;
+  border-radius: 8px;
+}
+
+.pix-status > span {
+  flex: 1 1 240px;
+}
+
+.pix-status svg {
+  flex-shrink: 0;
+}
+
+.pix-status.is-ok {
+  color: var(--pix-success);
+
+  background: var(--pix-success-bg);
+
+  border-color: var(--pix-success-border);
+}
+
+.pix-status.is-bad {
+  color: var(--pix-danger);
+
+  background: var(--pix-danger-bg);
+
+  border-color: var(--pix-danger-border);
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .pix-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pix-result.is-empty {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 560px) {
+  .pix-card {
+    padding: 1.1rem;
+  }
+
+  .pix-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pix-segmented {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pix-tabs {
+    align-self: stretch;
+  }
+
+  .pix-tabs button {
+    flex: 1;
+    justify-content: center;
+
+    padding: 0 0.75rem;
+  }
+
+  .pix-summary > div {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .pix-summary dd {
+    text-align: left;
+  }
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .pix-button,
+  .pix-tabs button,
+  .pix-segmented label,
+  .pix-seg {
+    transition: none;
+  }
+
+  .pix-button:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Quadradinho da tabela na cor forte do campo */
+
+.pix-table .pix-dot {
+  background: currentColor;
+}
+
+/* Sem valor fixo: texto em vez do número grande */
+
+.pix-summary-amount.is-free dd {
+  color: var(--pix-text);
+
+  font-size: 0.85rem;
+  font-weight: 500;
+}
