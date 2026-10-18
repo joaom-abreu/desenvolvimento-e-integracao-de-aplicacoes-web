@@ -29,19 +29,19 @@ flowchart LR
 
 | Início, com a fumaça do mouse | Cardápio vindo da API |
 | :---: | :---: |
-| ![Início](imgs/Home.png) | ![Cardápio](imgs/Cardapio.png) |
+| ![Início](https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/Home.png) | ![Cardápio](https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/Cardapio.png) |
 
 | Cardápio impresso (react-pdf) | Contato com mapa e EmailJS |
 | :---: | :---: |
-| ![Cardápio em PDF](imgs/CardapioPdf.png) | ![Contato](imgs/Contato.png) |
+| ![Cardápio em PDF](https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/CardapioPdf.png) | ![Contato](https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/Contato.png) |
 
 | Editando um produto | Erro de validação vindo do Spring Boot (400) |
 | :---: | :---: |
-| ![Gerenciar](imgs/Gerenciar.png) | ![Erro de validação](imgs/ErroValidacao.png) |
+| ![Gerenciar](https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/Gerenciar.png) | ![Erro de validação](https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/ErroValidacao.png) |
 
 | Back-end desligado | Mobile |
 | :---: | :---: |
-| ![Back-end offline](imgs/BackendOffline.png) | <img src="imgs/Mobile.png" alt="Mobile" width="300"/> |
+| ![Back-end offline](https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/BackendOffline.png) | <img src="https://joaopauloaramuni.github.io/react-imgs/AraCoffee/Front/imgs/Mobile.png" alt="Mobile" width="300"/> |
 
 > As capturas foram tiradas sem acesso ao Google, por isso o mapa aparece vazio no Contato. No seu navegador ele carrega normalmente.
 
