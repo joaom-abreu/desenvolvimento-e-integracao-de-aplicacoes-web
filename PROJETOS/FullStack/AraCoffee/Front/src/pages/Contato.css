@@ -1,0 +1,87 @@
+.contato {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+/* ---------- Endereço e mapa ---------- */
+
+.contato-dados {
+  margin-top: 1.25rem;
+}
+
+.contato-dados > div {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--linha);
+}
+
+.contato-dados dt {
+  font-weight: 700;
+  color: var(--crema-suave);
+}
+
+.contato-referencia {
+  color: var(--crema-suave);
+}
+
+.contato-horario {
+  display: block;
+}
+
+.contato-mapa {
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border-radius: var(--raio-painel);
+  border: 1px solid var(--mocha);
+  background: var(--torra);
+  aspect-ratio: 4 / 3;
+}
+
+/* Tom sépia leve para o mapa combinar com a paleta */
+.contato-mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: sepia(0.35) saturate(0.85) contrast(0.95);
+}
+
+.contato-mapa-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+/* ---------- Formulário ---------- */
+
+.contato-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contato-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contato-enviar {
+  align-self: flex-start;
+}
+
+@media (max-width: 860px) {
+  .contato {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .contato-dados > div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}

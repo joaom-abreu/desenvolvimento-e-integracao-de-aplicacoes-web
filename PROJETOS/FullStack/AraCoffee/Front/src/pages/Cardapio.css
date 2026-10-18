@@ -1,0 +1,88 @@
+.cardapio {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cardapio-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cardapio-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cardapio-chip {
+  min-height: 40px;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--mocha);
+  background: rgba(43, 28, 20, 0.9);
+  color: var(--crema-suave);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.cardapio-chip:hover {
+  color: var(--crema);
+  border-color: var(--crema-suave);
+}
+
+.cardapio-chip[aria-pressed="true"] {
+  background: var(--crema);
+  border-color: var(--crema);
+  color: var(--marrom-logo);
+}
+
+.cardapio-busca {
+  width: min(100%, 300px);
+}
+
+.cardapio-aviso {
+  color: var(--crema-suave);
+}
+
+.cardapio-grupos {
+  /* Colunas que se encaixam pela altura (cada categoria tem um tamanho) */
+  columns: 2;
+  column-gap: 1.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.cardapio-grupo {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.cardapio-grupos-carregando {
+  opacity: 0.6;
+}
+
+.cardapio-grupo .titulo-secao {
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 820px) {
+  .cardapio-grupos {
+    columns: 1;
+  }
+
+  .cardapio-busca {
+    width: 100%;
+  }
+}
+
+.cardapio-impresso {
+  color: var(--crema-suave);
+}
+
+.cardapio-impresso a {
+  font-weight: 700;
+}

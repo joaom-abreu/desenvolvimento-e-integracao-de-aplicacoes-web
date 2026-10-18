@@ -1,0 +1,125 @@
+.integracao {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--raio-painel);
+  border: 1px solid var(--mocha);
+  background: rgba(58, 40, 29, 0.92);
+}
+
+.integracao-titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--crema);
+}
+
+.integracao-etapas {
+  list-style: none;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.integracao-etapa {
+  position: relative;
+  display: flex;
+  gap: 0.7rem;
+  padding-right: 1rem;
+}
+
+/* Linha que liga uma etapa à próxima */
+.integracao-etapa:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 22px;
+  right: 0.5rem;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--mocha) 0 6px, transparent 6px 11px);
+}
+
+.integracao-etapa-ligada:not(:last-child)::after {
+  background: var(--status-online);
+}
+
+.integracao-ponto {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--status-verificando);
+  box-shadow: 0 0 0 4px rgba(58, 40, 29, 1);
+}
+
+.integracao-etapa-online .integracao-ponto {
+  background: var(--status-online);
+}
+
+.integracao-etapa-offline .integracao-ponto {
+  background: var(--status-offline);
+}
+
+.integracao-etapa-desconhecido .integracao-ponto {
+  background: var(--crema-suave);
+  opacity: 0.5;
+}
+
+.integracao-texto {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.25rem;
+  line-height: 1.35;
+  min-width: 0;
+}
+
+.integracao-texto strong {
+  font-size: 0.975rem;
+}
+
+.integracao-endereco {
+  font-size: 0.875rem;
+  color: var(--crema-suave);
+  overflow-wrap: anywhere;
+}
+
+.integracao-estado {
+  margin-top: 0.2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--status-verificando);
+}
+
+.integracao-etapa-online .integracao-estado {
+  color: var(--status-online);
+}
+
+.integracao-etapa-offline .integracao-estado {
+  color: var(--status-offline);
+}
+
+.integracao-etapa-desconhecido .integracao-estado {
+  color: var(--crema-suave);
+}
+
+.integracao-dica {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--linha);
+  font-size: 0.9375rem;
+  color: var(--crema-suave);
+}
+
+@media (max-width: 640px) {
+  .integracao-etapas {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .integracao-etapa:not(:last-child)::after {
+    display: none;
+  }
+
+  .integracao-texto {
+    margin-top: -2px;
+  }
+}
