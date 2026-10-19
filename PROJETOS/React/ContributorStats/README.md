@@ -1,4 +1,4 @@
-# Projeto ContributorStats (React + Vite) 🏆
+# Projeto ContributorStats (React + Vite) 🏆 
 
 ## 📖 Descrição
 
