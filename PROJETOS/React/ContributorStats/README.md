@@ -34,15 +34,15 @@ A regra de negócio é a mesma do projeto Python, só que portada para JavaScrip
 
 | Ranking | Branches não mergeadas |
 | :---: | :---: |
-| ![Home](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Home.png) | ![Branches](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Branches.png) |
+| ![Home](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Home.png?v=2) | ![Branches](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Branches.png?v=2) |
 
 | Produtividade (avaliação do grupo) | Tipos de arquivo |
 | :---: | :---: |
-| ![Produtividade](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Produtividade.png) | ![Tipos de arquivo](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/TiposDeArquivo.png) |
+| ![Produtividade](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Produtividade.png?v=2) | ![Tipos de arquivo](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/TiposDeArquivo.png?v=2) |
 
 | Log de execução | Celular |
 | :---: | :---: |
-| ![Log](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Log.png) | ![Mobile](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Mobile.png) |
+| ![Log](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Log.png?v=2) | ![Mobile](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Mobile.png?v=2) |
 
 > As capturas usam dados de exemplo (`aluno1`…`aluno8`), como no projeto Python.
 
