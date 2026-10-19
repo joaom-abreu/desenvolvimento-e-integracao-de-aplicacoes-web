@@ -34,7 +34,7 @@ A regra de negócio é a mesma do projeto Python, só que portada para JavaScrip
 
 | Ranking | Branches não mergeadas |
 | :---: | :---: |
-| ![Home](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Home.png?v=2) | ![Branches](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Branches.png?v=2) |
+| ![Home](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Home.png?v=3) | ![Branches](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Branches.png?v=3) |
 
 | Produtividade (avaliação do grupo) | Tipos de arquivo |
 | :---: | :---: |
