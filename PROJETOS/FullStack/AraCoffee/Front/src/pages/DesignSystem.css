@@ -1,0 +1,833 @@
+/* ==========================================================================
+   DESIGN SYSTEM (/design)
+   Usa só as variáveis do index.css e as classes do App.css.
+   ========================================================================== */
+
+/* ---------- Abertura + régua de torra ---------- */
+
+.ds-abertura {
+  border-bottom: 1px solid var(--linha);
+}
+
+.ds-abertura-interno {
+  max-width: var(--largura-conteudo);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 4.5rem) var(--margem-lateral) clamp(2rem, 5vw, 3rem);
+}
+
+.ds-abertura-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.ds-abertura-erro {
+  max-width: 560px;
+  margin-top: 1rem;
+}
+
+.ds-versao {
+  color: var(--crema-suave);
+  font-size: 0.9375rem;
+}
+
+/* A régua: nove faixas da crema ao espresso, de ponta a ponta da tela */
+.ds-torra {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  min-height: clamp(150px, 22vw, 240px);
+}
+
+.ds-torra-cor {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  padding: 1rem clamp(0.5rem, 1.2vw, 1rem);
+  border: 0;
+  background: var(--cor);
+  color: var(--cor-texto);
+  text-align: left;
+  cursor: copy;
+}
+
+.ds-torra-cor:focus-visible {
+  outline-offset: -4px;
+  outline-color: var(--cor-texto);
+}
+
+.ds-torra-nome {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+}
+
+.ds-torra-hex {
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+/* A faixa espresso some no fundo: um fio crema mostra onde ela termina */
+.ds-torra-cor:last-child {
+  box-shadow: inset 0 0 0 1px var(--linha);
+}
+
+.ds-torra-aviso {
+  max-width: var(--largura-conteudo);
+  min-height: 2.5rem;
+  margin: 0 auto;
+  padding: 0.6rem var(--margem-lateral);
+  color: var(--crema-suave);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 760px) {
+  .ds-torra {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ds-torra-cor {
+    min-height: 92px;
+  }
+}
+
+/* ---------- Corpo: sumário fixo + capítulos ---------- */
+
+.ds-corpo {
+  max-width: var(--largura-conteudo);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3.5rem) var(--margem-lateral) clamp(3rem, 8vw, 6rem);
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.ds-sumario {
+  position: sticky;
+  top: 6rem;
+}
+
+.ds-sumario h2 {
+  margin-bottom: 0.6rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--crema-suave);
+}
+
+.ds-sumario ol {
+  list-style: none;
+  counter-reset: capitulo;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  border-left: 2px dotted var(--mocha);
+}
+
+.ds-sumario li {
+  counter-increment: capitulo;
+}
+
+.ds-sumario a {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.3rem 0 0.3rem 0.9rem;
+  color: var(--crema-suave);
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.ds-sumario li:not(.ds-sumario-extra) a::before {
+  content: counter(capitulo);
+  min-width: 1.1rem;
+  color: var(--caramelo);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-sumario-extra a {
+  margin-top: 0.4rem;
+}
+
+.ds-sumario a:hover {
+  color: var(--crema);
+}
+
+@media (max-width: 960px) {
+  .ds-corpo {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-sumario {
+    position: static;
+  }
+}
+
+/* ---------- Capítulo ---------- */
+
+.ds-capitulos {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 8vw, 5.5rem);
+}
+
+.ds-capitulo {
+  scroll-margin-top: 6rem;
+}
+
+.ds-capitulo-numero {
+  margin-bottom: 0.35rem;
+  color: var(--caramelo);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.ds-decisao {
+  max-width: 34ch;
+  margin-top: 0.75rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--crema);
+  text-wrap: balance;
+}
+
+.ds-texto {
+  max-width: 64ch;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  color: var(--crema-suave);
+}
+
+.ds-demo {
+  margin-top: 2rem;
+}
+
+.ds-subtitulo {
+  margin: 2rem 0 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--crema);
+}
+
+.ds-peca .ds-subtitulo,
+.ds-demo > .ds-subtitulo:first-child {
+  margin-top: 0;
+}
+
+.ds-legenda {
+  margin-top: 1rem;
+  color: var(--crema-suave);
+  font-size: 0.9375rem;
+}
+
+.ds code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  color: var(--crema);
+  background: rgba(241, 227, 207, 0.07);
+  padding: 0.05rem 0.35rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+/* ---------- Tabelas ---------- */
+
+.ds-tabela-rolagem {
+  overflow-x: auto;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-painel);
+  background: rgba(43, 28, 20, 0.94);
+}
+
+.ds-tabela {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.ds-tabela th,
+.ds-tabela td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--linha);
+}
+
+.ds-tabela thead th {
+  color: var(--crema-suave);
+  font-weight: 700;
+}
+
+.ds-tabela tbody th {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ds-tabela tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.ds-tabela td {
+  color: var(--crema-suave);
+}
+
+.ds-amostra-mini {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  vertical-align: -6px;
+  box-shadow: inset 0 0 0 1px var(--linha);
+}
+
+.ds-par {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 34px;
+  border-radius: var(--raio-campo);
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px var(--linha);
+}
+
+/* ---------- Paleta: estados ---------- */
+
+.ds-estados {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+}
+
+.ds-estados li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ds-estados li > span:last-child {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+}
+
+.ds-estado-ponto {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ---------- Tipografia ---------- */
+
+.ds-fontes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.ds-fonte {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-painel);
+  background: rgba(43, 28, 20, 0.94);
+}
+
+.ds-fonte-amostra {
+  color: var(--crema);
+  line-height: 1.15;
+}
+
+.ds-fonte-shrikhand .ds-fonte-amostra,
+.ds-fonte-shrikhand .ds-fonte-alfabeto {
+  font-family: var(--fonte-display);
+}
+
+.ds-fonte-shrikhand .ds-fonte-amostra {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.ds-fonte-karla .ds-fonte-amostra {
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+.ds-fonte-alfabeto {
+  margin-top: 0.75rem;
+  color: var(--caramelo);
+  font-size: 1.1rem;
+}
+
+.ds-ficha {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px dotted var(--mocha);
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+}
+
+.ds-ficha div,
+.ds-medidas div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ds-ficha dt,
+.ds-medidas dt {
+  color: var(--crema-suave);
+}
+
+.ds-ficha dd,
+.ds-medidas dd {
+  text-align: right;
+  color: var(--crema);
+}
+
+.ds-escala {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-escala li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--linha);
+}
+
+.ds-escala-amostra {
+  color: var(--crema);
+}
+
+.ds-escala-ficha {
+  color: var(--crema-suave);
+  font-size: 0.875rem;
+}
+
+/* ---------- Cardápio ---------- */
+
+.ds-demo-cardapio {
+  max-width: 620px;
+}
+
+/* ---------- Formas ---------- */
+
+.ds-raios {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.ds-raios li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9375rem;
+  color: var(--crema-suave);
+}
+
+.ds-raios strong {
+  margin-top: 0.6rem;
+  color: var(--crema);
+}
+
+.ds-raio-forma {
+  display: block;
+  height: 72px;
+  border: 2px solid var(--caramelo);
+  background: var(--torra-clara);
+}
+
+.ds-medidas {
+  max-width: 560px;
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.9375rem;
+}
+
+.ds-medidas div {
+  padding-bottom: 0.55rem;
+  border-bottom: 2px dotted var(--mocha);
+}
+
+/* ---------- Componentes ---------- */
+
+.ds-componentes {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ds-peca {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-painel);
+  background: rgba(43, 28, 20, 0.94);
+}
+
+.ds-linha-pecas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ds-grade-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.ds-grade-campos .campo-marcar {
+  align-self: center;
+}
+
+.ds-pilha {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ds-status {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  color: var(--crema-suave);
+  font-size: 0.9375rem;
+}
+
+/* ---------- Marca ---------- */
+
+.ds-marca {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.ds-marca-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-painel);
+  background: rgba(43, 28, 20, 0.94);
+  text-align: center;
+}
+
+.ds-marca-item figcaption {
+  color: var(--crema-suave);
+  font-size: 0.9375rem;
+}
+
+.ds-marca-selo {
+  width: 100%;
+  max-width: 170px;
+}
+
+.ds-marca-logo {
+  width: 200px;
+  height: auto;
+  margin: auto 0;
+}
+
+/* Uma aba de navegador desenhada, com o favicon em tamanho real e ampliado */
+.ds-aba {
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: 100%;
+  padding: 0.55rem 0.9rem;
+  border-radius: 12px 12px 0 0;
+  background: #f4efe8;
+  color: #3a3a3a;
+  font-size: 0.8125rem;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08) inset;
+}
+
+.ds-aba-icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--crema);
+  color: var(--marrom-logo);
+  font-size: 12px;
+  box-shadow: 0 0 0 1px rgba(91, 50, 32, 0.25);
+}
+
+.ds-aba-titulo {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Papel ---------- */
+
+.ds-papel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.5rem 2rem;
+}
+
+.ds-papel-folhas {
+  display: flex;
+  gap: 1rem;
+}
+
+.ds-folha {
+  width: 120px;
+  aspect-ratio: 210 / 297;
+  padding: 0.9rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  border-radius: 4px;
+  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.9);
+}
+
+.ds-folha-capa {
+  justify-content: flex-end;
+  background: var(--espresso);
+  box-shadow:
+    inset 0 0 0 1px var(--linha),
+    0 14px 30px -18px rgba(0, 0, 0, 0.9);
+  transform: rotate(-3deg);
+}
+
+.ds-folha-miolo {
+  background: #fbf5ec;
+  transform: rotate(2deg);
+}
+
+.ds-folha-icone {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-bottom: auto;
+  border-radius: 50%;
+  background: var(--crema);
+  color: var(--marrom-logo);
+  font-size: 18px;
+}
+
+.ds-folha-titulo {
+  font-family: var(--fonte-display);
+  font-size: 0.85rem;
+  line-height: 1.1;
+}
+
+.ds-folha-capa .ds-folha-titulo {
+  color: var(--crema);
+}
+
+.ds-folha-miolo .ds-folha-titulo {
+  color: var(--marrom-logo);
+}
+
+.ds-folha-linha {
+  height: 4px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.25;
+}
+
+.ds-folha-capa .ds-folha-linha {
+  color: var(--caramelo);
+  width: 60%;
+  opacity: 1;
+}
+
+.ds-folha-miolo .ds-folha-linha {
+  color: var(--marrom-logo);
+}
+
+.ds-folha-linha.curta {
+  width: 70%;
+}
+
+.ds-folha-cores {
+  display: flex;
+  gap: 3px;
+  margin-top: auto;
+}
+
+.ds-folha-cores i {
+  flex: 1;
+  height: 22px;
+  border-radius: 2px;
+}
+
+/* ---------- Anatomia da página ---------- */
+
+.ds-anatomia {
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-painel);
+  background: var(--espresso);
+}
+
+.ds-anatomia > div {
+  border-radius: 8px;
+}
+
+.ds-anatomia-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(241, 227, 207, 0.05);
+}
+
+.ds-anatomia-logo {
+  width: 70px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--crema);
+}
+
+.ds-anatomia-menu {
+  display: flex;
+  gap: 6px;
+}
+
+.ds-anatomia-menu i {
+  width: 30px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--crema-suave);
+  opacity: 0.4;
+}
+
+.ds-anatomia-menu i.ativo {
+  background: var(--crema);
+  opacity: 1;
+}
+
+.ds-anatomia-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  height: 110px;
+  padding: 14px;
+  background: linear-gradient(90deg, var(--espresso) 20%, var(--mocha) 100%);
+}
+
+.ds-anatomia-titulo {
+  width: 45%;
+  height: 16px;
+  border-radius: 4px;
+  background: var(--crema);
+}
+
+.ds-anatomia-linha {
+  width: 60%;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--crema-suave);
+  opacity: 0.6;
+}
+
+.ds-anatomia-corpo {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 6px;
+}
+
+.ds-anatomia-painel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--torra);
+  border: 1px solid var(--linha);
+}
+
+.ds-anatomia-painel span {
+  height: 0;
+  border-bottom: 2px dotted var(--mocha);
+}
+
+.ds-anatomia-foto {
+  min-height: 84px;
+  border-radius: 12px;
+  background: linear-gradient(160deg, var(--mocha), var(--torra-clara));
+}
+
+.ds-anatomia-rodape {
+  height: 34px;
+  background: #160e09;
+  border: 1px solid var(--linha);
+}
+
+.ds-demo figcaption {
+  max-width: 60ch;
+  margin-top: 0.9rem;
+  color: var(--crema-suave);
+  font-size: 0.9375rem;
+}
+
+/* ---------- Registro de decisões ---------- */
+
+.ds-registro {
+  list-style: none;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 64ch;
+}
+
+.ds-registro li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 2px dotted var(--mocha);
+}
+
+.ds-registro-versao {
+  color: var(--caramelo);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-registro strong {
+  color: var(--crema);
+}
+
+.ds-registro p {
+  color: var(--crema-suave);
+  font-size: 0.975rem;
+}
