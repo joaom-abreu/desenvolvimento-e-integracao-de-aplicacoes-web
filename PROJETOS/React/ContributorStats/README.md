@@ -38,11 +38,11 @@ A regra de negócio é a mesma do projeto Python, só que portada para JavaScrip
 
 | Produtividade (avaliação do grupo) | Tipos de arquivo |
 | :---: | :---: |
-| ![Produtividade](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Produtividade.png?v=2) | ![Tipos de arquivo](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/TiposDeArquivo.png?v=2) |
+| ![Produtividade](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Produtividade.png?v=3) | ![Tipos de arquivo](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/TiposDeArquivo.png?v=3) |
 
 | Log de execução | Celular |
 | :---: | :---: |
-| ![Log](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Log.png?v=2) | ![Mobile](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Mobile.png?v=2) |
+| ![Log](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Log.png?v=3) | ![Mobile](https://joaopauloaramuni.github.io/react-imgs/ContributorStats/imgs/Mobile.png?v=3) |
 
 > As capturas usam dados de exemplo (`aluno1`…`aluno8`), como no projeto Python.
 
