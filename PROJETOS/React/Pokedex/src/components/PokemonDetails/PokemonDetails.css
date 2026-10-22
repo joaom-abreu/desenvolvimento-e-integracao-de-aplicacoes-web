@@ -409,9 +409,16 @@
     min-height: 200px;
   }
 
+  /* Posição absoluta: assim a altura de 90% vale sobre a faixa (altura definida)
+     e a arte inteira cabe nela, sem cortar as pernas do Pokémon. */
   .details__art {
+    position: absolute;
+    inset: 0;
+    margin: auto;
     width: auto;
+    max-width: 92%;
     height: 90%;
+    object-fit: contain;
   }
 
   .details__visual::before {
