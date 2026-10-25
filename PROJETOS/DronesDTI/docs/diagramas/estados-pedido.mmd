@@ -1,9 +1,0 @@
-stateDiagram-v2
-    direction LR
-    [*] --> PENDENTE: POST /api/pedidos (validado)
-    PENDENTE --> CANCELADO: DELETE /api/pedidos/{id}
-    PENDENTE --> ALOCADO: entrou numa viagem
-    ALOCADO --> EM_ROTA: drone decolou
-    EM_ROTA --> ENTREGUE: drone chegou + 1 min
-    ENTREGUE --> [*]
-    CANCELADO --> [*]
