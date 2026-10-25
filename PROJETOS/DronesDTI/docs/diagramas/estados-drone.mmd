@@ -1,0 +1,12 @@
+stateDiagram-v2
+    direction LR
+    [*] --> IDLE
+    IDLE --> CARREGANDO: despacho (fila + planejador)
+    CARREGANDO --> EM_VOO: pacotes a bordo (2 min)
+    EM_VOO --> ENTREGANDO: chegou no cliente
+    ENTREGANDO --> EM_VOO: ainda há pacotes
+    ENTREGANDO --> RETORNANDO: última entrega
+    RETORNANDO --> IDLE: bateria >= 30%
+    RETORNANDO --> RECARREGANDO: bateria < 30%
+    IDLE --> RECARREGANDO: fila não cabe na bateria atual
+    RECARREGANDO --> IDLE: bateria 100%
