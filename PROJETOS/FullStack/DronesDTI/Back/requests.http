@@ -1,0 +1,85 @@
+### Requisições prontas para testar a API
+### VS Code: extensão "REST Client" | IntelliJ: abre direto (HTTP Client)
+
+@api = http://localhost:8080
+
+### Status (API e MongoDB)
+GET {{api}}/api/status
+
+### Configuração da simulação (tamanho da cidade, base, relógio)
+GET {{api}}/api/simulacao/status
+
+### Criar pedido válido
+POST {{api}}/api/pedidos
+Content-Type: application/json
+
+{ "cliente": "Ana", "x": 12.5, "y": 7, "pesoKg": 2.5, "prioridade": "alta" }
+
+### 422: pesado demais
+POST {{api}}/api/pedidos
+Content-Type: application/json
+
+{ "cliente": "Bruno", "x": 12, "y": 7, "pesoKg": 40, "prioridade": "baixa" }
+
+### 422: dentro da zona de exclusão "Aeroporto"
+POST {{api}}/api/pedidos
+Content-Type: application/json
+
+{ "x": 14, "y": 15, "pesoKg": 1, "prioridade": "media" }
+
+### 400: campo obrigatório faltando
+POST {{api}}/api/pedidos
+Content-Type: application/json
+
+{ "x": 3, "y": 4, "prioridade": "baixa" }
+
+### Fila na ordem de atendimento
+GET {{api}}/api/pedidos/fila
+
+### Pedidos por status (PENDENTE, ALOCADO, EM_ROTA, ENTREGUE, CANCELADO)
+GET {{api}}/api/pedidos?status=EM_ROTA
+
+### Rastreio (troque o id)
+GET {{api}}/api/pedidos/COLOQUE_O_ID/rastreio
+
+### Drones
+GET {{api}}/api/drones/status
+
+### Novo drone
+POST {{api}}/api/drones
+Content-Type: application/json
+
+{ "nome": "Pardal", "capacidadeKg": 3, "alcanceKm": 18, "velocidadeKmh": 90 }
+
+### Rotas: viagens no ar + prévia do planejamento
+GET {{api}}/api/entregas/rota
+
+### Zonas de exclusão
+GET {{api}}/api/zonas
+
+### Nova zona
+POST {{api}}/api/zonas
+Content-Type: application/json
+
+{ "nome": "Parque", "xMin": 15, "yMin": 2, "xMax": 17, "yMax": 4 }
+
+### Gerar 50 pedidos aleatórios
+POST {{api}}/api/simulacao/pedidos-aleatorios?quantidade=50
+
+### Despachar agora
+POST {{api}}/api/simulacao/despachar
+
+### Dashboard
+GET {{api}}/api/dashboard
+
+### Mapa em texto
+GET {{api}}/api/dashboard/mapa-ascii
+
+### CSV das entregas
+GET {{api}}/api/dashboard/entregas.csv
+
+### Reiniciar tudo (com 20 pedidos de exemplo)
+POST {{api}}/api/simulacao/reiniciar?pedidos=20
+
+### Métricas para o Prometheus
+GET {{api}}/actuator/prometheus
