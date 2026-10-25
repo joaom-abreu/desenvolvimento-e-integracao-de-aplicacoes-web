@@ -1,0 +1,525 @@
+/* ==========================================================================
+   Design system dti · Drones
+   As cores e medidas abaixo estão documentadas em /design
+   (fonte: src/config/designSystem.js)
+   ========================================================================== */
+:root {
+  /* Marca */
+  --azul-dti: #000066;
+  --azul-dti-claro: #14147a;
+  --ciano: #40e6f2;
+  --laranja: #fc6d3a;
+  --azul-eletrico: #3038d5;
+  --papel: #f4f4f4;
+  --branco: #ffffff;
+  --tinta: #010b0c;
+  --cinza-medio: #5b5f6e;
+  --linha: #dcdde6;
+
+  /* Estados do drone */
+  --estado-idle: #8a8fa3;
+  --estado-carregando: #3038d5;
+  --estado-voo: #40e6f2;
+  --estado-entregando: #fc6d3a;
+  --estado-retornando: #a9aeff;
+  --estado-recarga: #f5b82e;
+
+  /* Mensagens */
+  --sucesso: #0f7a55;
+  --sucesso-fundo: #e3f5ee;
+  --erro: #b8261f;
+  --erro-fundo: #fdeceb;
+
+  /* Tipografia */
+  --fonte-titulo: "Red Hat Display", "Segoe UI", system-ui, sans-serif;
+  --fonte-texto: "Red Hat Text", "Segoe UI", system-ui, sans-serif;
+  --fonte-codigo: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Formas e medidas */
+  --raio-campo: 8px;
+  --raio-painel: 20px;
+  --raio-pilula: 999px;
+  --largura-max: 1320px;
+  --espaco: 24px;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.25rem); }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.125rem; }
+
+p { margin: 0 0 1em; }
+
+a { color: var(--azul-eletrico); }
+
+img { max-width: 100%; }
+
+:focus-visible {
+  outline: 3px solid var(--azul-eletrico);
+  outline-offset: 2px;
+}
+
+code,
+pre {
+  font-family: var(--fonte-codigo);
+}
+
+/* ---------- Estrutura da página ---------- */
+.pagina {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 32px var(--espaco) 64px;
+}
+
+.pagina-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.pagina-topo h1 { margin: 0; }
+
+.pagina-topo p {
+  margin: 4px 0 0;
+  color: var(--cinza-medio);
+  max-width: 62ch;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grade-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr);
+  gap: var(--espaco);
+  align-items: start;
+}
+
+.grade-igual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--espaco);
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .grade-2 { grid-template-columns: 1fr; }
+}
+
+.painel {
+  background: var(--branco);
+  border-radius: var(--raio-painel);
+  padding: 24px;
+  border: 1px solid var(--linha);
+}
+
+.painel h2 {
+  font-size: 1.125rem;
+  margin-bottom: 16px;
+}
+
+.painel + .painel { margin-top: var(--espaco); }
+
+.apoio {
+  color: var(--cinza-medio);
+  font-size: 0.875rem;
+}
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: var(--raio-pilula);
+  border: 2px solid transparent;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  background: var(--azul-eletrico);
+  color: var(--branco);
+}
+
+.botao:hover { background: #2229ad; }
+
+.botao:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.botao-secundario {
+  background: transparent;
+  color: var(--azul-dti);
+  border-color: var(--azul-dti);
+}
+
+.botao-secundario:hover {
+  background: var(--azul-dti);
+  color: var(--branco);
+}
+
+.botao-perigo {
+  background: transparent;
+  color: var(--erro);
+  border-color: currentColor;
+}
+
+.botao-perigo:hover {
+  background: var(--erro);
+  color: var(--branco);
+  border-color: var(--erro);
+}
+
+.botao-pequeno {
+  min-height: 32px;
+  padding: 0 12px;
+  font-size: 0.8125rem;
+}
+
+/* ---------- Formulários ---------- */
+.formulario {
+  display: grid;
+  gap: 14px;
+}
+
+.linha-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+}
+
+.campo {
+  display: grid;
+  gap: 4px;
+}
+
+.campo label {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.campo input,
+.campo select {
+  font: inherit;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1.5px solid #b9bccb;
+  border-radius: var(--raio-campo);
+  background: var(--branco);
+  color: var(--tinta);
+  width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--azul-eletrico);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(48, 56, 213, 0.25);
+}
+
+.campo[data-invalido="true"] input,
+.campo[data-invalido="true"] select {
+  border-color: var(--erro);
+}
+
+.campo .erro-campo {
+  color: var(--erro);
+  font-size: 0.8125rem;
+}
+
+.seletor-prioridade {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.seletor-prioridade label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--raio-pilula);
+  border: 1.5px solid var(--linha);
+  cursor: pointer;
+  font-weight: 500;
+  background: var(--branco);
+}
+
+.seletor-prioridade input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seletor-prioridade label:has(input:checked) {
+  border-color: var(--azul-dti);
+  background: var(--azul-dti);
+  color: var(--branco);
+}
+
+.seletor-prioridade label:has(input:focus-visible) {
+  outline: 3px solid var(--azul-eletrico);
+  outline-offset: 2px;
+}
+
+/* ---------- Mensagens ---------- */
+.mensagem {
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9375rem;
+  border-left: 5px solid;
+}
+
+.mensagem-erro {
+  background: var(--erro-fundo);
+  color: var(--erro);
+}
+
+.mensagem-sucesso {
+  background: var(--sucesso-fundo);
+  color: var(--sucesso);
+}
+
+.mensagem-info {
+  background: #e8e9fb;
+  color: var(--azul-dti);
+}
+
+/* ---------- Selos (pílulas) ---------- */
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: var(--raio-pilula);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-family: var(--fonte-titulo);
+  white-space: nowrap;
+  background: #ebecf3;
+  color: var(--tinta);
+}
+
+.selo .pingo {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+.selo-alta { background: var(--laranja); color: var(--azul-dti); }
+.selo-media { background: #e3e4fa; color: var(--azul-eletrico); }
+.selo-baixa { background: #ebecf3; color: var(--cinza-medio); }
+
+/* ---------- Tabelas ---------- */
+.tabela-rolagem {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+th {
+  text-align: left;
+  font-family: var(--fonte-titulo);
+  font-size: 0.8125rem;
+  color: var(--cinza-medio);
+  font-weight: 700;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--linha);
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--linha);
+  vertical-align: middle;
+}
+
+td.numero,
+th.numero {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+tr[data-selecionado="true"] td {
+  background: #eef0ff;
+}
+
+/* ---------- Bateria ---------- */
+.bateria {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.bateria-trilho {
+  flex: 1;
+  height: 8px;
+  min-width: 60px;
+  border-radius: var(--raio-pilula);
+  background: #e3e4ec;
+  overflow: hidden;
+}
+
+.bateria-nivel {
+  height: 100%;
+  border-radius: var(--raio-pilula);
+  background: var(--sucesso);
+  transition: width 0.9s linear;
+}
+
+.bateria-nivel[data-nivel="media"] { background: var(--estado-recarga); }
+.bateria-nivel[data-nivel="baixa"] { background: var(--erro); }
+
+/* ---------- Indicadores (KPIs) ---------- */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 12px;
+  margin-bottom: var(--espaco);
+}
+
+.kpi {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-painel);
+  padding: 16px 18px;
+}
+
+.kpi-valor {
+  font-family: var(--fonte-titulo);
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--azul-dti);
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-rotulo {
+  font-size: 0.875rem;
+  color: var(--cinza-medio);
+}
+
+.kpi-destaque {
+  background: var(--azul-dti);
+  border-color: var(--azul-dti);
+}
+
+.kpi-destaque .kpi-valor { color: var(--ciano); }
+.kpi-destaque .kpi-rotulo { color: #c9cbf2; }
+
+/* ---------- Lista vazia ---------- */
+.vazio {
+  text-align: center;
+  padding: 28px 12px;
+  color: var(--cinza-medio);
+}
+
+.vazio strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  color: var(--tinta);
+  font-size: 1.0625rem;
+  margin-bottom: 4px;
+}
+
+.carregando {
+  color: var(--cinza-medio);
+  padding: 12px 0;
+}
+
+.somente-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ---------- Impressão (Design System -> PDF) ---------- */
+@media print {
+  .cabecalho,
+  .rodape,
+  .nao-imprimir {
+    display: none !important;
+  }
+
+  body { background: var(--branco); }
+
+  .pagina { padding: 0; }
+
+  .painel { break-inside: avoid; }
+}
+
+/* painéis lado a lado na grade não ganham a margem de "um painel embaixo do outro" */
+.grade-2 > .painel + .painel,
+.grade-igual > .painel + .painel {
+  margin-top: 0;
+}
+
+@media (max-width: 520px) {
+  .kpis { grid-template-columns: 1fr 1fr; }
+  .kpi-valor { font-size: 1.5rem; }
+  .pagina { padding: 24px 16px 48px; }
+  .painel { padding: 18px; }
+}

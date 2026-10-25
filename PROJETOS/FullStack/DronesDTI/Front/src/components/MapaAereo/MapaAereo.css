@@ -1,0 +1,167 @@
+.mapa-aereo {
+  background: var(--azul-dti);
+  border-radius: var(--raio-painel);
+  padding: 12px;
+  line-height: 0;
+}
+
+.mapa-aereo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: var(--fonte-titulo);
+}
+
+.mapa-interativo svg {
+  cursor: crosshair;
+}
+
+.mapa-fundo {
+  fill: #00005a;
+}
+
+.grade {
+  stroke: rgba(64, 230, 242, 0.08);
+  stroke-width: 0.025;
+}
+
+.grade-forte {
+  stroke: rgba(64, 230, 242, 0.22);
+  stroke-width: 0.04;
+}
+
+.eixo {
+  fill: #8f92d6;
+  font-size: 0.48px;
+}
+
+.zona rect {
+  fill: rgba(252, 109, 58, 0.18);
+  stroke: var(--laranja);
+  stroke-width: 0.07;
+  stroke-dasharray: 0.25 0.15;
+}
+
+.zona text {
+  fill: #ffc2ab;
+  font-size: 0.42px;
+  font-weight: 700;
+}
+
+.rota-ativa {
+  fill: none;
+  stroke: var(--ciano);
+  stroke-width: 0.12;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.rota-previa {
+  fill: none;
+  stroke: #a9aeff;
+  stroke-width: 0.08;
+  stroke-dasharray: 0.3 0.22;
+  stroke-linejoin: round;
+  opacity: 0.55;
+}
+
+.rota-destaque {
+  stroke: var(--branco);
+  stroke-width: 0.2;
+  opacity: 1;
+}
+
+.pedido {
+  stroke: var(--azul-dti);
+  stroke-width: 0.05;
+}
+
+.pedido-entregue {
+  fill: rgba(255, 255, 255, 0.35);
+  stroke: none;
+}
+
+.pedido-alocado,
+.pedido-em_rota {
+  stroke: var(--ciano);
+  stroke-width: 0.08;
+}
+
+.base-anel {
+  fill: none;
+  stroke: var(--ciano);
+  stroke-width: 0.08;
+}
+
+.base-centro {
+  fill: var(--ciano);
+}
+
+.base text {
+  fill: var(--ciano);
+  font-size: 0.5px;
+  font-weight: 700;
+}
+
+.drone {
+  /* o polling chega a cada ~1 s: a transição faz o drone "deslizar" até a nova posição */
+  transition: transform 1s linear;
+}
+
+.drone circle {
+  stroke: var(--azul-dti);
+  stroke-width: 0.1;
+}
+
+.drone text {
+  fill: var(--branco);
+  font-size: 0.5px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--azul-dti);
+  stroke-width: 0.12;
+}
+
+.ponto-escolhido circle {
+  fill: none;
+  stroke: var(--branco);
+  stroke-width: 0.1;
+}
+
+.ponto-escolhido line {
+  stroke: var(--branco);
+  stroke-width: 0.06;
+}
+
+.legenda-mapa {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 0.8125rem;
+  color: var(--cinza-medio);
+}
+
+.legenda-mapa li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.amostra {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.amostra-base { background: var(--ciano); box-shadow: 0 0 0 2px var(--azul-dti); }
+.amostra-rota { width: 22px; height: 4px; border-radius: 4px; background: var(--ciano); box-shadow: 0 0 0 2px var(--azul-dti); }
+.amostra-previa { width: 22px; height: 0; border-radius: 0; border-top: 3px dashed #7c82e6; }
+.amostra-zona { border-radius: 3px; background: rgba(252, 109, 58, 0.25); border: 2px dashed var(--laranja); }
+.amostra-alta { background: var(--laranja); }
+.amostra-media { background: #9ea4ff; }
+.amostra-baixa { background: #c9cbe0; border: 1px solid #9a9db3; }

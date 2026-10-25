@@ -1,0 +1,138 @@
+.cabecalho {
+  background: var(--azul-dti);
+  color: var(--branco);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.cabecalho-conteudo {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 0 var(--espaco);
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 8px;
+  color: var(--branco);
+  text-decoration: none;
+  flex: none;
+}
+
+.marca img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.marca-produto {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ciano);
+  padding-bottom: 1px;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.menu a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: var(--raio-pilula);
+  color: #d4d6f5;
+  text-decoration: none;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.menu a:hover {
+  color: var(--branco);
+  background: var(--azul-dti-claro);
+}
+
+.menu a.ativo {
+  background: var(--ciano);
+  color: var(--azul-dti);
+}
+
+.status-api {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: #c9cbf2;
+  flex: none;
+}
+
+.status-api .pingo {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--estado-recarga);
+}
+
+.status-api[data-online="true"] .pingo { background: #3ddc97; }
+.status-api[data-online="false"] .pingo { background: var(--laranja); }
+
+@media (max-width: 900px) {
+  .cabecalho-conteudo {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+
+  nav[aria-label="Principal"] {
+    order: 3;
+    width: 100%;
+  }
+
+  .status-texto {
+    display: none;
+  }
+}
+
+.rodape {
+  border-top: 1px solid var(--linha);
+  background: var(--branco);
+}
+
+.rodape-conteudo {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 24px var(--espaco);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: var(--cinza-medio);
+}
+
+.rodape-conteudo p {
+  margin: 0;
+  flex: 1;
+  min-width: 240px;
+}
+
+.rodape-links {
+  display: flex;
+  gap: 16px;
+}

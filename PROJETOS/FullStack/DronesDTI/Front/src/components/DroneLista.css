@@ -1,0 +1,64 @@
+.drone-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.drone-cartao {
+  border: 1px solid var(--linha);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 8px;
+  background: var(--branco);
+}
+
+.drone-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.drone-topo h3 {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.drone-dados {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+}
+
+.drone-dados dt {
+  font-size: 0.75rem;
+  color: var(--cinza-medio);
+}
+
+.drone-dados dd {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.drone-progresso {
+  height: 4px;
+  background: #e3e4ec;
+  border-radius: var(--raio-pilula);
+  overflow: hidden;
+}
+
+.drone-progresso div {
+  height: 100%;
+  background: var(--azul-dti);
+  transition: width 0.9s linear;
+}
+
+.drone-proxima {
+  margin: 0;
+}

@@ -1,0 +1,16 @@
+.grafico {
+  width: 100%;
+  min-height: 240px;
+  font-family: var(--fonte-texto);
+}
+
+.mapa-ascii {
+  margin: 0;
+  background: var(--azul-dti);
+  color: var(--ciano);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  overflow-x: auto;
+}
