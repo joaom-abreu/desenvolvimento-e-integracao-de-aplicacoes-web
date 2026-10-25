@@ -1,0 +1,27 @@
+flowchart LR
+    U["👩‍💻 Usuário<br/>navegador"]
+    subgraph Vercel["Vercel (CDN)"]
+        F["React + Vite (dist/)<br/>drones-dti.vercel.app<br/>drones.dti.dev"]
+    end
+    subgraph Render["Render (Docker)"]
+        B["Spring Boot (JAR, Java 21)<br/>drones-dti-api.onrender.com<br/>api.drones.dti.dev"]
+    end
+    subgraph Atlas["MongoDB Atlas (M0)"]
+        M[("DronesDTI")]
+    end
+    subgraph Obs["Observabilidade (local, docker-compose)"]
+        K["k6<br/>testes de carga"]
+        PR["Prometheus"]
+        G["Grafana"]
+    end
+    GH["GitHub<br/>repositório público"]
+
+    U -- "HTTPS: HTML/JS/CSS" --> F
+    U -- "HTTPS: fetch /api/*<br/>(CORS)" --> B
+    B -- "mongodb+srv:// (TLS)" --> M
+    GH -- "push = deploy" --> F
+    GH -- "push = deploy" --> B
+    K -- "requisições" --> B
+    K -- "remote write" --> PR
+    PR -- "scrape /actuator/prometheus" --> B
+    G --> PR
