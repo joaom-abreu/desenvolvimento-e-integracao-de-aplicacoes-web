@@ -22,15 +22,15 @@ Recursos:
 
 | Checkout (carteira aberta) | Cartão escolhido |
 | :---: | :---: |
-| ![Home](imgs/Home.png) | ![Carteira](imgs/Carteira.png) |
+| ![Home](https://joaopauloaramuni.github.io/react-imgs/StripeAPI_2/imgs/Home.png) | ![Carteira](https://joaopauloaramuni.github.io/react-imgs/StripeAPI_2/imgs/Carteira.png) |
 
 | Pagamento aprovado | Cartão recusado |
 | :---: | :---: |
-| ![Aprovado](imgs/Aprovado.png) | ![Recusado](imgs/Recusado.png) |
+| ![Aprovado](https://joaopauloaramuni.github.io/react-imgs/StripeAPI_2/imgs/Aprovado.png) | ![Recusado](https://joaopauloaramuni.github.io/react-imgs/StripeAPI_2/imgs/Recusado.png) |
 
 | Celular |
 | :---: |
-| ![Mobile](imgs/Mobile.png) |
+| ![Mobile](https://joaopauloaramuni.github.io/react-imgs/StripeAPI_2/imgs/Mobile.png) |
 
 > As capturas usam um **pagamento de demonstração** (o formulário de cartão foi reproduzido para as imagens). Com as suas chaves, aparece o formulário oficial da Stripe e os pagamentos ficam no seu painel.
 
