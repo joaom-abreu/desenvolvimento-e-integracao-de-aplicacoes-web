@@ -1,0 +1,83 @@
+### Requisições prontas para testar a API
+### VS Code: extensão "REST Client" | IntelliJ: abre direto (HTTP Client)
+### Dica: rode de cima para baixo. O id da partida criada é guardado em {{partida}}.
+
+@api = http://localhost:8080
+
+### Status (API e MongoDB)
+GET {{api}}/api/status
+
+### Limites do jogo (mínimo, máximo, tentativas ideais)
+GET {{api}}/api/configuracao
+
+### Nova partida -> 201 + Location
+# @name nova
+POST {{api}}/api/partidas
+Content-Type: application/json
+
+{ "jogador": "Ana" }
+
+@partida = {{nova.response.body.id}}
+
+### Nova partida sem corpo -> jogador "Anônimo"
+POST {{api}}/api/partidas
+
+### Palpite -> 201 com "maior", "menor" ou "acertou"
+POST {{api}}/api/partidas/{{partida}}/palpites
+Content-Type: application/json
+
+{ "numero": 50 }
+
+### Palpite repetido -> 422
+POST {{api}}/api/partidas/{{partida}}/palpites
+Content-Type: application/json
+
+{ "numero": 50 }
+
+### Fora de 1 a 100 -> 422
+POST {{api}}/api/partidas/{{partida}}/palpites
+Content-Type: application/json
+
+{ "numero": 150 }
+
+### Número com casas decimais -> 400
+POST {{api}}/api/partidas/{{partida}}/palpites
+Content-Type: application/json
+
+{ "numero": 42.5 }
+
+### Sem o número -> 400 com o campo destacado
+POST {{api}}/api/partidas/{{partida}}/palpites
+Content-Type: application/json
+
+{}
+
+### Estado da partida (numeroSecreto = null enquanto em andamento)
+GET {{api}}/api/partidas/{{partida}}
+
+### Histórico de palpites
+GET {{api}}/api/partidas/{{partida}}/palpites
+
+### Desistir -> 200 com o número revelado (de novo -> 409)
+POST {{api}}/api/partidas/{{partida}}/desistencia
+
+### Partida que não existe -> 404
+GET {{api}}/api/partidas/nao-existe
+
+### Ranking (top 10)
+GET {{api}}/api/ranking
+
+### Ranking com limite inválido -> 400
+GET {{api}}/api/ranking?limite=0
+
+### Estatísticas
+GET {{api}}/api/estatisticas
+
+### 20 partidas jogadas por robôs -> 201
+POST {{api}}/api/simulacao/partidas?quantidade=20
+
+### Reiniciar (apaga tudo e recria 30 partidas de exemplo)
+POST {{api}}/api/simulacao/reiniciar?partidas=30
+
+### Métricas para o Prometheus
+GET {{api}}/actuator/prometheus
