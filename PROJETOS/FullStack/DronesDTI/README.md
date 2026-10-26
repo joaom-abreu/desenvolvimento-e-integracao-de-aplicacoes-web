@@ -1,6 +1,6 @@
 # 🛸 DronesDTI · Simulador de Entregas por Drone
 
-![Java](https://img.shields.io/badge/Java-21-000066?style=for-the-badge&logo=openjdk&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1-000066?style=for-the-badge&logo=springboot&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB_Atlas-000066?style=for-the-badge&logo=mongodb&logoColor=white) ![React](https://img.shields.io/badge/React-19-000066?style=for-the-badge&logo=react&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-8-000066?style=for-the-badge&logo=vite&logoColor=white) ![JUnit](https://img.shields.io/badge/JUnit_5_+_Mockito-000066?style=for-the-badge&logo=junit5&logoColor=white) ![Vitest](https://img.shields.io/badge/Vitest-000066?style=for-the-badge&logo=vitest&logoColor=white) ![k6](https://img.shields.io/badge/Grafana_k6-000066?style=for-the-badge&logo=k6&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-000066?style=for-the-badge&logo=docker&logoColor=white) ![Vercel](https://img.shields.io/badge/Vercel-000066?style=for-the-badge&logo=vercel&logoColor=white) ![Render](https://img.shields.io/badge/Render-000066?style=for-the-badge&logo=render&logoColor=white)
+![Java](https://img.shields.io/badge/Java-17-000066?style=for-the-badge&logo=openjdk&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1-000066?style=for-the-badge&logo=springboot&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB_Atlas-000066?style=for-the-badge&logo=mongodb&logoColor=white) ![React](https://img.shields.io/badge/React-19-000066?style=for-the-badge&logo=react&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-8-000066?style=for-the-badge&logo=vite&logoColor=white) ![JUnit](https://img.shields.io/badge/JUnit_5_+_Mockito-000066?style=for-the-badge&logo=junit5&logoColor=white) ![Vitest](https://img.shields.io/badge/Vitest-000066?style=for-the-badge&logo=vitest&logoColor=white) ![k6](https://img.shields.io/badge/Grafana_k6-000066?style=for-the-badge&logo=k6&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-000066?style=for-the-badge&logo=docker&logoColor=white) ![Vercel](https://img.shields.io/badge/Vercel-000066?style=for-the-badge&logo=vercel&logoColor=white) ![Render](https://img.shields.io/badge/Render-000066?style=for-the-badge&logo=render&logoColor=white)
 
 Solução completa do **case técnico de desenvolvimento da dti digital** (processo seletivo, Enterprise Hakuna): um sistema que recebe pedidos de entrega, **aloca os pacotes nos drones com o menor número de viagens possível**, calcula a **rota de cada viagem (caixeiro viajante)**, desvia de **zonas de exclusão aérea** e simula, em tempo real, os **estados de cada drone** (Idle → Carregando → Em voo → Entregando → Retornando → Idle).
 
@@ -9,7 +9,7 @@ Solução completa do **case técnico de desenvolvimento da dti digital** (proce
 | Camada | Tecnologia | Onde roda (produção) |
 | --- | --- | --- |
 | Front-end | React 19 + Vite 8 + React Router + Recharts | Vercel → `drones-dti.vercel.app` |
-| Back-end | Spring Boot 4 (Java 21) · API REST | Render (Docker) |
+| Back-end | Spring Boot 4 (java 17) · API REST | Render (Docker) |
 | Banco | MongoDB Atlas (local: MongoDB no Docker) | Atlas M0 (grátis) |
 | Testes | JUnit 5 + Mockito + MockMvc · Vitest + Testing Library | GitHub Actions |
 | Carga e observabilidade | Grafana k6 + Prometheus + Grafana | Local (docker-compose) |
@@ -199,7 +199,7 @@ flowchart LR
         F["React + Vite (dist/)<br/>drones-dti.vercel.app<br/>drones.dti.dev"]
     end
     subgraph Render["Render (Docker)"]
-        B["Spring Boot (JAR, Java 21)<br/>drones-dti-api.onrender.com<br/>api.drones.dti.dev"]
+        B["Spring Boot (JAR, java 17)<br/>drones-dti-api.onrender.com<br/>api.drones.dti.dev"]
     end
     subgraph Atlas["MongoDB Atlas (M0)"]
         M[("DronesDTI")]
@@ -1054,7 +1054,7 @@ Depois, troque `VITE_API_URL` para `https://api.drones.dti.dev` e confira se o d
 ### 4. Entrega do case (como pede o PDF)
 
 - Repositório **público** no GitHub.
-- E-mail para `rh.hakuna@dtidigital.com.br` com o título **`Teste prático dti digital – Seu nome`**, o link do repositório e **a tecnologia escolhida no corpo** (ex.: "Java 21 + Spring Boot 4 no back-end, React 19 + Vite no front-end, MongoDB").
+- E-mail para `rh.hakuna@dtidigital.com.br` com o título **`Teste prático dti digital – Seu nome`**, o link do repositório e **a tecnologia escolhida no corpo** (ex.: "java 17 + Spring Boot 4 no back-end, React 19 + Vite no front-end, MongoDB").
 - Respeite o prazo: quem não envia no horário é desclassificado.
 
 ---
