@@ -1,0 +1,37 @@
+# Roda os testes a cada push/pull request (aba "Actions" do GitHub)
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  back:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Back
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+      - run: chmod +x mvnw && ./mvnw -B test
+
+  front:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Front
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: Front/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
