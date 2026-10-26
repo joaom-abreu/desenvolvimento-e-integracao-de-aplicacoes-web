@@ -485,7 +485,7 @@ Os dois projetos ficam **lado a lado** na mesma pasta: os scripts do `Front` sob
 │   ├── 📄 pom.xml                       ← dependências Maven (web, mongodb, validation, actuator, testes, JaCoCo)
 │   ├── ⚙️ mvnw / mvnw.cmd               ← Maven Wrapper: baixa o Maven sozinho (Linux-macOS / Windows)
 │   ├── 📁 .mvn/wrapper                  ← versão do Maven usada pelo wrapper
-│   ├── 🐳 Dockerfile                    ← build em 2 etapas (Maven -> JRE 21) usado pelo Render
+│   ├── 🐳 Dockerfile                    ← build em 2 etapas (Maven -> JRE 17) usado pelo Render
 │   ├── 📄 .dockerignore / .gitignore    ← o que não vai para a imagem / para o Git
 │   ├── 🧪 requests.http                 ← requisições prontas (REST Client / IntelliJ)
 │   ├── 📄 README.md                     ← resumo dos comandos do Back
@@ -751,7 +751,7 @@ Todo erro volta no mesmo formato, com uma `mensagem` que pode ir direto para a t
 
 | O quê | Para quê | Como conferir |
 | --- | --- | --- |
-| **JDK 21** | Rodar o Spring Boot | `java -version` |
+| **JDK 17** | Rodar o Spring Boot | `java -version` |
 | **Node.js 20+** | Rodar o React / Vite | `node -v` |
 | **Docker** (recomendado) | MongoDB local ou o projeto inteiro | `docker -v` |
 | ou **MongoDB Atlas** | Banco na nuvem | seção [MongoDB Atlas](#-mongodb-atlas) |
