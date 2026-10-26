@@ -33,7 +33,7 @@ import java.util.Locale;
 @Service
 public class PedidoService {
 
-    static final Locale PT_BR = Locale.of("pt", "BR");
+    static final Locale PT_BR = new Locale("pt", "BR");
 
     private final PedidoRepository pedidoRepository;
     private final DroneRepository droneRepository;
