@@ -17,7 +17,7 @@
     <description>Simulador de entregas por drone (case técnico dti digital): Spring Boot + MongoDB</description>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <jacoco.version>0.8.13</jacoco.version>
     </properties>
 
