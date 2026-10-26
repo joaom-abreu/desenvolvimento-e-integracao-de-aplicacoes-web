@@ -1,0 +1,54 @@
+classDiagram
+    direction LR
+    class Partida {
+        <<Document "partidas">>
+        String id
+        String jogador
+        int numeroSecreto
+        int minimo
+        int maximo
+        StatusPartida status
+        List~Palpite~ palpites
+        int tentativas
+        Instant iniciadaEm
+        Instant finalizadaEm
+        Long duracaoSegundos
+        boolean simulada
+        Long versao
+        +intervaloAtual() Intervalo
+        +jaTentou(int) boolean
+    }
+    class Palpite {
+        <<record>>
+        int numero
+        ResultadoPalpite resultado
+        Instant momento
+    }
+    class StatusPartida {
+        <<enum>>
+        EM_ANDAMENTO
+        VENCIDA
+        ABANDONADA
+    }
+    class ResultadoPalpite {
+        <<enum>>
+        MAIOR
+        MENOR
+        ACERTOU
+    }
+    class Intervalo {
+        <<record>>
+        int minimo
+        int maximo
+        +meio() int
+        +depoisDe(palpite, resultado) Intervalo
+    }
+    class Arbitro {
+        +registrar(Partida, int, Instant) Lance
+        +desistir(Partida, Instant)
+    }
+    Partida "1" *-- "0..*" Palpite : embutidos
+    Partida --> StatusPartida
+    Palpite --> ResultadoPalpite
+    Partida ..> Intervalo : calcula
+    Arbitro ..> Partida : aplica as regras

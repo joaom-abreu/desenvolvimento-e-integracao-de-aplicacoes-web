@@ -1,0 +1,27 @@
+sequenceDiagram
+    autonumber
+    actor Jogador
+    participant React
+    participant Controller as PartidaController
+    participant Service as PartidaService
+    participant Arbitro as Arbitro + Juiz
+    participant Mongo as MongoDB
+
+    Jogador->>React: digita 50 e aperta Enter
+    React->>React: validarPalpite (vazio? inteiro? 1 a 100? repetido?)
+    React->>Controller: POST /api/partidas/{id}/palpites { "numero": 50 }
+    Controller->>Controller: @Valid (inteiro, obrigatório)
+    Controller->>Service: palpitar(id, request)
+    Service->>Mongo: findById(id)
+    alt partida não existe
+        Service-->>React: 404 { mensagem }
+    end
+    Service->>Arbitro: registrar(partida, 50, agora)
+    alt encerrada / fora da faixa / repetido
+        Arbitro-->>React: 409 ou 422 { mensagem }
+    else ok
+        Arbitro->>Arbitro: Juiz.julgar(50, secreto) = MAIOR
+        Service->>Mongo: save(partida) [@Version]
+        Service-->>React: 201 { mensagem, dica, partida (sem o número) }
+    end
+    React-->>Jogador: "50 é maior que o número sorteado. Tente um número menor."

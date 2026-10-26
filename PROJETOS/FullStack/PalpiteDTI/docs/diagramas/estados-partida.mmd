@@ -1,0 +1,8 @@
+stateDiagram-v2
+    direction LR
+    [*] --> EM_ANDAMENTO: POST /api/partidas (número sorteado)
+    EM_ANDAMENTO --> EM_ANDAMENTO: palpite MAIOR ou MENOR
+    EM_ANDAMENTO --> VENCIDA: palpite ACERTOU
+    EM_ANDAMENTO --> ABANDONADA: POST /desistencia
+    VENCIDA --> [*]: entra no ranking
+    ABANDONADA --> [*]: número revelado

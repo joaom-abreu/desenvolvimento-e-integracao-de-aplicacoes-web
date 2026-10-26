@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: palpite
+    folder: PalpiteDTI
+    type: file
+    options:
+      path: /etc/grafana/provisioning/dashboards

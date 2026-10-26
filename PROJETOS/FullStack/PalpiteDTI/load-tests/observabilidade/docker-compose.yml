@@ -1,0 +1,48 @@
+# Observabilidade dos testes de carga: k6 -> Prometheus -> Grafana
+# (com a API rodando no seu computador na porta 8080)
+#
+#   cd load-tests/observabilidade
+#   docker compose up -d prometheus grafana
+#   docker compose run --rm k6 run /scripts/carga.js
+#
+# Grafana: http://localhost:3000 (usuário admin / senha admin) > Dashboards > "PalpiteDTI - carga"
+services:
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.enable-remote-write-receiver   # o k6 envia as métricas por remote write
+      - --enable-feature=native-histograms
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    ports:
+      - "3000:3000"
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
+
+  k6:
+    image: grafana/k6:latest   # para builds reprodutíveis, fixe uma versão (ex.: grafana/k6:1.3.0)
+    profiles: ["k6"]
+    environment:
+      API_URL: http://host.docker.internal:8080
+      K6_PROMETHEUS_RW_SERVER_URL: http://prometheus:9090/api/v1/write
+      K6_PROMETHEUS_RW_TREND_STATS: p(95),avg,max
+    command: ["run", "-o", "experimental-prometheus-rw", "/scripts/carga.js"]
+    volumes:
+      - ..:/scripts:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - prometheus

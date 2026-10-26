@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph Navegador["Navegador · React + Vite"]
+        P["Páginas<br/>Jogar · Ranking<br/>Estatísticas · Design"]
+        H["usePartida<br/>usePolling (5 s)"]
+        S["services/api.js<br/>httpClient.js"]
+        P --> H --> S
+    end
+
+    subgraph API["Spring Boot · API REST"]
+        C["controller<br/>Partida · Ranking · Estatistica<br/>Simulacao · Status"]
+        SV["service<br/>PartidaService · RankingService<br/>EstatisticaService · SimulacaoService"]
+        J["jogo (Java puro)<br/>Arbitro · Juiz · Intervalo<br/>Narrador · Desempenho · Sorteador"]
+        R["repository<br/>PartidaRepository"]
+        EX["exception<br/>GlobalExceptionHandler"]
+        C --> SV --> J
+        SV --> R
+        C -. erro .-> EX
+    end
+
+    DB[("MongoDB<br/>partidas<br/>(palpites embutidos)")]
+    S -- "HTTP + JSON" --> C
+    R --> DB

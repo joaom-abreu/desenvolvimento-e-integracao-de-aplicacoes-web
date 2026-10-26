@@ -1,0 +1,27 @@
+flowchart LR
+    U["👩‍💻 Jogador<br/>navegador"]
+    subgraph Vercel["Vercel (CDN)"]
+        F["React + Vite (dist/)<br/>palpite-dti.vercel.app"]
+    end
+    subgraph Render["Render (Docker)"]
+        B["Spring Boot (JAR, java 17)<br/>palpite-dti-api.onrender.com"]
+    end
+    subgraph Atlas["MongoDB Atlas (M0)"]
+        M[("PalpiteDTI")]
+    end
+    subgraph Obs["Observabilidade (local, docker-compose)"]
+        K["k6<br/>testes de carga"]
+        PR["Prometheus"]
+        G["Grafana"]
+    end
+    GH["GitHub<br/>repositório privado"]
+
+    U -- "HTTPS: HTML/JS/CSS" --> F
+    U -- "HTTPS: fetch /api/*<br/>(CORS)" --> B
+    B -- "mongodb+srv:// (TLS)" --> M
+    GH -- "push = deploy" --> F
+    GH -- "push = deploy" --> B
+    K -- "requisições" --> B
+    K -- "remote write" --> PR
+    PR -- "scrape /actuator/prometheus" --> B
+    G --> PR

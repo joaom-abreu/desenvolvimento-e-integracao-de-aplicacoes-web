@@ -1,0 +1,18 @@
+# Blueprint do Render: New > Blueprint > escolha este repositório.
+# O Render lê este arquivo e cria o serviço do back-end sozinho.
+services:
+  - type: web
+    name: palpite-dti-api
+    runtime: docker
+    rootDir: Back
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /api/status
+    envVars:
+      - key: MONGODB_URI
+        sync: false            # o Render pede o valor na criação (connection string do Atlas)
+      - key: MONGODB_DATABASE
+        value: PalpiteDTI
+      - key: CORS_ORIGINS
+        value: https://palpite-dti.vercel.app,https://*.vercel.app,https://palpite.dti.dev
