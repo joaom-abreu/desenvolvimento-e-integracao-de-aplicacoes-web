@@ -1,0 +1,12 @@
+@use "../styles/mixins" as *;
+
+// um gráfico largo em cima e dois lado a lado embaixo
+.grade-igual.estatisticas {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include ate(tablet) { grid-template-columns: 1fr; }
+}
+
+.estatisticas-larga { grid-column: 1 / -1; }
+
+.estatisticas-rodape { margin-top: var(--espaco); }

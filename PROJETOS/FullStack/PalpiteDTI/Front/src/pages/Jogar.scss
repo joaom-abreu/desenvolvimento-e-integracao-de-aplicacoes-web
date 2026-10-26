@@ -1,0 +1,136 @@
+@use "../styles/mixins" as *;
+
+// o tabuleiro ocupa um pouco mais que a lateral, mas cabe inteiro numa tela de notebook
+.grade-2.jogar {
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 1fr);
+
+  @include ate(tablet) { grid-template-columns: 1fr; }
+}
+
+.jogar-lateral {
+  display: grid;
+  gap: var(--espaco);
+
+  // no celular, o campo do palpite vem antes do tabuleiro: dá para jogar sem rolar a tela
+  @include ate(tablet) { order: -1; }
+
+  .painel + .painel { margin-top: 0; }
+  .painel > .mensagem { margin-top: 14px; }
+}
+
+.jogar-kpis {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 18px;
+
+  .kpi { padding: 12px 14px; }
+  .kpi-valor { font-size: 1.75rem; }
+  .kpi-rotulo { font-size: 0.8125rem; line-height: 1.3; }
+
+  @include ate(celular) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.palpite-linha {
+  display: flex;
+  gap: 10px;
+
+  input {
+    min-height: 52px;
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .botao { flex: none; }
+}
+
+.jogar-feedback {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+
+  &:empty { display: none; }
+}
+
+.painel-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+
+  h2 { margin: 0; }
+}
+
+.historico {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  max-height: 360px;
+  overflow-y: auto;
+
+  li {
+    display: grid;
+    grid-template-columns: 2.5rem 3rem auto 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 4px;
+    border-bottom: 1px solid var(--linha);
+
+    &:first-child .historico-numero { color: var(--azul-eletrico); }
+  }
+}
+
+.historico-ordem {
+  color: var(--cinza-medio);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.historico-numero {
+  font-family: var(--fonte-titulo);
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--azul-dti);
+  font-variant-numeric: tabular-nums;
+}
+
+.historico-dica {
+  color: var(--cinza-medio);
+  font-size: 0.875rem;
+}
+
+.resultado-final {
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 4px;
+  }
+
+  > p { margin-bottom: 14px; }
+
+  .acoes { margin-bottom: 16px; }
+}
+
+// o número sorteado, enfim revelado: o maior texto do site
+.resultado-numero {
+  font-family: var(--fonte-titulo);
+  font-weight: 900;
+  font-size: clamp(4rem, 3rem + 4vw, 6rem);
+  line-height: 1;
+  color: var(--azul-dti);
+  margin: 0 0 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.link-simples {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--azul-eletrico);
+  text-decoration: underline;
+  cursor: pointer;
+}

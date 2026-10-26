@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "tokens";
+
+/// Media query "até" um tamanho de tela: @include ate(tablet) { ... }
+@mixin ate($tela) {
+  @media (max-width: map.get(tokens.$telas, $tela)) {
+    @content;
+  }
+}
+
+/// Anel de foco padrão (navegação por teclado)
+@mixin foco {
+  outline: 3px solid var(--azul-eletrico);
+  outline-offset: 2px;
+}
+
+/// A forma de pílula que vem das hastes do logo
+@mixin pilula($altura: 40px, $padding: 18px) {
+  min-height: $altura;
+  padding: 0 $padding;
+  border-radius: var(--raio-pilula);
+}
+
+/// Some da tela, mas continua para leitores de tela
+@mixin somente-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

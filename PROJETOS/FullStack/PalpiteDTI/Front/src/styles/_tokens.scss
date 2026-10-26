@@ -1,0 +1,57 @@
+// ==========================================================================
+// Tokens do design system dti · Palpite
+// Documentados na página /design (fonte: src/config/designSystem.js).
+//
+// Duas camadas:
+//  - variáveis CSS (--azul-dti...): existem no navegador, o JS e o DevTools enxergam;
+//  - variáveis Sass ($telas...): só existem na compilação (breakpoints, por exemplo,
+//    não podem ser variáveis CSS dentro de @media).
+// ==========================================================================
+
+$telas: (
+  celular: 520px,
+  tablet: 900px,
+  notebook: 1100px,
+);
+
+:root {
+  // Marca
+  --azul-dti: #000066;
+  --azul-dti-claro: #14147a;
+  --ciano: #40e6f2;
+  --laranja: #fc6d3a;
+  --azul-eletrico: #3038d5;
+  --papel: #f4f4f4;
+  --branco: #ffffff;
+  --tinta: #010b0c;
+  --cinza-medio: #5b5f6e;
+  --linha: #dcdde6;
+
+  // Resposta do juiz para cada palpite
+  --resultado-maior: #fc6d3a;   // passou do número: tente menor
+  --resultado-menor: #a9aeff;   // ficou abaixo: tente maior
+  --resultado-acertou: #40e6f2;
+  --descartado: #1b1f86;        // número que já não pode ser a resposta
+
+  // Mensagens
+  --sucesso: #0f7a55;
+  --sucesso-fundo: #e3f5ee;
+  --erro: #b8261f;
+  --erro-fundo: #fdeceb;
+  --aviso: #8a5a00;
+  --aviso-fundo: #fff4d6;
+
+  // Tipografia
+  --fonte-titulo: "Red Hat Display", "Segoe UI", system-ui, sans-serif;
+  --fonte-texto: "Red Hat Text", "Segoe UI", system-ui, sans-serif;
+  --fonte-codigo: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  // Formas e medidas
+  --raio-campo: 8px;
+  --raio-painel: 20px;
+  --raio-pilula: 999px;
+  --largura-max: 1320px;
+  --espaco: 24px;
+
+  color-scheme: light;
+}

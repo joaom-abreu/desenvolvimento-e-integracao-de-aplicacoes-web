@@ -1,0 +1,291 @@
+.ds-capa {
+  background: var(--azul-dti);
+  color: var(--branco);
+  overflow: hidden;
+  position: relative;
+}
+
+.ds-capa-texto {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 56px var(--espaco) 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.ds-capa-texto img {
+  height: 56px;
+  width: auto;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.ds-capa h1 {
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+  font-weight: 900;
+  max-width: 14ch;
+}
+
+.ds-capa p {
+  max-width: 52ch;
+  color: #d4d6f5;
+  font-size: 1.125rem;
+}
+
+.ds-botao-pdf {
+  background: var(--ciano);
+  color: var(--azul-dti);
+}
+
+.ds-botao-pdf:hover {
+  background: var(--branco);
+}
+
+/* as hastes e o pingo do "dti" */
+.ds-formas {
+  position: absolute;
+  right: 4%;
+  top: 0;
+  bottom: 0;
+  width: min(38%, 420px);
+}
+
+.ds-formas span {
+  position: absolute;
+  background: var(--laranja);
+}
+
+.haste {
+  width: 22%;
+  border-radius: 0 0 999px 999px;
+}
+
+.haste-1 { left: 10%; top: 0; height: 72%; }
+.haste-2 { left: 40%; top: 0; height: 46%; border-radius: 0 0 999px 999px; background: var(--ciano) !important; }
+
+.pingo-grande {
+  width: 26%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  left: 68%;
+  top: 56%;
+}
+
+@media (max-width: 760px) {
+  .ds-formas { opacity: 0.25; }
+}
+
+.ds-corpo {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: var(--espaco);
+}
+
+.ds-indice ol {
+  position: sticky;
+  top: 90px;
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  font-size: 0.9375rem;
+}
+
+.ds-indice a {
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.ds-indice a:hover {
+  color: var(--azul-eletrico);
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .ds-corpo { grid-template-columns: 1fr; }
+  .ds-indice ol { position: static; }
+}
+
+.ds-capitulos {
+  display: grid;
+  gap: var(--espaco);
+}
+
+.ds-capitulos .painel + .painel { margin-top: 0; }
+
+.ds-capitulos h2 {
+  font-size: 1.5rem;
+}
+
+.ds-sub {
+  margin-top: 24px;
+}
+
+.ds-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.ds-logo {
+  margin: 0;
+  border: 1px solid var(--linha);
+  border-radius: 16px;
+  padding: 24px 16px 12px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--cinza-medio);
+}
+
+.ds-logo img {
+  height: 54px;
+  width: auto;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.ds-logo-escuro {
+  background: var(--azul-dti);
+  color: #c9cbf2;
+  border-color: var(--azul-dti);
+}
+
+.ds-cores {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.ds-cores li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.ds-amostra {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--linha);
+  cursor: pointer;
+}
+
+.ds-cores strong,
+.ds-cores code {
+  display: block;
+}
+
+.ds-cores code {
+  font-size: 0.8125rem;
+  color: var(--cinza-medio);
+}
+
+.ds-cores p {
+  margin: 4px 0 0;
+}
+
+.ds-estados {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.ds-estado {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+  border: 1px solid var(--linha);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.ds-estado-cor {
+  width: 100%;
+  height: 36px;
+  border-radius: var(--raio-pilula);
+}
+
+.ds-estado code {
+  font-size: 0.8125rem;
+  color: var(--cinza-medio);
+}
+
+.ds-tipos th {
+  width: 220px;
+  font-family: var(--fonte-titulo);
+  color: var(--tinta);
+  font-size: 0.9375rem;
+  vertical-align: top;
+}
+
+.ds-tipos th .apoio {
+  display: block;
+  font-family: var(--fonte-texto);
+  font-weight: 400;
+}
+
+.ds-raios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.ds-raio {
+  display: grid;
+  gap: 4px;
+}
+
+.ds-raio div {
+  height: 64px;
+  background: var(--azul-dti);
+  margin-bottom: 6px;
+}
+
+.ds-raio code {
+  font-size: 0.8125rem;
+}
+
+.ds-lado {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.ds-par {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  border: 1px solid var(--linha);
+}
+
+@media print {
+  .ds-capa {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .ds-corpo { display: block; }
+}
+
+.ds-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  max-width: 520px;
+}
+
+.ds-codigo {
+  background: var(--azul-dti);
+  color: #d4d6f5;
+  border-radius: 12px;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+}

@@ -1,0 +1,150 @@
+@use "mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.25rem); }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.125rem; }
+
+p { margin: 0 0 1em; }
+
+a { color: var(--azul-eletrico); }
+
+img { max-width: 100%; }
+
+:focus-visible { @include foco; }
+
+code,
+pre { font-family: var(--fonte-codigo); }
+
+// ---------- Estrutura da página ----------
+.pagina {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 32px var(--espaco) 64px;
+
+  @include ate(celular) { padding: 24px 16px 48px; }
+}
+
+.pagina-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  h1 { margin: 0; }
+
+  p {
+    margin: 4px 0 0;
+    color: var(--cinza-medio);
+    max-width: 62ch;
+  }
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grade-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr);
+  gap: var(--espaco);
+  align-items: start;
+
+  @include ate(tablet) { grid-template-columns: 1fr; }
+}
+
+.grade-igual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--espaco);
+  align-items: start;
+}
+
+.painel {
+  background: var(--branco);
+  border-radius: var(--raio-painel);
+  padding: 24px;
+  border: 1px solid var(--linha);
+
+  h2 {
+    font-size: 1.125rem;
+    margin-bottom: 16px;
+  }
+
+  & + & { margin-top: var(--espaco); }
+
+  @include ate(celular) { padding: 18px; }
+}
+
+// painéis lado a lado na grade não ganham a margem de "um embaixo do outro"
+.grade-2 > .painel + .painel,
+.grade-igual > .painel + .painel { margin-top: 0; }
+
+.apoio {
+  color: var(--cinza-medio);
+  font-size: 0.875rem;
+}
+
+.vazio {
+  text-align: center;
+  padding: 28px 12px;
+  color: var(--cinza-medio);
+
+  strong {
+    display: block;
+    font-family: var(--fonte-titulo);
+    color: var(--tinta);
+    font-size: 1.0625rem;
+    margin-bottom: 4px;
+  }
+}
+
+.carregando {
+  color: var(--cinza-medio);
+  padding: 12px 0;
+}
+
+.somente-leitor { @include somente-leitor; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

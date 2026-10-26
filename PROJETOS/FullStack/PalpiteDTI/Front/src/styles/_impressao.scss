@@ -1,0 +1,14 @@
+// ---------- Impressão (Design System -> PDF) ----------
+@media print {
+  .cabecalho,
+  .rodape,
+  .nao-imprimir {
+    display: none !important;
+  }
+
+  body { background: var(--branco); }
+
+  .pagina { padding: 0; }
+
+  .painel { break-inside: avoid; }
+}

@@ -1,0 +1,6 @@
+// Ponto de entrada dos estilos globais (importado em main.jsx).
+// Cada parte do design system mora num "partial" (arquivo com _ no nome).
+@use "tokens";
+@use "base";
+@use "componentes";
+@use "impressao";

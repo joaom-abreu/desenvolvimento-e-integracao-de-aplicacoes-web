@@ -1,0 +1,165 @@
+@use "../../styles/mixins" as *;
+
+// O tabuleiro é a única peça "ousada" da interface: o azul dti vira o espaço
+// onde o número se esconde, e o ciano marca o que ainda está vivo.
+.tabuleiro {
+  background: var(--azul-dti);
+  color: var(--branco);
+  border-radius: var(--raio-painel);
+  padding: 24px;
+
+  @include ate(celular) { padding: 16px; }
+}
+
+.tabuleiro-faixa { margin-bottom: 18px; }
+
+.tabuleiro-faixa-texto {
+  font-family: var(--fonte-titulo);
+  font-size: 1.125rem;
+  margin: 0 0 10px;
+  color: #d4d6f5;
+
+  strong {
+    color: var(--ciano);
+    font-weight: 900;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabuleiro-faixa-total {
+  font-family: var(--fonte-texto);
+  font-size: 0.875rem;
+  color: #a5a8e0;
+}
+
+.tabuleiro-trilho {
+  position: relative;
+  height: 8px;
+  border-radius: var(--raio-pilula);
+  background: var(--descartado);
+}
+
+.tabuleiro-trilho-faixa {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--raio-pilula);
+  background: var(--ciano);
+  transition: left 0.4s ease, width 0.4s ease;
+}
+
+.tabuleiro-grade {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 6px;
+}
+
+// cada número é um círculo: o "pingo" do logo dti
+.casa {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1.5px solid rgba(64, 230, 242, 0.45);
+  background: transparent;
+  color: var(--branco);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: clamp(0.6875rem, 0.5rem + 0.6vw, 0.9375rem);
+  font-variant-numeric: tabular-nums;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s, transform 0.15s;
+
+  &:disabled { cursor: default; }
+
+  &[data-situacao="possivel"]:not(:disabled) {
+    cursor: pointer;
+
+    &:hover {
+      background: var(--ciano);
+      color: var(--azul-dti);
+      transform: scale(1.08);
+    }
+  }
+
+  &[data-situacao="descartado"] {
+    border-color: transparent;
+    background: var(--descartado);
+    color: #5e63ad;
+  }
+
+  &[data-situacao="maior"] {
+    background: var(--resultado-maior);
+    border-color: var(--resultado-maior);
+    color: var(--azul-dti);
+  }
+
+  &[data-situacao="menor"] {
+    background: var(--resultado-menor);
+    border-color: var(--resultado-menor);
+    color: var(--azul-dti);
+  }
+
+  &[data-situacao="acertou"],
+  &[data-situacao="revelado"] {
+    background: var(--ciano);
+    border-color: var(--ciano);
+    color: var(--azul-dti);
+    font-weight: 900;
+  }
+
+  &[data-situacao="revelado"] { outline: 2px dashed var(--branco); outline-offset: 3px; }
+
+  // o último palpite ganha um anel: é o "o que mudou" depois de cada chute
+  &[data-ultimo] { box-shadow: 0 0 0 3px var(--azul-dti), 0 0 0 5px var(--branco); }
+
+  &[data-situacao="acertou"][data-ultimo] { animation: acerto 0.9s ease-out 2; }
+}
+
+.casa-seta {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.625rem;
+  line-height: 1;
+
+  @include ate(celular) { display: none; }
+}
+
+@keyframes acerto {
+  0% { box-shadow: 0 0 0 3px var(--azul-dti), 0 0 0 5px var(--ciano); }
+  100% { box-shadow: 0 0 0 3px var(--azul-dti), 0 0 0 22px rgba(64, 230, 242, 0); }
+}
+
+.tabuleiro-legenda {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 0.8125rem;
+  color: #c9cbf2;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    &::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid transparent;
+    }
+  }
+
+  [data-situacao="maior"]::before { background: var(--resultado-maior); }
+  [data-situacao="menor"]::before { background: var(--resultado-menor); }
+  [data-situacao="possivel"]::before { border-color: var(--ciano); }
+  [data-situacao="descartado"]::before { background: var(--descartado); border-color: #5e63ad; }
+}

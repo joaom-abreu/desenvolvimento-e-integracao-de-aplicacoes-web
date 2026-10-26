@@ -1,0 +1,63 @@
+.grafico {
+  margin: 0;
+
+  figcaption {
+    display: grid;
+    gap: 2px;
+    margin-bottom: 12px;
+
+    strong {
+      font-family: var(--fonte-titulo);
+      font-size: 1.0625rem;
+    }
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  text {
+    font-family: var(--fonte-texto);
+    font-size: 12px;
+    fill: var(--cinza-medio);
+  }
+}
+
+.grafico-grade line {
+  stroke: var(--linha);
+  stroke-dasharray: 3 4;
+}
+
+.grafico-barra {
+  rect { fill: var(--azul-eletrico); }
+
+  &[data-destaque] rect { fill: var(--laranja); }
+
+  .grafico-valor {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    fill: var(--azul-dti);
+  }
+
+  .grafico-rotulo {
+    font-variant-numeric: tabular-nums;
+    fill: var(--tinta);
+  }
+}
+
+.grafico-referencia {
+  line {
+    stroke: var(--azul-dti);
+    stroke-width: 2;
+    stroke-dasharray: 6 4;
+  }
+
+  text {
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    fill: var(--azul-dti);
+  }
+}

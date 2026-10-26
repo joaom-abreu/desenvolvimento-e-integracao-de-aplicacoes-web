@@ -1,0 +1,219 @@
+@use "mixins" as *;
+
+// ---------- Botões ----------
+.botao {
+  @include pilula;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  background: var(--azul-eletrico);
+  color: var(--branco);
+
+  &:hover { background: #2229ad; }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.botao-secundario {
+  background: transparent;
+  color: var(--azul-dti);
+  border-color: var(--azul-dti);
+
+  &:hover {
+    background: var(--azul-dti);
+    color: var(--branco);
+  }
+}
+
+.botao-perigo {
+  background: transparent;
+  color: var(--erro);
+  border-color: currentColor;
+
+  &:hover {
+    background: var(--erro);
+    color: var(--branco);
+    border-color: var(--erro);
+  }
+}
+
+.botao-pequeno {
+  @include pilula(32px, 12px);
+  font-size: 0.8125rem;
+}
+
+.botao-grande {
+  @include pilula(52px, 28px);
+  font-size: 1.0625rem;
+}
+
+// ---------- Formulários ----------
+.formulario {
+  display: grid;
+  gap: 14px;
+}
+
+.campo {
+  display: grid;
+  gap: 4px;
+
+  label {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  input {
+    font: inherit;
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1.5px solid #b9bccb;
+    border-radius: var(--raio-campo);
+    background: var(--branco);
+    color: var(--tinta);
+    width: 100%;
+
+    &:focus {
+      border-color: var(--azul-eletrico);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(48, 56, 213, 0.25);
+    }
+  }
+
+  &[data-invalido="true"] input { border-color: var(--erro); }
+
+  .erro-campo {
+    color: var(--erro);
+    font-size: 0.8125rem;
+  }
+
+  .ajuda-campo {
+    color: var(--cinza-medio);
+    font-size: 0.8125rem;
+  }
+}
+
+// ---------- Mensagens ----------
+.mensagem {
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9375rem;
+  border-left: 5px solid;
+}
+
+.mensagem-erro { background: var(--erro-fundo); color: var(--erro); }
+.mensagem-sucesso { background: var(--sucesso-fundo); color: var(--sucesso); }
+.mensagem-aviso { background: var(--aviso-fundo); color: var(--aviso); }
+.mensagem-info { background: #e8e9fb; color: var(--azul-dti); }
+
+// ---------- Selos (pílulas) ----------
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: var(--raio-pilula);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-family: var(--fonte-titulo);
+  white-space: nowrap;
+  background: #ebecf3;
+  color: var(--tinta);
+
+  .pingo {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+  }
+}
+
+.selo-maior { background: var(--resultado-maior); color: var(--azul-dti); }
+.selo-menor { background: #e3e4fa; color: var(--azul-dti); }
+.selo-acertou { background: var(--azul-dti); color: var(--ciano); }
+.selo-robo { background: #ebecf3; color: var(--cinza-medio); font-weight: 500; }
+
+// ---------- Tabelas ----------
+.tabela-rolagem { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+th {
+  text-align: left;
+  font-family: var(--fonte-titulo);
+  font-size: 0.8125rem;
+  color: var(--cinza-medio);
+  font-weight: 700;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--linha);
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--linha);
+  vertical-align: middle;
+}
+
+td.numero,
+th.numero {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+tr[data-destaque="true"] td { background: #eef0ff; }
+
+// ---------- Indicadores (KPIs) ----------
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: 12px;
+  margin-bottom: var(--espaco);
+
+  @include ate(celular) { grid-template-columns: 1fr 1fr; }
+}
+
+.kpi {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-painel);
+  padding: 16px 18px;
+}
+
+.kpi-valor {
+  font-family: var(--fonte-titulo);
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--azul-dti);
+  font-variant-numeric: tabular-nums;
+
+  @include ate(celular) { font-size: 1.5rem; }
+}
+
+.kpi-rotulo {
+  font-size: 0.875rem;
+  color: var(--cinza-medio);
+}
+
+.kpi-destaque {
+  background: var(--azul-dti);
+  border-color: var(--azul-dti);
+
+  .kpi-valor { color: var(--ciano); }
+  .kpi-rotulo { color: #c9cbf2; }
+}
