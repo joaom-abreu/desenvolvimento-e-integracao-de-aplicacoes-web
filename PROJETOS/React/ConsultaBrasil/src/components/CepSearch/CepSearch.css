@@ -1,0 +1,9 @@
+/* Tabela de resultados da busca reversa */
+
+.cb-row-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+
+  white-space: nowrap;
+}

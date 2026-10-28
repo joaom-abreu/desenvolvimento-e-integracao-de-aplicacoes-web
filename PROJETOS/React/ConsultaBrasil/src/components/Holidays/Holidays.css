@@ -1,0 +1,271 @@
+/* =========================================================
+   FERIADOS
+   ========================================================= */
+
+.holidays-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1rem 1.25rem;
+}
+
+.holidays-year {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.holidays-year input {
+  width: 92px;
+  height: 42px;
+
+  color: var(--brand);
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+
+  appearance: textfield;
+}
+
+.holidays-year input::-webkit-inner-spin-button,
+.holidays-year input::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+.holidays-year input:focus {
+  border-color: var(--brand);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 83, 128, 0.14);
+}
+
+/* Próximo feriado: o destaque da aba */
+
+.holidays-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.holidays-next {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  padding: 1.5rem;
+
+  color: #ffffff;
+
+  background: linear-gradient(145deg, var(--brand-deep), var(--brand));
+
+  border-radius: 12px;
+}
+
+.holidays-next-date {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 96px;
+  height: 104px;
+
+  color: var(--brand-deep);
+
+  background: #ffffff;
+
+  border-radius: 10px;
+
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.4);
+}
+
+.holidays-next-date span {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.holidays-next-date small {
+  margin-top: 0.25rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.holidays-next h3 {
+  margin: 0.15rem 0 0.35rem;
+
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.holidays-next p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.holidays-next p:first-letter {
+  text-transform: uppercase;
+}
+
+.holidays-next-label {
+  opacity: 0.8;
+}
+
+.holidays-next-tip {
+  margin-top: 0.35rem;
+
+  color: #cde7f6;
+}
+
+.holidays-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.holidays-stats div {
+  padding: 0.85rem 1rem;
+
+  background: var(--surface-muted);
+
+  border-radius: 10px;
+}
+
+.holidays-stats dt {
+  color: var(--muted);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.holidays-stats dd {
+  margin-top: 0.15rem;
+
+  color: var(--brand);
+
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.holidays-stats-wide {
+  grid-column: span 2;
+}
+
+/* Lista por mês */
+
+.holidays-months {
+  columns: 2 300px;
+  column-gap: 2rem;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.holidays-months > li {
+  margin-bottom: 1.25rem;
+
+  break-inside: avoid;
+}
+
+.holidays-months h4 {
+  margin-bottom: 0.4rem;
+
+  color: var(--brand);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.holidays-months h4::first-letter {
+  text-transform: uppercase;
+}
+
+.holidays-list {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.holidays-list li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.6rem 0.5rem;
+
+  border-top: 1px solid var(--border);
+}
+
+.holidays-list li.is-past {
+  opacity: 0.5;
+}
+
+.holidays-list li.is-next {
+  background: rgba(79, 168, 216, 0.1);
+
+  border-radius: 8px;
+}
+
+.holidays-day {
+  color: var(--brand);
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.holidays-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.holidays-info strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.holidays-info span {
+  color: var(--muted);
+
+  font-size: 0.78rem;
+}
+
+@media (max-width: 860px) {
+  .holidays-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .holidays-next {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .holidays-list li {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .holidays-list .cb-badge {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

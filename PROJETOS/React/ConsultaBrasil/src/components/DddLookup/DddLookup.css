@@ -1,0 +1,57 @@
+/* =========================================================
+   DDD
+   ========================================================= */
+
+.ddd-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.25rem 2rem;
+}
+
+.ddd-row .cb-field {
+  width: 180px;
+}
+
+.ddd-input {
+  letter-spacing: 0.1em;
+}
+
+.ddd-shortcuts {
+  display: flex;
+  flex: 1 1 260px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding-top: 1.65rem;
+}
+
+.ddd-cities {
+  columns: 4 180px;
+  column-gap: 2rem;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.ddd-cities li {
+  padding: 0.3rem 0;
+
+  font-size: 0.88rem;
+
+  break-inside: avoid;
+
+  border-bottom: 1px solid var(--surface-muted);
+}
+
+@media (max-width: 700px) {
+  .ddd-row .cb-field {
+    width: 100%;
+  }
+
+  .ddd-shortcuts {
+    padding-top: 0;
+  }
+}
